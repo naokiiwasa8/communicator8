@@ -1,0 +1,56 @@
+.main.text-center
+  %main.form-signin.w-100.m-auto
+    
+    = simple_form_for resource, as: resource_name, url: session_path(resource_name), data: {turbo: false} do |f|
+      %h1.h3.mb-3.fw-normal welcome
+      .form-floating
+        = f.input :email, autofocus: true, autocomplete: "email", wrapper: :vertical_form, html: { class: "form-control", id: :floatingInput},placeholder: 'Email',label: false
+        = f.input :password, autocomplete: "current-password",class: "form-control",placeholder: 'Password',label: false
+        
+        - if devise_mapping.rememberable?
+          .field.m-3
+            = f.check_box :remember_me
+            = f.label :remember_me
+        = f.submit class: "w-100 btn btn-lg btn-primary mb-5", value: "サインイン"
+
+
+
+    -# %form
+    -#   -# %img.mb-4{:alt => "", :height => "57", :loading => "lazy", :src => "../images/bootstrap-logo.svg", :width => "72"}/ 
+    -# %h1.h3.mb-3.fw-normal サインインをどうぞ
+    -# .form-floating
+    -#   %input#floatingInput.form-control{:placeholder => "name@example.com", :type => "email"}/
+    -#   %label{:for => "floatingInput"} Emailアドレス
+    -# .form-floating
+    -#   %input#floatingPassword.form-control{:placeholder => "パスワード", :type => "password"}/
+    -#   %label{:for => "floatingPassword"} パスワード
+    -# .form-check.mb-3
+    -#   %label
+    -#     %input{:type => "checkbox", :value => "remember-me"}/
+    -#     状態を記憶する
+    -# %button.w-100.btn.btn-lg.btn-primary{:type => "submit", href: session_path(resource_name)} サインイン
+    -# %p.mt-5.mb-3.text-muted © 2017-2020
+    -# %script{:crossorigin => "anonymous", :integrity => "sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4", :src => "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"}
+    -#   -# \//JavaScri ptプラグインの設定など
+
+
+
+    -# %body.text-center
+    -#   %main.form-signin.w-100.m-auto
+    -#     %h2 login
+    -#     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    -#       .field
+    -#         = f.label :email
+    -#         %br/
+    -#         = f.email_field :email, autofocus: true, autocomplete: "email"
+    -#       .field
+    -#         = f.label :password
+    -#         %br/
+    -#         = f.password_field :password, autocomplete: "current-password"
+    -#       - if devise_mapping.rememberable?
+    -#         .field
+    -#           = f.check_box :remember_me
+    -#           = f.label :remember_me
+    -#       .actions
+    -#         = f.submit "Log in"
+    -#     = render "users/shared/links"
