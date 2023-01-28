@@ -1,0 +1,34 @@
+.alert.alert-primary.row.shadow.p-3.mb-5.bg-white.rounded
+  %h1.text-center COMMUNICATOR
+  %top.text-center
+    %th get community for your newRails
+    %th puts your objective on COMMUNICATOR 
+    %br
+      ＃キャリア相談をしたいエンジニア同士の繋がり
+      %br
+      ＃エンジニアのキャリアチェンジはエンジニアに相談
+
+%main.container
+  .row
+    .col-lg-8
+      - @communities.each do |community|
+        .list-group.list-group-flush
+          %a.list-group-item.list-group-item-action.d-flex.gap-3.py-3{"aria-current" => "true", href: community_path(community)}
+            %img.rounded-circle.flex-shrink-0{:alt => "twbs", :height => "32", :src => "https://github.com/twbs.png", :width => "32"}/
+            .d-flex.gap-2.w-100.justify-content-between
+              %div
+                %h6.mb-0= community.community_name
+                %p.mb-0.opacity-75 tags tags tags
+              %small.opacity-50.text-nowrap= community.created_at
+    .col-lg-4
+      %aside_container
+        【転職サイトランキング実装予定】
+        %br
+        『エンジニアの皆様、転職サイトの特徴を教えてください』
+        %br
+        『エンジニアの皆様、サイトの不具合を教えてください」』
+        %br
+        『エンジニアの皆様、一緒にこのサイトを作りませんか？』
+
+%br
+= link_to 'New Community', new_community_path
