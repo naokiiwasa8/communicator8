@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'home/index'
+  resources :communities
+  root to: 'home#index'
   devise_for :users,
     path: '',
     path_names: {
