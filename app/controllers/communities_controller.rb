@@ -8,8 +8,8 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/1 or /communities/1.json
   def show
-    @post  = Post.new
-    @posts = @community.posts.order(created_at: :desc)
+    # @post  = Post.new
+    # @posts = @community.posts.order(created_at: :desc)
   end
 
   # GET /communities/new
@@ -24,7 +24,12 @@ class CommunitiesController < ApplicationController
   # POST /communities or /communities.json
   def create
     @community = Community.new(community_params)
-
+    if user_signed_in? 
+      @community.user_id = current_user.id
+    else
+      @community.user_id = 1
+    end
+    
     respond_to do |format|
       if @community.save
         format.html { redirect_to community_url(@community), notice: "Community was successfully created." }
