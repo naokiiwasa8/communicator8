@@ -4,4 +4,4 @@ import "./controllers"
 import * as bootstrap from "bootstrap"
 
 // 読み込めない
-import "popper"
+// import "popper"
