@@ -37,6 +37,7 @@
 %main.container
   .row
     .col-lg-8
+      = sort_link(@search, :created_at) 
       - @communities.each do |community|
         .list-group.list-group-flush
           %a.list-group-item.list-group-item-action.d-flex.gap-3.py-3{"aria-current" => "true", href: community_path(community)}
