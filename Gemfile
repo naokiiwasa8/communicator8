@@ -59,6 +59,7 @@ gem 'simple_form'
 
 # page_nation
 gem "kaminari"
+gem 'bootstrap5-kaminari-views'
 
 # search 
 gem "ransack"

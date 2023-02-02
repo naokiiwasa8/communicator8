@@ -1,4 +1,5 @@
 module ApplicationHelper
+  # Catブログ参照スライドバー
   def sidebar_link_to(path, emoji, text)
     classes = %w[my-1 nav-link text-white]
     classes << "active" if current_page?(path)
