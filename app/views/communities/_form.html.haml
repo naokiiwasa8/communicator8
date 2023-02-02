@@ -1,14 +1,14 @@
 -# frozen_string_literal: true
 
-= simple_form_for(@community) do |f|
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-  .form-inputs
-    = f.input :community_name
-  .form-actions
-    = f.button :submit
+-# = simple_form_for(@community) do |f|
+-#   = f.error_notification
+-#   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+-#   .form-inputs
+-#     = f.input :community_name
+-#   .form-actions
+-#     = f.button :submit
 
--# = bootstrap_form_with(model: community) do |form|
--#   = form.text_field :community_name
--#   = form.primary
+= bootstrap_form_with(model: @community) do |form|
+  = form.text_field :community_name
+  = form.primary
 
