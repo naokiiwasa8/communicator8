@@ -52,10 +52,11 @@ gem "haml-rails"
 gem "sassc-rails"
 
 # User Controll
-gem 'devise'
+gem "devise"
 
 # Form Framework
-gem 'simple_form'
+gem "simple_form"
+gem "bootstrap_form"
 
 # page_nation
 gem "kaminari"
