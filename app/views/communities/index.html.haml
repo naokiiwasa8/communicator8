@@ -1,21 +1,46 @@
-%h1 Listing communities
+%main.container.mt-3
+  .row
+    =render 'layouts/parts/communities'
+    
+    .col-lg-4
+      %aside_container
+        【転職サイトランキング実装予定】
+        %br
+        『エンジニアの皆様、転職サイトの特徴を教えてください』
+        %br
+        『エンジニアの皆様、サイトの不具合を教えてください」』
+        %br
+        『エンジニアの皆様、一緒にこのサイトを作りませんか？』
 
-%table
-  %thead
-    %tr
-      %th Community name
-      %th
-      %th
-      %th
+    .col-4.d-flex.justify-content-end
+      = link_to icon_with_text("plus-circle", "New Community"), |
+        new_community_path,                          |
+        class: "btn btn-outline-primary"             |
 
-  %tbody
-    - @communities.each do |community|
-      %tr
-        %td= community.community_name
-        %td= link_to 'Show', community
-        %td= link_to 'Edit', edit_community_path(community)
-        %td= link_to 'Destroy', community, method: :delete, data: { confirm: 'Are you sure?' }
+    .d-flex.justify-content-end.mt-3
+      = paginate @communities, theme: 'bootstrap-5'
 
-%br
-= paginate @communities
-= link_to 'New Community', new_community_path
+
+
+
+-# %h1 Listing communities
+
+-# %table
+-#   %thead
+-#     %tr
+-#       %th Community name
+-#       %th
+-#       %th
+-#       %th
+
+-#   %tbody
+-#     - @communities.each do |community|
+-#       %tr
+-#         %td= community.community_name
+-#         %td= link_to 'Show', community
+-#         %td= link_to 'Edit', edit_community_path(community)
+-#         %td= link_to 'Destroy', community, method: :delete, data: { confirm: 'Are you sure?' }
+
+-# %br
+-# = paginate @communities
+-# = link_to 'New Community', new_community_path
