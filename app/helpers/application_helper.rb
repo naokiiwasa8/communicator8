@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   # Catブログ参照スライドバー
   def sidebar_link_to(path, emoji, text)
     classes = %w[my-1 nav-link text-white]
@@ -9,11 +10,16 @@ module ApplicationHelper
     end
   end
 
+  #icon表示 
   def icon(icon_name)
     tag.i(class: ["bi", "bi-#{icon_name}"])
   end
-
   def icon_with_text(icon_name, text)
     tag.span(icon(icon_name), class: "me-2") + tag.span(text)
+  end
+
+  #flashメッセージの複数表示（実装中）
+  def turbo_stream_flash
+    turbo_stream.append "toasts", partial: "toasts"
   end
 end
