@@ -16,6 +16,10 @@
     = f.label :password_confirmation
     %br/
     = f.password_field :password_confirmation, autocomplete: "new-password"
+  .field
+    = f.label :user_name
+    %br/
+    = f.email_field :user_name, autofocus: true, autocomplete: "user_name"
   .actions
     = f.submit "Sign up"
 = render "users/shared/links"
