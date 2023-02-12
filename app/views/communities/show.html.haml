@@ -1,9 +1,29 @@
 %p#notice= notice
 
-%p
-  %b Community name:
-  = @community.community_name
+%table
+  %thead
+    %tr
+      %th
+        community_name:
+        = @community.community_name
+      %th
+        = User.human_attribute_name(:user_name)
+      %th
+        = Post.human_attribute_name(:created_at)
 
-= link_to 'Edit', edit_community_path(@community)
-\|
-= link_to 'Back', communities_path
+      = link_to 'Edit', edit_community_path(@community)
+      \|
+      = link_to 'Back', communities_path
+  %tbody
+    - @posts.each do |post|
+      %tr
+        %td 
+          %b post_content:
+          = post.content
+        %td
+          = post.user.user_name
+        %td
+          = post.created_at
+
+%h4 New post
+= render "posts/new"

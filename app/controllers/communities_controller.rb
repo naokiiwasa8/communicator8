@@ -13,8 +13,8 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/1 or /communities/1.json
   def show
-    # @post  = Post.new
-    # @posts = @community.posts.order(created_at: :desc)
+    @post  = @community.posts.new
+    @posts = @community.posts.order(created_at: :desc)
   end
 
   # GET /communities/new

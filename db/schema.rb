@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_28_152437) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_08_145050) do
   create_table "communities", force: :cascade do |t|
     t.string "community_name"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_communities_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id", null: false
+    t.integer "community_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["community_id"], name: "index_posts_on_community_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,4 +55,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_28_152437) do
   end
 
   add_foreign_key "communities", "users"
+  add_foreign_key "posts", "communities"
+  add_foreign_key "posts", "users"
 end
