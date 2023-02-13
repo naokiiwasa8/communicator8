@@ -5,7 +5,7 @@ class CommunitiesController < ApplicationController
   def index
     @communities = Community.all.order(created_at: :desc)
     @communities = Community.page(params[:page])
-    # ransack search
+    # ransack search communities
     @search = Community.ransack(params[:q])
     @search.sorts = 'created_at desc' if @search.sorts.empty? 
     @communities = @search.result.page(params[:page])
@@ -15,6 +15,10 @@ class CommunitiesController < ApplicationController
   def show
     @post  = @community.posts.new
     @posts = @community.posts.order(created_at: :desc)
+    # ransack search posts
+    @search = @community.posts.ransack(params[:q])
+    @search.sorts = 'created_at desc' if @search.sorts.empty? 
+    @posts = @search.result.page(params[:page])
   end
 
   # GET /communities/new

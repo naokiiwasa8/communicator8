@@ -1,29 +1,31 @@
-%p#notice= notice
+.col-lg-8
+  .list-group.mt-3.m-2
+    %a.list-group-item.list-group-item-action.d-flex.gap-3.py-3{"aria-current" => "true", href: ""}
+      %img.rounded-circle.flex-shrink-0{:alt => "twbs", :height => "32", :src => "https://github.com/twbs.png", :width => "32"}/
+      .d-flex.gap-2.w-100.justify-content-between
+        %div
+          %h3.mb-0= @community.community_name
+          %p.mb-0.opacity-75= @community.user.user_name
+        %small.opacity-50.text-nowrap= @community.created_at
+  - if @posts.present? 
+    %form.m-1.mr-2.mx-3
+      .form-control.w-auto.p-3
+        = search_form_for @search do |f| 
+          -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
+          -# `カラム名_eq`  =カラムに対して完全一致検索
+          = f.label :content_cont, 'find post'
+          = f.search_field :content_cont 
+          = f.submit    
+    =turbo_frame_tag "posts" do
+      = sort_link(@search, :created_at)
+      - @posts.each do |post|
+        .list-group.list-group-flush.mx-3
+          %a.list-group-item.list-group-item-action.d-flex.gap-3.py-3{"aria-current" => "true", href: post_path(post)}
+            %img.rounded-circle.flex-shrink-0{:alt => "twbs", :height => "32", :src => "https://github.com/twbs.png", :width => "32"}/
+            .d-flex.gap-2.w-100.justify-content-between
+              %div
+                %h6.mb-0= post.content
+                %p.mb-0.opacity-75= post.user.user_name
+              %small.opacity-50.text-nowrap= post.created_at
 
-%table
-  %thead
-    %tr
-      %th
-        community_name:
-        = @community.community_name
-      %th
-        = User.human_attribute_name(:user_name)
-      %th
-        = Post.human_attribute_name(:created_at)
-
-      = link_to 'Edit', edit_community_path(@community)
-      \|
-      = link_to 'Back', communities_path
-  %tbody
-    - @posts.each do |post|
-      %tr
-        %td 
-          %b post_content:
-          = post.content
-        %td
-          = post.user.user_name
-        %td
-          = post.created_at
-
-%h4 New post
-= render "posts/new"
+  = render "posts/new"
