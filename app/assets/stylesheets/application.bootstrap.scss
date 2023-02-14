@@ -2,6 +2,6 @@
 @import 'bootstrap-icons/font/bootstrap-icons';
 
 label.required:after {
-  content:" *";
+  content:"*";
   color: red;
 }

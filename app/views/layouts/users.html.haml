@@ -8,7 +8,8 @@
 
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
-
+    -# user sass 設定
+    = stylesheet_link_tag "users/session", media: 'all'
 
   %body
     = render 'layouts/parts/header'   
