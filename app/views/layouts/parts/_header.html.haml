@@ -32,6 +32,9 @@
             %a.nav-link{href: new_user_session_path , :tabindex => "-1"} login
           %li.nav-item
             %a.nav-link{href: destroy_user_session_path, data: {turbo_method: :delete}} logout
+          - if user_signed_in?
+            %li.nav-item
+              .nav-link.active= current_user.user_name
           -# - if @communities.present? 
           -#   %form.d-flex
           -#     .form-control.me-2
