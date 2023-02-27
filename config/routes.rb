@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  root to: 'home#index'
   resources :posts
   resources :communities
-  root to: 'home#index'
+  resources :tags
   devise_for :users,
     path: '',
     path_names: {
