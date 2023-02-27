@@ -29,9 +29,20 @@
     
   =turbo_frame_tag "communities" do
     = sort_link(@search, :created_at)   
+    %ul.nav.nav-tabs.mx-3.pt-3
+      %li.nav-item
+        %a.nav-link.active{"aria-current" => "page", :href => "#"} アクティブ
+      %li.nav-item
+        %a.nav-link{:href => "#"} リンク1
+      %li.nav-item
+        %a.nav-link{:href => "#"} リンク2
+      %li.nav-item
+        %a.nav-link 無効
+
+
     %main.container-fluid
-      .my-3.p-3.bg-body.rounded.shadow-sm
-        %h6.border-bottom.pb-2.mb-0 Communituies
+      .mb-3.p-3.bg-body.rounded.shadow-sm
+        -# %h6.border-bottom.pb-2.mb-0 Communituies
         - @communities.each do |community|
           %a.d-flex.text-muted.pt-4.communities{style: "text-decoration: none","aria-current" => "true", href: community_path(community)}
             %svg.bd-placeholder-img.flex-shrink-0.me-2.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
