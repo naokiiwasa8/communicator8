@@ -15,6 +15,7 @@ class CommunitiesController < ApplicationController
   def show
     @post  = @community.posts.new
     @posts = @community.posts.order(created_at: :desc)
+    @community_tags = @community.tag_counts_on(:community_tags)
     # @tag = Tag.new
     # ransack search posts
     @search = @community.posts.ransack(params[:q])
@@ -33,9 +34,7 @@ class CommunitiesController < ApplicationController
 
   # POST /communities or /communities.json
   def create
-    @community = Community.find(params[:community_id])
-    # @tag = Tag.find_or_create_by(name: params[:tag][:name])
-    # @community_tag = CommunityTag.new(tag_id: @tag.id, community_id: @community.id)
+    @community = Community.new(community_params)
     if user_signed_in? 
       @community.user_id = current_user.id
     else
@@ -84,6 +83,9 @@ class CommunitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def community_params
-      params.require(:community).permit(:community_name)
+      params.require(:community).permit(
+        :community_name, 
+        :community_tag_list
+      )
     end
 end

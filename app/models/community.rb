@@ -1,4 +1,5 @@
 class Community < ApplicationRecord
+  acts_as_taggable_on :community_tags
 
   ## Relationship
   has_many :posts

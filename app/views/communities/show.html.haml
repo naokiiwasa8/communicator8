@@ -5,12 +5,12 @@
       .d-flex.gap-2.w-100.justify-content-between
         %div
           %h3.mb-0= @community.community_name
-          -# - @community.tags.each do |tag|
-          -#   .badge.bg-secondary
-          -#     = tag.name
+          - @community_tags.each do |tag|
+            %small.text-right.badge.bg-secondary
+              = "#{tag.name} (#{tag.taggings_count})"
           %p.mb-0.opacity-75= @community.user.user_name
         %small.opacity-50.text-nowrap= @community.created_at
-    -# = render "tags/form", locals: @community.id
+    = render "tags/form"
     
   - if @posts.present? 
     %form.m-1.mr-2.mx-3

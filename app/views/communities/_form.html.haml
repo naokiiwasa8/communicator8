@@ -12,13 +12,10 @@
 -#   = form.text_field :community_name
 -#   = form.primary
 
-= simple_form_for @community do |form|
-  = form.input :community_name
-
-  = form.simple_fields_for :tags, Tag.new do |tag_fields|
-    .field
-      = tag_fields.label :name, 'Tag Name'
-      = tag_fields.input :name, input_html: {class: 'form-control'}
-
+= simple_form_for @community do |f|
+  = f.input :community_name
+  = f.label :community_tag_list
+  = f.text_field :community_tag_list, value: @community.community_tag_list.join(',')
+  
   .actions
-    = form.button :submit
+    = f.button :submit
