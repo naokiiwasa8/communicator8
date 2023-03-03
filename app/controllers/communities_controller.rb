@@ -15,7 +15,7 @@ class CommunitiesController < ApplicationController
   def show
     @post  = @community.posts.new
     @posts = @community.posts.order(created_at: :desc)
-    @tag = Tag.new
+    # @tag = Tag.new
     # ransack search posts
     @search = @community.posts.ransack(params[:q])
     @search.sorts = 'created_at desc' if @search.sorts.empty? 
@@ -34,8 +34,8 @@ class CommunitiesController < ApplicationController
   # POST /communities or /communities.json
   def create
     @community = Community.find(params[:community_id])
-    @tag = Tag.find_or_create_by(name: params[:tag][:name])
-    @community_tag = CommunityTag.new(tag_id: @tag.id, community_id: @community.id)
+    # @tag = Tag.find_or_create_by(name: params[:tag][:name])
+    # @community_tag = CommunityTag.new(tag_id: @tag.id, community_id: @community.id)
     if user_signed_in? 
       @community.user_id = current_user.id
     else
