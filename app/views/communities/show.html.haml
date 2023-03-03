@@ -5,8 +5,13 @@
       .d-flex.gap-2.w-100.justify-content-between
         %div
           %h3.mb-0= @community.community_name
+          - @community.tags.each do |tag|
+            .badge.bg-secondary
+              = tag.name
           %p.mb-0.opacity-75= @community.user.user_name
         %small.opacity-50.text-nowrap= @community.created_at
+    = render "tags/form", locals: @community.id
+    
   - if @posts.present? 
     %form.m-1.mr-2.mx-3
       .form-control.w-auto.p-3
@@ -16,7 +21,8 @@
           = f.label :content_cont, 'find post'
           = f.search_field :content_cont 
           = f.submit    
-    =turbo_frame_tag "posts" do
+
+    = turbo_frame_tag "posts" do
       = sort_link(@search, :created_at)
       - @posts.each do |post|
         .list-group.list-group-flush.mx-3

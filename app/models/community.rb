@@ -2,6 +2,7 @@ class Community < ApplicationRecord
 
   ## Relationship
   has_many :posts
+  has_many :community_tags
   has_many :tags, through: :community_tags
   belongs_to :user, foreign_key: "user_id"
 

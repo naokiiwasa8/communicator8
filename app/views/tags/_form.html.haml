@@ -1,0 +1,6 @@
+= simple_form_for(@tag) do |f|
+  .form-inputs
+    = f.input :name 
+    = f.hidden_field :community_id, value: @community.id
+  .form-actions
+    = f.submit 

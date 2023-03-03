@@ -8,7 +8,17 @@
 -#   .form-actions
 -#     = f.button :submit
 
-= bootstrap_form_with(model: @community) do |form|
-  = form.text_field :community_name
-  = form.primary
+-# = bootstrap_form_with(model: @community) do |form|
+-#   = form.text_field :community_name
+-#   = form.primary
 
+= simple_form_for @community do |form|
+  = form.input :community_name
+
+  = form.simple_fields_for :tags, Tag.new do |tag_fields|
+    .field
+      = tag_fields.label :name, 'Tag Name'
+      = tag_fields.input :name, input_html: {class: 'form-control'}
+
+  .actions
+    = form.button :submit

@@ -4,3 +4,4 @@
 //= link home.css
 //= link communities.css
 //= link posts.css
+//= link tags.css

@@ -55,6 +55,9 @@
                 @#{community.user.user_name}
               %strong.d-block.text-gray-dark{style: "font-size: 1.15rem"}
                 = community.community_name
+              - community.tags.each do |tag|
+                %small.text-right.badge.bg-secondary
+                  = tag.name  
               %small.d-block.text-gray-dark.text-end.px-1
                 = "#{community.posts.size} posts"
                 %br
