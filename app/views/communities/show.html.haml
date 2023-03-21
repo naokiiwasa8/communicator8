@@ -9,7 +9,7 @@
             %small.text-right.badge.bg-secondary
               = "#{tag.name} (#{tag.taggings_count})"
           %p.mb-0.opacity-75= @community.user.user_name
-        %small.opacity-50.text-nowrap= @community.created_at
+          %small.opacity-50.text-nowrap= @community.created_at
     = render "tags/form"
     
   - if @posts.present? 
