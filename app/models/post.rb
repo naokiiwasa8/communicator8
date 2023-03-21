@@ -7,5 +7,11 @@ class Post < ApplicationRecord
   with_options presence: true do
     validates :content
   end
+
+  # ransack
+  def self.ransackable_attributes(auth_object = nil)
+    ["community_id", "content", "created_at", "id", "updated_at", "user_id"]
+  end
+    
 end
 

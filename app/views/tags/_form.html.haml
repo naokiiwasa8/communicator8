@@ -1,7 +1,15 @@
-= simple_form_for(@community) do |f|
-  .form-inputs
-    = f.label :community_tag_list
-    = f.text_field :community_tag_list, value: @community.community_tag_list.join(',')
+-# simple_formで実装試み中
+-# %div
+-#   .communities.tagify
+-#     = simple_form_for(@community) do |f|
+-#       .form-inputs{data: {controller: "tagify",whitelist: "キャラクター,グルメ,..."}}
+-#         = f.input :community_tag_list, input_html: {"data-tagify-target" => "tagify"}
+-#       .form-actions
+-#         = f.button :submit      
 
-  .form-actions
-    = f.submit 
+= form_with model: @community, url: community_path(@community), method: :patch, local: true do |form|
+  .field{"data-controller" => "tagify", "data-whitelist" => "#{ActsAsTaggableOn::Tag.all.pluck(:name).join(", ")}"}
+    %label{:for => "community_tag_list"} タグ(5つまで)
+    %input#tagify{"data-tagify-target" => "tagify", :type => "text", :value => ""}/
+    %input#community_tag_names{"data-tagify-target" => "tagNames", :name => "community[community_tag_list]", :type => "hidden", :value => "#{@community_tags.all.pluck(:name).join(", ")}"}/
+    %input{:type => "submit", :value => "Submit"}
