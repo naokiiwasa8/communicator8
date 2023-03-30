@@ -1,6 +1,6 @@
 .col-lg-9
   .list-group.mt-3.m-2
-    %a.list-group-item.list-group-item-action.d-flex.gap-3.py-3{"aria-current" => "true", href: ""}
+    .list-group-item.list-group-item-action.d-flex.gap-3.py-3{"aria-current" => "true", href: ""}
       %img.rounded-circle.flex-shrink-0{:alt => "twbs", :height => "32", :src => "https://github.com/twbs.png", :width => "32"}/
       .d-flex.gap-2.w-100.justify-content-between
         %div
@@ -8,7 +8,7 @@
           - @community_tags.each do |tag|
             %small.text-right.badge.bg-secondary
               = "#{tag.name} (#{tag.taggings_count})"
-          %p.mb-0.opacity-75= @community.user.user_name
+          %p.mb-0.opacity-75= "@#{@community.user.user_name}"
           %small.opacity-50.text-nowrap= @community.created_at
     = render "tags/form"
     
@@ -26,7 +26,7 @@
       = sort_link(@search, :created_at)
       - @posts.each do |post|
         .list-group.list-group-flush.mx-3
-          %a.list-group-item.list-group-item-action.d-flex.gap-3.py-3{"aria-current" => "true", href: post_path(post)}
+          .list-group-item.list-group-item-action.d-flex.gap-3.py-3{"aria-current" => "true", href: post_path(post)}
             %img.rounded-circle.flex-shrink-0{:alt => "twbs", :height => "32", :src => "https://github.com/twbs.png", :width => "32"}/
             .d-flex.gap-2.w-100.justify-content-between
               %div

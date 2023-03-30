@@ -8,7 +8,7 @@ export default class extends Controller {
     const whitelist = this.element.getAttribute('data-whitelist').split(',')
     this.tagify = new Tagify(this.tagifyTarget, {
       whitelist: whitelist,
-      maxTags: 5,
+      maxTags: 10,
       dropdown: {
         classname: "color-blue",
         enabled: 0,

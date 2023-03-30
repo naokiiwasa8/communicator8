@@ -66,41 +66,9 @@
                 %br
                 = l community.created_at
 
-
         %small.d-block.text-end.mt-3
           %a{:href => "#"} すべてを表示
+        .d-flex.justify-content-end.mt-3  
+          = paginate @communities
           
-      .my-3.p-3.bg-body.rounded.shadow-sm
-        %h6.border-bottom.pb-2.mb-0 提案
-        .d-flex.text-muted.pt-3
-          %svg.bd-placeholder-img.flex-shrink-0.me-2.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
-            %title 一般的なプレースホルダ画像
-            %rect{:fill => "#007bff", :height => "100%", :width => "100%"}
-            %text{:dy => ".3em", :fill => "#007bff", :x => "50%", :y => "50%"} 32x32
-          .pb-3.mb-0.small.lh-sm.border-bottom.w-100
-            .d-flex.justify-content-between
-              %strong.text-gray-dark フルネーム
-              %a{:href => "#"} フォロー
-            %span.d-block @ユーザー名
-        .d-flex.text-muted.pt-3
-          %svg.bd-placeholder-img.flex-shrink-0.me-2.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
-            %title 一般的なプレースホルダ画像
-            %rect{:fill => "#007bff", :height => "100%", :width => "100%"}
-            %text{:dy => ".3em", :fill => "#007bff", :x => "50%", :y => "50%"} 32x32
-          .pb-3.mb-0.small.lh-sm.border-bottom.w-100
-            .d-flex.justify-content-between
-              %strong.text-gray-dark フルネーム
-              %a{:href => "#"} フォロー
-            %span.d-block @ユーザー名
-        .d-flex.text-muted.pt-3
-          %svg.bd-placeholder-img.flex-shrink-0.me-2.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
-            %title 一般的なプレースホルダ画像
-            %rect{:fill => "#007bff", :height => "100%", :width => "100%"}
-            %text{:dy => ".3em", :fill => "#007bff", :x => "50%", :y => "50%"} 32x32
-          .pb-3{"border-bottom" => "", "lh-sm" => "", "mb-0" => "", :small => "", "w-100" => ""}
-            .d-flex.justify-content-between
-              %strong.text-gray-dark フルネーム
-              %a{:href => "#"} フォロー
-            %span.d-block @ユーザー名
-        %small.d-block.text-end.mt-3
-          %a{:href => "#"} すべてを表示
+    
