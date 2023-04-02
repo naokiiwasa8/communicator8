@@ -1,12 +1,3 @@
--# simple_formで実装試み中
--# %div
--#   .communities.tagify
--#     = simple_form_for(@community) do |f|
--#       .form-inputs{data: {controller: "tagify",whitelist: "キャラクター,グルメ,..."}}
--#         = f.input :community_tag_list, input_html: {"data-tagify-target" => "tagify"}
--#       .form-actions
--#         = f.button :submit      
-
 = form_with model: @community, url: community_path(@community), method: :patch, local: true do |form|
   .field{"data-controller" => "tagify", "data-whitelist" => "#{ActsAsTaggableOn::Tag.all.pluck(:name).join(", ")}"}
     %label{:for => "community_tag_list"} タグ(5つまで)

@@ -32,5 +32,5 @@ module ApplicationHelper
       svg['class'] = options[:class]
     end
     doc.to_html.html_safe
-end
+  end
 end

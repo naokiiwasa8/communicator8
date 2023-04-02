@@ -4,11 +4,12 @@
       .text-center.pt-5.mt-5
         COMMUNICATOR
     %h6
-      .text-center.pb-5.pt-1.mb-5
-        The best career advice for engineers comes from engineers
-        %br
-          .small
-            (英語から日本語にカタカタ変わるようにしたい)
+      #typing-animation.typing-animation5{ data: { controller: "typing-action"}}
+        .text-center.pb-5.pt-1{"data-typing-action-target" => "element"}
+          The best career advice for engineers comes from engineers
+      %br
+        .small
+          (英語から日本語にカタカタ変わるようにしたい)
 
 -# stimulusテスト
 -# %div{"data-controller" => "hello"}
@@ -17,15 +18,14 @@
 -#     Greet
 -#   %span{"data-hello-target" => "output"}
 
-
-  -# 過去のトップページたち
-  -# SVG利用モデル
-    .line
-    %svg.text{:height => "200px", :viewbox => "0 0 300 80", :width => "500px"}
-      = embedded_svg('communicator.svg',class: "a1")
-      = embedded_svg('communicator.svg',class: "a2")
-      = embedded_svg('communicator.svg',class: "a3")
-    .line
+-# 過去のトップページたち
+-# SVG利用モデル
+-# .line
+-# %svg.text{:height => "200px", :viewbox => "0 0 300 80", :width => "500px"}
+-#   = embedded_svg('communicator.svg',class: "a1")
+-#   = embedded_svg('communicator.svg',class: "a2")
+-#   = embedded_svg('communicator.svg',class: "a3")
+-# .line
 
 -# 一番初期の
 -# .alert.alert-primary.row.shadow.p-3.mb-5.bg-white.rounded
@@ -37,7 +37,6 @@
 -#       ＃キャリア相談をしたいエンジニア同士の繋がり
 -#       %br
 -#       ＃エンジニアのキャリアチェンジはエンジニアに相談
-
 
 %main.container
   .row
@@ -60,17 +59,3 @@
         %br
         %br
         『エンジニアの皆様、一緒にこのサイトを作りませんか？』
-
-    .col-4.d-flex.justify-content-end
-      = link_to icon_with_text("plus-circle", "New Community"), |
-        new_community_path,                          |
-        class: "btn btn-outline-primary"             |
-
-
-
-
--# %br
--# = paginate @communities, theme: 'bootstrap-5'
--# = link_to 'New Community', new_community_path
-
-

@@ -10,7 +10,7 @@
               = "#{tag.name} (#{tag.taggings_count})"
           %p.mb-0.opacity-75= "@#{@community.user.user_name}"
           %small.opacity-50.text-nowrap= @community.created_at
-    = render "tags/form"
+    = render "tags/edit_tags"
     
   - if @posts.present? 
     %form.m-1.mr-2.mx-3

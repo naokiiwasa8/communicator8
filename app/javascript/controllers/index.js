@@ -12,3 +12,6 @@ application.register("tagify", TagifyController)
 
 import ToastController from "./toast_controller"
 application.register("toast", ToastController)
+
+import TypingActionController from "./typing_action_controller"
+application.register("typing-action", TypingActionController)

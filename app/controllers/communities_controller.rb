@@ -26,6 +26,7 @@ class CommunitiesController < ApplicationController
   # GET /communities/new
   def new
     @community = Community.new
+    @community_tags = @community.tag_counts_on(:community_tags)
   end
 
   # GET /communities/1/edit
@@ -35,6 +36,7 @@ class CommunitiesController < ApplicationController
   # POST /communities or /communities.json
   def create
     @community = Community.new(community_params)
+    @community_tags = @community.tag_counts_on(:community_tags)
     if user_signed_in? 
       @community.user_id = current_user.id
     else

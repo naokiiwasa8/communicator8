@@ -1,74 +1,57 @@
 .col-lg-9
-  - if @communities.present? 
-    %form
-      .form-control.w-auto.p-3
-        = search_form_for @search do |f| 
-          -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
-          -# `カラム名_eq`  =カラムに対して完全一致検索
-          = f.label :community_name_cont, 'find community'
-          = f.search_field :community_name_cont 
-          = f.submit    
-  -#   =turbo_frame_tag "communities" do
-  -#     = sort_link(@search, :created_at)
-  -#     - @communities.each do |community|
-  -#       .list-group.list-group-flush
-  -#         .row
-  -#           %a.list-group-item.list-group-item-action.d-flex.gap-3.py-4{"aria-current" => "true", href: community_path(community)}
-  -#             .col-lg-8
-  -#               .d-flex.gap-2.w-100.justify-content-between
-  -#                 %div
-  -#                   %h5.mb-0= community.community_name
-  -#                   .justify-content-between
-  -#                   %p.mb-0.opacity-75= "#{community.posts.size} posts"
-  -#                   %p.mb-0.opacity-75= "#{community.posting_users.distinct.count} users"
-  -#                   %small.opacity-50.text-nowrap= l community.created_at
-  -#             .col-lg-4
-  -#               %img.rounded-circle.flex-shrink-0{:alt => "twbs", :height => "32", :src => "https://github.com/twbs.png", :width => "32"}/
-  -#               %p.mb-0.opacity-75= community.user.user_name
+  %form
+    .form-control.w-auto.p-3
+      = search_form_for @search do |f| 
+        -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
+        -# `カラム名_eq`  =カラムに対して完全一致検索
+        = f.label :community_name_cont, 'find community'
+        = f.search_field :community_name_cont 
+        = f.submit   
+  - if @communities.present?  
+    =turbo_frame_tag "communities" do
+      = sort_link(@search, :created_at)   
+      %ul.nav.nav-tabs.mx-3.pt-3
+        %li.nav-item
+          %a.nav-link.active{"aria-current" => "page", :href => "#"} アクティブ
+        %li.nav-item
+          %a.nav-link{:href => "#"} リンク1
+        %li.nav-item
+          %a.nav-link{:href => "#"} リンク2
+        %li.nav-item
+          %a.nav-link 無効
 
-    
-  =turbo_frame_tag "communities" do
-    = sort_link(@search, :created_at)   
-    %ul.nav.nav-tabs.mx-3.pt-3
-      %li.nav-item
-        %a.nav-link.active{"aria-current" => "page", :href => "#"} アクティブ
-      %li.nav-item
-        %a.nav-link{:href => "#"} リンク1
-      %li.nav-item
-        %a.nav-link{:href => "#"} リンク2
-      %li.nav-item
-        %a.nav-link 無効
+      %main.container-fluid
+        .mb-3.p-3.bg-body.rounded.shadow-sm
+          -# %h6.border-bottom.pb-2.mb-0 Communituies
+          - @communities.each do |community|
+            %a.d-flex.text-muted.pt-4.communities{style: "text-decoration: none","aria-current" => "true", href: community_path(community)}
+              %svg.bd-placeholder-img.flex-shrink-0.me-2.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
+                %title 一般的なプレースホルダ画像
+                %rect{:fill => "#007bff", :height => "100%", :width => "100%"}
+                %text{:dy => ".3em", :fill => "#007bff", :x => "50%", :y => "50%"} 32x32
+              
+              %p.pb-3.mb-0.small.border-bottom.w-100
+                %big.d-block.text-gray-dark.mb-1{style: "font-size: 0.9rem"}
+                  @#{community.user.user_name}
+                %strong.d-block.text-gray-dark{style: "font-size: 1.15rem"}
+                  = community.community_name
 
+                - community.community_tags.each do |tag|
+                  %small.text-right.badge.bg-secondary
+                    = "#{tag.name} (#{tag.taggings_count})"
+                %small.d-block.text-gray-dark.text-end.px-1
+                  = "#{community.posts.size} posts"
+                  %br
+                  = "#{community.posting_users.distinct.count} users"
+                  %br
+                  = l community.created_at
 
-    %main.container-fluid
-      .mb-3.p-3.bg-body.rounded.shadow-sm
-        -# %h6.border-bottom.pb-2.mb-0 Communituies
-        - @communities.each do |community|
-          %a.d-flex.text-muted.pt-4.communities{style: "text-decoration: none","aria-current" => "true", href: community_path(community)}
-            %svg.bd-placeholder-img.flex-shrink-0.me-2.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
-              %title 一般的なプレースホルダ画像
-              %rect{:fill => "#007bff", :height => "100%", :width => "100%"}
-              %text{:dy => ".3em", :fill => "#007bff", :x => "50%", :y => "50%"} 32x32
-            
-            %p.pb-3.mb-0.small.border-bottom.w-100
-              %big.d-block.text-gray-dark.mb-1{style: "font-size: 0.9rem"}
-                @#{community.user.user_name}
-              %strong.d-block.text-gray-dark{style: "font-size: 1.15rem"}
-                = community.community_name
-
-              - community.community_tags.each do |tag|
-                %small.text-right.badge.bg-secondary
-                  = "#{tag.name} (#{tag.taggings_count})"
-              %small.d-block.text-gray-dark.text-end.px-1
-                = "#{community.posts.size} posts"
-                %br
-                = "#{community.posting_users.distinct.count} users"
-                %br
-                = l community.created_at
-
-        %small.d-block.text-end.mt-3
-          %a{:href => "#"} すべてを表示
-        .d-flex.justify-content-end.mt-3  
-          = paginate @communities
-          
-    
+          %small.d-block.text-end.mt-3
+            %a{:href => "#"} すべてを表示
+          .d-flex.justify-content-end.mt-3  
+            = paginate @communities 
+  - else
+    %h3
+      .text-center.my-4
+        必要なcommunityを作成しましょう          
+      

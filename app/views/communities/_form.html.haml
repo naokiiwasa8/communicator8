@@ -14,8 +14,7 @@
 
 = simple_form_for @community do |f|
   = f.input :community_name
-  = f.label :community_tag_list
-  = f.text_field :community_tag_list, value: @community.community_tag_list.join(',')
+  = render "tags/new_tags"
   
   .actions
     = f.button :submit

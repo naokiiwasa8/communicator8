@@ -10,6 +10,9 @@
             %a.nav-link.active{:href => "https://ovdss.com/iapps/html_to_haml"} Link
           %li.nav-item
             %a.nav-link{href: communities_path} communities
+          %li.nav-item
+            %a.nav-link{href: new_community_path}
+              = icon_with_text("plus-circle", "new community")
 
         %ul.navbar-nav.mb-2.mb-lg-0
           - if user_signed_in?
