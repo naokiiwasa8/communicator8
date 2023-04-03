@@ -4,7 +4,12 @@ export default class extends Controller {
   static targets = ["element"];
 
   connect() {
-    this.text = "The best career advice for engineers comes from engineers";
+    if (window.innerWidth <= 768) {
+      this.text = "The best career advice for engineers \<br> comes from engineers";
+    } else {
+      this.text = "The best career advice for engineers       comes from engineers";
+    }
+
     this.index = 0;
     this.typingInterval = setInterval(this.type.bind(this), 100);
     this.blinkInterval = setInterval(this.blink.bind(this), 500);

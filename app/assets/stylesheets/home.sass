@@ -66,10 +66,6 @@
       background-color: #f6f5f5
 
 #typing-animation
-  /*文字の長さ
-  border-right: 5px solid #000
-  /*点滅バー
-  overflow: hidden
   /*必須
   white-space: nowrap
   line-height: 1.4
@@ -83,4 +79,9 @@
     50%
       border-color: transparent
       /*点滅風に見せる
-        
+
+// 一定幅で改行
+@media screen and (max-width: 767px) 
+  .break-after-engineers::after 
+    content: "\A"
+    white-space: pre
