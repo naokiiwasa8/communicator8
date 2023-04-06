@@ -31,6 +31,9 @@
                 %li
                   %a.dropdown-item{ href: "#" } プロフィール
                 %li
+                  %a.dropdown-item{ href: "#" } 
+                    = current_user.user_name
+                %li
                   %hr.dropdown-divider
                 %li
                   %a.dropdown-item{href: destroy_user_session_path, data: {turbo_method: :delete}} logout

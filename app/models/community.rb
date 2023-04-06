@@ -3,8 +3,8 @@ class Community < ApplicationRecord
 
   ## Relationship
   has_many :posts
-  # has_many :community_tags
-  # has_many :tags, through: :community_tags
+  has_many :favorite_communities, dependent: :destroy
+  has_many :favoriting_users, through: :favorite_communities, source: :user
   belongs_to :user, foreign_key: "user_id"
 
   # communituyに対して投稿したUserの人数を取得
@@ -18,6 +18,10 @@ class Community < ApplicationRecord
   # ransack
   def self.ransackable_attributes(auth_object = nil)
     ["community_name", "created_at", "id", "updated_at", "user_id"]
+  end
+
+  def favorited_by?(user)
+    favoriting_users.include?(user)
   end
   
 end

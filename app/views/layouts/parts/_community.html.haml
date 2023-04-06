@@ -1,0 +1,31 @@
+= turbo_frame_tag community do
+  - if community.favorited_by?(current_user)
+    = form_with url: community_favorite_community_path(community), method: :delete, data: { turbo: true, remote: true } do
+      %button.btn
+        = embedded_svg('favorited_star.svg',class: "")
+  - else 
+    = form_with url: community_favorite_community_path(community), method: :post, data: { turbo: true, remote: true } do
+      %button.btn
+        = embedded_svg('star.svg',class: "")
+  
+  %a.d-flex.text-muted.pt-4.communities{style: "text-decoration: none","aria-current" => "true", href: community_path(community)}
+    %svg.bd-placeholder-img.flex-shrink-0.me-2.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
+      %title 一般的なプレースホルダ画像
+      %rect{:fill => "#007bff", :height => "100%", :width => "100%"}
+      %text{:dy => ".3em", :fill => "#007bff", :x => "50%", :y => "50%"} 32x32
+    
+    %p.pb-3.mb-0.small.border-bottom.w-100
+      %big.d-block.text-gray-dark.mb-1{style: "font-size: 0.9rem"}
+        @#{community.user.user_name}
+        
+      %strong.d-block.text-gray-dark{style: "font-size: 1.15rem"}
+        = community.community_name
+      - community.community_tags.each do |tag|
+        %small.text-right.badge.bg-secondary
+          = "#{tag.name} (#{tag.taggings_count})"
+      %small.d-block.text-gray-dark.text-end.px-1
+        = "#{community.posts.size} posts"
+        %br
+        = "#{community.posting_users.distinct.count} users"
+        %br
+        = l community.created_at

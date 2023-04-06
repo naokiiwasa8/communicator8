@@ -6,4 +6,4 @@ import "bootstrap"
 // 読み込めない(package.json Debug)
 // import "popper"
 
-Turbo.session.drive = false
+Turbo.session.drive = true

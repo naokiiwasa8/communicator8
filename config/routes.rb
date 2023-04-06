@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   root to: 'home#index'
   resources :posts
-  resources :communities
+  resources :communities do 
+    resource :favorite_community, only: [:create, :destroy]
+  end
   resources :tags
+  # resources :favorite_communities, only: %i[create destroy]
   devise_for :users,
     path: '',
     path_names: {
