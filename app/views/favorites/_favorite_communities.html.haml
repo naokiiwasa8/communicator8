@@ -1,8 +1,9 @@
-- if community.favorited_by?(current_user)
-  = form_with url: community_favorite_community_path(community), method: :delete, data: { turbo: true, remote: true } do
-    %button.btn
-      = embedded_svg('favorited_star.svg',class: "")
-- else 
-  = form_with url: community_favorite_community_path(community), method: :post, data: { turbo: true, remote: true } do
-    %button.btn
-      = embedded_svg('star.svg',class: "")
+.favorite_communities
+  - if community.favorited_by?(current_user)
+    = form_with url: community_favorite_community_path(community), method: :delete, data: { turbo: true, remote: true } do
+      %button.btn.btn-lg.pb-1.favorited
+        = embedded_svg('favorited_star.svg',class: "")
+  - else 
+    = form_with url: community_favorite_community_path(community), method: :post, data: { turbo: true, remote: true } do
+      %button.btn.btn-lg.pb-1.favorite
+        = embedded_svg('star.svg',class: "")

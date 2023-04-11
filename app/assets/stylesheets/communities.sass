@@ -1,8 +1,38 @@
 .communities
   // layouts/parts/communities
   .communities
+    a.communities
+      inset: 0
+      z-index: 0
+      position: relative
     &:hover
-      background-color: #f6f5f5
+      background-color: #f7f7f7
+    .community-name
+      font-size: 1.15rem
+      padding-right: 1.0rem
+    .community-items
+      padding-right: 0.7rem
+  .favorite_communities
+    .btn  
+      z-index: 1000
+      position: absolute
+      right: 15px
+      top: 5px
+      size: 2.0rem
+    svg
+      width: 18px
+      height: 18px
+    .favorited
+      color: #ffd416
+      &:hover
+        color: #ffd416
+        transform: scale(1.3, 1.3)
+    .favorite
+      color: #212120
+      &:hover
+        color: #ffd416
+        transform: scale(1.3, 1.3)
+
 
 
   // tagify用
