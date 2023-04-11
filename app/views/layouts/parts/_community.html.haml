@@ -25,4 +25,5 @@
                 = "#{community.posting_users.distinct.count} users"
                 %br
                 = l community.created_at
-    =render 'favorites/favorite_communities', community: community
+    = render 'favorite_communities/favorite_communities', community: community
+

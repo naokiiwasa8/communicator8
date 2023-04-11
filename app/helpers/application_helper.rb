@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+  # turbo_stream flashメッセージの複数表示
+  def turbo_stream_flash
+    turbo_stream.update "toasts", partial:"layouts/parts/toasts"
+  end
+
   # Catブログ参照スライドバー
   def sidebar_link_to(path, emoji, text)
     classes = %w[my-1 nav-link text-white]
@@ -16,11 +21,6 @@ module ApplicationHelper
   end
   def icon_with_text(icon_name, text)
     tag.span(icon(icon_name), class: "me-2") + tag.span(text)
-  end
-
-  #flashメッセージの複数表示（実装中）
-  def turbo_stream_flash
-    turbo_stream.append "toasts", partial: "toasts"
   end
 
   # svgファイル表示
