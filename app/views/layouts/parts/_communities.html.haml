@@ -1,6 +1,23 @@
-.col-lg-9
+= turbo_frame_tag @communities do
+  .d-flex.justify-content-end.mt-4.mx-4
+    .dropstart
+      %button.btn.custom-search-button.rounded{:type => "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
+        search
+      %ul.search-communities.dropdown-menu.shadow.p-3.mb-5.bg-white.rounded.custom-dropdown-menu
+        %form
+          = search_form_for @search, html: { class: "input-group custom-search-form" } do |f|
+            -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
+            -# `カラム名_eq`  =カラムに対して完全一致検索
+            .d-flex{style: "width: 500px;"}
+              .input-group
+                = f.search_field :community_name_cont, class: 'form-control custom-search-input', placeholder: 'Search community...'
+              .input-group-append.mx-1
+                %button.btn.custom-search-submit{type: 'submit'}
+                  %i.bi.bi-search
+
   - if @communities.present?  
-    = sort_link(@search, :created_at)   
+    -# 並び替え機能
+    -# = sort_link(@search, :created_at)   
     %ul.nav.nav-tabs.mx-3.pt-3
       %li.nav-item
         %a.nav-link.active{"aria-current" => "page", :href => "#"} アクティブ
