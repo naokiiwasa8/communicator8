@@ -25,16 +25,16 @@
                 -#   %text{:dy => ".3em", :fill => "#007bff", :x => "50%", :y => "50%"} 32x32
               %ul.dropdown-menu.text-small.shadow.dropdown-menu-end
                 %li
-                  %a.dropdown-item{ href: "#" } 新プロジェクト...
-                %li
-                  %a.dropdown-item{ href: "#" } 設定
-                %li
-                  %a.dropdown-item{ href: "#" } プロフィール
-                %li
-                  %a.dropdown-item{ href: "#" } 
+                  .dropdown-item
                     = current_user.user_name
                 %li
                   %hr.dropdown-divider
+                %li
+                  %a.dropdown-item{ href: "#" } My Communities
+                %li
+                  %a.dropdown-item{ href: "#" } Favorites 
+                %li
+                  %a.dropdown-item{ href: "#" } settings
                 %li
                   %a.dropdown-item{href: destroy_user_session_path, data: {turbo_method: :delete}} logout
           - else
