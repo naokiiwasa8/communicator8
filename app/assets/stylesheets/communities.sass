@@ -40,6 +40,51 @@
       background-color: #f7f7f7
       transform: scale(1.03, 1.03)
 
+  /*post吹き出し
+  .balloon_l
+    margin: 15px 0
+    display: flex
+    justify-content: flex-start
+    align-items: flex-start
+  .balloon_r
+    margin: 15px 0
+    display: flex
+    justify-content: flex-start
+    align-items: flex-start
+    justify-content: flex-end
+  .faceicon img
+    width: 80px
+    /*任意のサイズ
+    height: auto
+  .balloon_r .faceicon
+    margin-left: 18px
+  .balloon_l .faceicon
+    margin-right: 18px
+  .balloon_r .faceicon
+    order: 2 !important
+  .says
+    max-width: 750px
+    display: flex
+    flex-wrap: wrap
+    position: relative
+    padding: 17px 14px 15px 14px
+    border-radius: 12px
+    background: #F8F9FA
+    box-sizing: border-box
+    margin: 0 !important
+    line-height: 1.5
+    white-space: pre-wrap
+    word-wrap: break-word
+    p
+      margin: 8px 0 0 !important
+      &:first-child
+        margin-top: 0 !important
+  .balloon_l .says:after
+    left: -26px
+    border-right: 22px solid #F8F9FA
+  .balloon_r .says:after
+    right: -26px
+    border-left: 22px solid  #F8F9FA
 
   // tagify用
   \:root
