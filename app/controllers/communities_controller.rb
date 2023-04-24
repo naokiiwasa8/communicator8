@@ -14,13 +14,13 @@ class CommunitiesController < ApplicationController
   # GET /communities/1 or /communities/1.json
   def show
     @post  = @community.posts.new
-    @posts = @community.posts.order(created_at: :desc)
+    @posts = @community.posts.order(created_at: :asc)
     @community_tags = @community.tag_counts_on(:community_tags)
     # @tag = Tag.new
     # ransack search posts
     @search = @community.posts.ransack(params[:q])
     @search.sorts = 'created_at desc' if @search.sorts.empty? 
-    @posts = @search.result.page(params[:page])
+    # @posts = @search.result.page(params[:page])
   end
 
   # GET /communities/new

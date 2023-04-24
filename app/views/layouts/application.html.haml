@@ -8,7 +8,8 @@
 
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
-    = stylesheet_link_tag params[:controller]
+    = stylesheet_link_tag params[:controller] if Rails.application.assets.find_asset("#{params[:controller]}.css")
+
     
   %body
     = render 'layouts/parts/header'   

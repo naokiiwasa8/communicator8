@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :communities do 
     resource :favorite_community, only: [:create, :destroy]
+    resources :posts, module: :communities
   end
   resources :tags
   # resources :favorite_communities, only: %i[create destroy]
