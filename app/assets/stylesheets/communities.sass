@@ -86,6 +86,35 @@
     right: -26px
     border-left: 22px solid  #F8F9FA
 
+  // 新規投稿ボタン
+  .new_post_button
+    // col-9コンテナの右下に固定
+    z-index: 1000
+    display: flex
+    justify-content: end
+    position: -webkit-sticky
+    position: sticky
+    top: 90%
+    width: 98%
+  .btn-circle
+    width: 50px
+    height: 50px
+    padding: 0
+    background: #fff
+    border-radius: 50%
+    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3)
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3)
+    transform: scale(-1,1)
+    background: #F8F9FA
+    i
+      font-size: 130%
+      line-height: 50px
+      -webkit-transition: all .3s
+      transition: all .3s
+      letter-spacing: 0
+    &:hover i
+      line-height: 41px
+
   // tagify用
   \:root
   --tagify-dd-color-primary: rgb(53,149,246)
@@ -300,10 +329,10 @@
 
             //  box-shadow: 0 0 0 0 $tag-remove inset
 
-          // background:nth($tagColor,2);
-          //background:none;
-          // box-shadow: 0 0 0 2px $tag-hover inset;
-          // transition:50ms;
+          // background:nth($tagColor,2)
+          //background:none
+          // box-shadow: 0 0 0 2px $tag-hover inset
+          // transition:50ms
 
       &#{$self}
         &--noAnim
@@ -331,7 +360,7 @@
             > span
               opacity: .5
 
-            // filter:blur(.2px);
+            // filter:blur(.2px)
             &::before
               box-shadow: 0 0 0 $tag-inset-shadow-size $tag-invalid-bg inset !important
               box-shadow: 0 0 0 var(--tag-inset-shadow-size) var(--tag-invalid-bg) inset !important
@@ -342,7 +371,7 @@
           display: none
 
         > div
-          // padding: $tag-pad;
+          // padding: $tag-pad
           &::before
             +tagReadonlyBG
 
@@ -389,12 +418,12 @@
         background: $tag-remove-btn-bg--hover
         background: var(--tag-remove-btn-bg--hover)
 
-        // + span{ box-shadow: 0 0 0 2px $tag-remove inset; transition:.2s; }
+        // + span{ box-shadow: 0 0 0 2px $tag-remove inset transition:.2s }
         + div
           > span
             opacity: .5
 
-          // filter:blur(.2px);
+          // filter:blur(.2px)
           &::before
             box-shadow: 0 0 0 $tag-inset-shadow-size rgba($tag-remove, 0.3) inset !important
             box-shadow: 0 0 0 var(--tag-inset-shadow-size) var(--tag-remove-bg) inset !important
@@ -469,7 +498,7 @@
           @supports (-moz-appearance: none)
             display: inline-block
 
-      // &:empty:focus{ padding:$tag-pad; }
+      // &:empty:focus{ padding:$tag-pad }
 
       &::before
         content: attr(data-placeholder)
@@ -509,7 +538,7 @@
         max-width: 100px
 
       // &--invalid{
-      //     // color: $invalid-input-color;
+      //     // color: $invalid-input-color
       // }
 
       /*
@@ -518,7 +547,7 @@
         margin: 0
 
         // a developer can choose to have automatic horizontal margin ("1ch" advised) between tags or use manual keyboard spaces
-        // line-height: 1.1;
+        // line-height: 1.1
 
         > div
           padding-top: 0
@@ -614,7 +643,7 @@
         border-top-width: 0
         box-shadow: 0 2px 4px -2px rgba(black, 0.2)
 
-        // box-sizing: border-box;
+        // box-sizing: border-box
         transition: $trans
 
         &:hover
@@ -649,16 +678,16 @@
 
       // /* CURRENTLY NOT USED
       // *&__addNewBtn{
-      // *  width: 1.22em;
-      // *  height: 1.22em;
-      // *  line-height: 1;
-      // *  font-size: 1.2em;
-      // *  border-radius: 50%;
-      // *  text-align: center;
-      // *  background: $tags-focus-border-color;
-      // *  background: var(--tagify-dd-color-primary);
-      // *  color: white;
-      // *  color: var(--tagify-dd-bg-color);
-      // *  border: none;
-      // *  cursor: pointer;
+      // *  width: 1.22em
+      // *  height: 1.22em
+      // *  line-height: 1
+      // *  font-size: 1.2em
+      // *  border-radius: 50%
+      // *  text-align: center
+      // *  background: $tags-focus-border-color
+      // *  background: var(--tagify-dd-color-primary)
+      // *  color: white
+      // *  color: var(--tagify-dd-bg-color)
+      // *  border: none
+      // *  cursor: pointer
       // *}

@@ -1,6 +1,6 @@
 class Communities::PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :set_community, only: %i[ create update ]
+  before_action :set_community, only: %i[ new create update ]
 
   # GET /communities/posts or /communities/posts.json
   def index
@@ -23,19 +23,14 @@ class Communities::PostsController < ApplicationController
   # POST /communities/posts or /communities/posts.json
   def create
     @post = @community.posts.new(post_params)
+    @posts = @community.posts
     if user_signed_in? 
       @post.user_id = current_user.id
     else
       @post.user_id = 1
     end
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to community_path(@community), notice: "Post was successfully created." }
-        # format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      flash.now.notice = 'post was successfly created'
     end
   end
 

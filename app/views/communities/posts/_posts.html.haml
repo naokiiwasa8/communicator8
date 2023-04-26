@@ -1,0 +1,32 @@
+= turbo_frame_tag :posts do
+  - @posts.each do |post|
+    - if post.user == current_user
+      .balloon_r{class: ('pb-5' if post == @posts.last)}
+        .faceicon
+          %svg.bd-placeholder-img.flex-shrink-0.me-2.mt-1.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
+            %title 一般的なプレースホルダ画像
+            %rect{:fill => "#007bff", :height => "100%", :width => "100%"}
+            %text{:dy => ".3em", :fill => "#007bff", :x => "50%", :y => "50%"} 32x32
+          .d-flex 
+            = post.user.user_name
+        .content
+          %pre.says.justify-content-end.text-break
+            = post.content
+          .small.text-end
+            = l post.created_at, format: "%y/%m/%d %H:%M"
+
+    - else    
+      .balloon_l{class: ('pb-5' if post == @posts.last)}
+        .faceicon
+          %svg.bd-placeholder-img.flex-shrink-0.me-2.mt-1.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
+            %title 一般的なプレースホルダ画像
+            %rect{:fill => "#007bff", :height => "100%", :width => "100%"}
+            %text{:dy => ".3em", :fill => "#007bff", :x => "50%", :y => "50%"} 32x32
+          .d-flex 
+            = post.user.user_name
+        .content
+          %pre.says.text-break
+            = post.content
+          -# %br
+          .text-start.small
+            = l post.created_at, format: "%y/%m/%d %H:%M"

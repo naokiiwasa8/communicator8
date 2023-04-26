@@ -1,0 +1,6 @@
+= turbo_frame_tag :new_post do
+  = simple_form_for @post, as: :post, url: community_posts_path(@community) do |f|
+    .d-flex{style: "width: 500px;"}
+      .input-group
+        = f.input :content
+        = f.submit

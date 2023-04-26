@@ -3,6 +3,7 @@ class FavoriteCommunitiesController < ApplicationController
     @community = Community.find(params[:community_id])
     current_user.favorite_communities.create(community_id: @community.id)
     flash.now.notice = "お気に入りに追加しました"
+    render "result"
   end
 
   def destroy
@@ -10,5 +11,6 @@ class FavoriteCommunitiesController < ApplicationController
     community_favorite = current_user.favorite_communities.find_by(community_id: @community.id)
     community_favorite.destroy!
     flash.now.notice = "お気に入りから削除しました"
+    render "result"
   end
 end

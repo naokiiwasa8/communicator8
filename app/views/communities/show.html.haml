@@ -1,6 +1,7 @@
 %main.container
-  .row  
+  .row
     .col-lg-9
+      = render "communities/posts/new_post_button"
       .list-group.mt-2.pt-5
         .list-group-item.list-group-item-action.d-flex.gap-3.py-3{"aria-current" => "true", href: ""}
           %img.rounded-circle.flex-shrink-0{:alt => "twbs", :height => "32", :src => "https://github.com/twbs.png", :width => "32"}/
@@ -30,39 +31,7 @@
                     .input-group-append.mx-1
                       %button.btn.custom-search-submit{type: 'submit'}
                         %i.bi.bi-search
+        = render "communities/posts/posts" 
 
-        = turbo_frame_tag "posts" do
-          - @posts.each do |post|
-            - if post.user == current_user
-              .balloon_r
-                .faceicon
-                  %svg.bd-placeholder-img.flex-shrink-0.me-2.mt-1.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
-                    %title 一般的なプレースホルダ画像
-                    %rect{:fill => "#007bff", :height => "100%", :width => "100%"}
-                    %text{:dy => ".3em", :fill => "#007bff", :x => "50%", :y => "50%"} 32x32
-                  .d-flex 
-                    = post.user.user_name
-                .content
-                  %pre.says.justify-content-end.text-break
-                    = post.content
-                  .small.text-end
-                    = l post.created_at, format: "%y/%m/%d %H:%M"
-
-            - else    
-              .balloon_l
-                .faceicon
-                  %svg.bd-placeholder-img.flex-shrink-0.me-2.mt-1.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
-                    %title 一般的なプレースホルダ画像
-                    %rect{:fill => "#007bff", :height => "100%", :width => "100%"}
-                    %text{:dy => ".3em", :fill => "#007bff", :x => "50%", :y => "50%"} 32x32
-                  .d-flex 
-                    = post.user.user_name
-                .content
-                  %pre.says.text-break
-                    = post.content
-                  -# %br
-                  .text-start.small
-                    = l post.created_at, format: "%y/%m/%d %H:%M"
-      = render "communities/posts/new"
     .col-lg-3
       = render 'layouts/parts/side_menu'
