@@ -7,12 +7,14 @@
       #navbarSupportedContent.collapse.navbar-collapse
         %ul.navbar-nav.me-auto.mb-2.mb-lg-0.mr-auto
           %li.nav-item
-            %a.nav-link.active{:href => "https://ovdss.com/iapps/html_to_haml"} Link
+            %a.nav-link.active{:href => "https://ovdss.com/iapps/html_to_haml"} 
+              About
           %li.nav-item
-            %a.nav-link{href: communities_path} communities
+            %a.nav-link{href: communities_path} 
+              Communities
           %li.nav-item
             %a.nav-link{href: new_community_path}
-              = icon_with_text("plus-circle", "new community")
+              = icon_with_text("plus-circle", "New Community")
 
         %ul.navbar-nav.mb-2.mb-lg-0
           - if user_signed_in?
