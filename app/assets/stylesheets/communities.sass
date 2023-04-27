@@ -115,6 +115,40 @@
     &:hover i
       line-height: 41px
 
+  // サイドメニュー
+  .col-lg-3
+    display: flex
+
+    // ここだけhomeと違う
+    margin-top: 102.5px
+
+    .sticky-card-items
+      position: -webkit-sticky
+      position: sticky
+      top: 80px
+      .card-items-top
+        width: auto
+        height: 4.0rem
+        border-radius: 2px
+        box-shadow: 1px 2px 10px 0px #c7c6c64d
+        overflow: hidden
+        background: #fbfbfb
+        color: #6C757D
+        font-size: 1.1rem
+      .side-menu-card
+        width: auto
+        height: 7.0rem
+        border-radius: 2px
+        box-shadow: 1px 2px 10px 0px #c7c6c64d
+        overflow: hidden
+        background: #fbfbfb
+        cursor: pointer
+        &:hover
+          color: #1d1d1d
+          background-color: #f7f7f7
+          transform: scale(1.03, 1.03)
+
+
   // tagify用
   \:root
   --tagify-dd-color-primary: rgb(53,149,246)
