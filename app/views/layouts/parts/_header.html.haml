@@ -46,16 +46,3 @@
               %li.nav-item
                 %a.nav-link{href: new_user_session_path , :tabindex => "-1"} login
 
-
-          -# - if @communities.present? 
-          -#   %form.d-flex
-          -#     .form-control.me-2
-          -#       = search_form_for @search do |f| 
-          -#         -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
-          -#         -# `カラム名_eq`  =カラムに対して完全一致検索
-          -#         = f.label :community_name_cont, 'find community'
-          -#         = f.search_field :community_name_cont 
-          -#         = f.submit           
-            
-          -# %input.form-control.me-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
-          -# %button.btn.btn-outline-success{:type => "submit"} Search
