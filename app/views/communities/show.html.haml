@@ -2,36 +2,58 @@
   .row
     .col-lg-9
       = render "communities/posts/new_post_button"
-      .list-group.mt-2
-        .list-group-item.list-group-item-action.d-flex.gap-3.py-3{"aria-current" => "true", href: ""}
-          %img.rounded-circle.flex-shrink-0{:alt => "twbs", :height => "32", :src => "https://github.com/twbs.png", :width => "32"}/
-          .d-flex.gap-2.w-100.justify-content-between
-            %div
-              %h3.mb-0= @community.community_name
-              - @community_tags.each do |tag|
-                %small.text-right.badge.bg-secondary
-                  = "#{tag.name} (#{tag.taggings_count})"
+      .community-container.mx-2
+        -# アイデア１
+        .community-head.d-flex.pt-4
+          .left-items.m-2
+            %img.rounded-circle.flex-shrink-0{:alt => "twbs", :height => "32", :src => "https://github.com/twbs.png", :width => "32"}/
+          .right-items.m-2{style: "flex-grow: 1;"}
+            %h2.mb-0
+              = @community.community_name
+            - @community_tags.each do |tag|
+              %small.text-right.badge.bg-secondary
+                = "#{tag.name} (#{tag.taggings_count})"
+            .text-end.mx-3
               %p.mb-0.opacity-75= "@#{@community.user.user_name}"
-              %small.opacity-50.text-nowrap= @community.created_at
-        -# = render "tags/edit_tags"
-        
-      - if @posts.present? 
-        .d-flex.justify-content-end.mt-2.mx-2
-          .dropstart
-            %button.btn.custom-search-button.rounded{:type => "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
-              search
-            %ul.search-communities.dropdown-menu.shadow.p-3.mb-5.bg-white.rounded.custom-dropdown-menu
-              %form
-                = search_form_for @search, html: { class: "input-group custom-search-form" } do |f|
-                  -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
-                  -# `カラム名_eq`  =カラムに対して完全一致検索
-                  .d-flex{style: "width: 500px;"}
-                    .input-group
-                      = f.search_field :content_cont, class: 'form-control custom-search-input', placeholder: 'Search post...'
-                    .input-group-append.mx-1
-                      %button.btn.custom-search-submit{type: 'submit'}
-                        %i.bi.bi-search
-        = render "communities/posts/posts" 
+              %small.opacity-75.text-nowrap= @community.created_at
 
+        -# -# アイデア２
+        -# .list-group.mt-2
+        -#   .list-group-item.d-flex.gap-3.py-3
+        -#     .right-items{style: "flex-grow: 1;"}
+        -#       %h2
+        -#         = @community.community_name
+        -#       - @community_tags.each do |tag|
+        -#         %small.text-right.badge.bg-secondary
+        -#           = "#{tag.name} (#{tag.taggings_count})"
+
+        -#       .d-flex.justify-content-end.align-items-center.gap-2.mt-2
+        -#         %img.rounded-circle.flex-shrink-0{:alt => "twbs", :height => "32", :src => "https://github.com/twbs.png", :width => "32"}/
+        -#         .text-start
+        -#           %p.mb-0.opacity-75= "@#{@community.user.user_name}"
+        -#           %small.opacity-75.text-nowrap= @community.created_at
+
+          -# = render "tags/edit_tags"
+          
+        - if @posts.present? 
+          .d-flex.justify-content-end.mt-2.mx-2
+            .dropstart
+              %button.btn.custom-search-button.rounded{:type => "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
+                search
+              %ul.search-communities.dropdown-menu.shadow.p-3.mb-5.bg-white.rounded.custom-dropdown-menu
+                %form
+                  = search_form_for @search, html: { class: "input-group custom-search-form" } do |f|
+                    -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
+                    -# `カラム名_eq`  =カラムに対して完全一致検索
+                    .d-flex{style: "width: 500px;"}
+                      .input-group
+                        = f.search_field :content_cont, class: 'form-control custom-search-input', placeholder: 'Search post...'
+                      .input-group-append.mx-1
+                        %button.btn.custom-search-submit{type: 'submit'}
+                          %i.bi.bi-search
+          = render "communities/posts/posts" 
+        - else 
+          aa
+      
     .col-lg-3
       = render 'layouts/parts/side_menu'
