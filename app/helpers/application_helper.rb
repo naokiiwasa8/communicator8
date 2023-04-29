@@ -2,7 +2,7 @@ module ApplicationHelper
 
   # turbo_stream flashメッセージの複数表示
   def turbo_stream_flash
-    turbo_stream.update "toasts", partial:"layouts/parts/toasts"
+    turbo_stream.append "toasts", partial: "layouts/parts/toast"
   end
 
   # Catブログ参照スライドバー

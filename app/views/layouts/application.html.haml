@@ -13,8 +13,10 @@
     
   %body
     = render 'layouts/parts/header'   
-    #toasts
-      = render 'layouts/parts/toasts'
+    -# #toasts
+      = render 'layouts/parts/toast'
+    #toasts{:style => "margin: 0.75rem"}
+
     %body{:class => "#{controller.controller_name}"}
     = yield 
 

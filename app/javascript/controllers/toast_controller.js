@@ -8,7 +8,7 @@ export default class extends Controller {
       this.slideIn();
     }, 10);
 
-    const toast = new bootstrap.Toast(this.element, { delay: 3000, autohide: false });
+    const toast = new bootstrap.Toast(this.element, { delay: 3800, autohide: false });
     toast.show();
 
     setTimeout(() => {
