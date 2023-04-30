@@ -13,9 +13,9 @@
     
   %body
     = render 'layouts/parts/header'   
-    -# #toasts
-      = render 'layouts/parts/toast'
     #toasts
+    = render 'layouts/parts/toast'
+
 
     %body{:class => "#{controller.controller_name}"}
     = yield 
