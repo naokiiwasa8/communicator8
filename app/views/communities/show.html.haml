@@ -1,8 +1,7 @@
 %main.container
   .row
-    .col-lg-9
-      = render "communities/posts/new_post_button"
-      .community-container.mx-2
+    .col-lg-9     
+      .community-container.mx-2.mt-4
         -# アイデア１
         .community-head.d-flex.pt-4
           .left-items.m-2
@@ -17,43 +16,32 @@
               %p.mb-0.opacity-75= "@#{@community.user.user_name}"
               %small.opacity-75.text-nowrap= @community.created_at
 
-        -# -# アイデア２
-        -# .list-group.mt-2
-        -#   .list-group-item.d-flex.gap-3.py-3
-        -#     .right-items{style: "flex-grow: 1;"}
-        -#       %h2
-        -#         = @community.community_name
-        -#       - @community_tags.each do |tag|
-        -#         %small.text-right.badge.bg-secondary
-        -#           = "#{tag.name} (#{tag.taggings_count})"
-
-        -#       .d-flex.justify-content-end.align-items-center.gap-2.mt-2
-        -#         %img.rounded-circle.flex-shrink-0{:alt => "twbs", :height => "32", :src => "https://github.com/twbs.png", :width => "32"}/
-        -#         .text-start
-        -#           %p.mb-0.opacity-75= "@#{@community.user.user_name}"
-        -#           %small.opacity-75.text-nowrap= @community.created_at
-
-          -# = render "tags/edit_tags"
-          
+        .d-flex.justify-content-end.mt-2.mx-2
+          .dropstart
+            %button.btn.custom-search-button.rounded{:type => "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
+              search
+            %ul.search-communities.dropdown-menu.shadow.p-3.mb-5.bg-white.rounded.custom-dropdown-menu
+              %form
+                = search_form_for @search, html: { class: "input-group custom-search-form" } do |f|
+                  -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
+                  -# `カラム名_eq`  =カラムに対して完全一致検索
+                  .d-flex{style: "width: 500px;"}
+                    .input-group
+                      = f.search_field :content_cont, class: 'form-control custom-search-input', placeholder: 'Search post...'
+                    .input-group-append.mx-1
+                      %button.btn.custom-search-submit{type: 'submit'}
+                        %i.bi.bi-search
         - if @posts.present? 
-          .d-flex.justify-content-end.mt-2.mx-2
-            .dropstart
-              %button.btn.custom-search-button.rounded{:type => "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
-                search
-              %ul.search-communities.dropdown-menu.shadow.p-3.mb-5.bg-white.rounded.custom-dropdown-menu
-                %form
-                  = search_form_for @search, html: { class: "input-group custom-search-form" } do |f|
-                    -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
-                    -# `カラム名_eq`  =カラムに対して完全一致検索
-                    .d-flex{style: "width: 500px;"}
-                      .input-group
-                        = f.search_field :content_cont, class: 'form-control custom-search-input', placeholder: 'Search post...'
-                      .input-group-append.mx-1
-                        %button.btn.custom-search-submit{type: 'submit'}
-                          %i.bi.bi-search
+          = render "communities/posts/new_post_button" 
           = render "communities/posts/posts" 
-        - else 
-          aa
-      
+        - else
+          = render "communities/posts/new_post_button"
+          = turbo_frame_tag :posts do
+            .bg-body-tertiary.p-lg-5.py-5.mb-4.rounded{style: "position: relative; overflow: hidden;", data: { controller: "geometric-animation", "geometric-animation-target": "container" }}
+              %h1.display-4.mb-4
+                投稿を作成
+              %p.lead 右下の新規投稿ボタンから最初の投稿を作成してください。
+              %p.lead 貴方のコミュニティにたくさんの仲間が加わることが楽しみです！
+
     .col-lg-3
       = render 'layouts/parts/side_menu'

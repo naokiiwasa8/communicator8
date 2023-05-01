@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import GeometricAnimationController from "./geometric_animation_controller"
+application.register("geometric-animation", GeometricAnimationController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 

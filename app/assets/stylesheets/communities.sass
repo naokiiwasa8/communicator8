@@ -35,7 +35,8 @@
 
   .community-head
     width: auto
-    height: 12.0rem
+    height: auto
+    min-height: 12rem
     border-radius: 2px
     box-shadow: 1px 2px 10px 0px #c7c6c64d
     overflow: hidden
@@ -157,6 +158,13 @@
           color: #1d1d1d
           background-color: #f7f7f7
           transform: scale(1.03, 1.03)
+  // 新規コミュニティ作成後のgeometric_animation
+  @keyframes move
+    0%
+      transform: translateY(0) rotate(0)
+    100%
+      transform: translateY(-100%) rotate(360deg)
+
 
 
   // tagify用
