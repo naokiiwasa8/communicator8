@@ -20,10 +20,10 @@ export default class extends Controller {
     this.tagify.on('add', e => this.saveTagNames(e.detail.tagify))
     this.tagify.on('remove', e => this.saveTagNames(e.detail.tagify))
 
-    const tagNamesStr = this.tagNamesTarget.value
-    if (tagNamesStr.length > 0) {
-      this.tagify.addTags(tagNamesStr.split(','))
-    }
+    // const tagNamesStr = this.tagNamesTarget.value
+    // if (tagNamesStr.length > 0) {
+    //   this.tagify.addTags(tagNamesStr.split(','))
+    // }
   }
 
   saveTagNames(tagify) {

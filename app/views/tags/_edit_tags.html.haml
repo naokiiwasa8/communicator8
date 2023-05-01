@@ -1,6 +1,6 @@
 = form_with model: @community, url: community_path(@community), method: :patch, local: true do |form|
   .field{"data-controller" => "tagify", "data-whitelist" => "#{ActsAsTaggableOn::Tag.all.pluck(:name).join(", ")}"}
-    %label{:for => "community_tag_list"} タグ(5つまで)
+    %label{:for => "community_tag_list"} タグ(10個まで)
     %input#tagify{"data-tagify-target" => "tagify", :type => "text", :value => ""}/
     %input#community_tag_names{"data-tagify-target" => "tagNames", :name => "community[community_tag_list]", :type => "hidden", :value => "#{@community_tags.all.pluck(:name).join(", ")}"}/
     %input{:type => "submit", :value => "Submit"}
