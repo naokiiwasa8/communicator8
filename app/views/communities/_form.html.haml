@@ -2,10 +2,10 @@
 .bg-body-tertiary.p-3.p-sm-5.mb-4.rounded{style: "position: fixed; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;", data: { controller: "geometric-animation", "geometric-animation-target": "container" }}
 
 -# フォームを中央寄せにするためのスタイルを追加
-.form-container
+.form-container.mb-4
   = simple_form_for @community, html: { class: 'form-center' } do |f|
     %h2.form-title.mb-4 コミュニティを作成
-    = f.input :community_name, input_html: { class: 'form-control stylish-input' }
+    = f.input :community_name, input_html: { class: 'form-control stylish-input mb-2' }, required: true
     = render "tags/new_tags"
     
     .actions

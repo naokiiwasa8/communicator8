@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      community: コミュニティ
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        last_name: 姓
+        first_name: 名
+      community:
+        community_name: コミュニティ名
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      accepted: 受諾してください
+      blank: を入力してください

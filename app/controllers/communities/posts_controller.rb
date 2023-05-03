@@ -30,7 +30,7 @@ class Communities::PostsController < ApplicationController
       @post.user_id = 1
     end
     if @post.save
-      flash.now.notice = 'post was successfly created'
+      flash.now.notice = "「#{@community.community_name}」に投稿しました"
     end
   end
 

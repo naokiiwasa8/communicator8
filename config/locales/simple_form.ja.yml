@@ -1,13 +1,13 @@
-en:
+ja:
   simple_form:
     "yes": 'Yes'
     "no": 'No'
     required:
-      text: 'required'
-      mark: '*'
+      # text: '必須'
+      # mark: '*'
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
-      # html: '<abbr title="required">*</abbr>'
+      html: '<span class="badge bg-white text-dark border"> 必須</span>'
     error_notification:
       default_message: "Please review the problems below:"
     # Examples

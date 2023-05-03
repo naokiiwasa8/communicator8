@@ -33,6 +33,31 @@
         color: #ffd416
         transform: scale(1.3, 1.3)
 
+  // tagify入力リスト
+  .tagify
+    width: 100%
+    max-width: 700px
+
+  .tags-look
+    .tagify__dropdown__item
+      display: inline-block
+      border-radius: 3px
+      padding: .3em .5em
+      border: 1px solid #CCC
+      background: #F3F3F3
+      margin: .2em
+      font-size: .85em
+      color: black
+      transition: 0s
+
+    .tagify__dropdown__item--active
+      color: black
+
+    .tagify__dropdown__item:hover
+      background: lightyellow
+      border-color: gold
+
+
   // 新規コミュニティ作成フォーム
   .form-center
     position: absolute
@@ -229,6 +254,7 @@
   // should be same as "$tags-focus-border-color"
   --tagify-dd-bg-color: white
   .tagify
+    
     // SCSS "default" allows overriding variables BEFORE they are set in the below lines of code
     $self: &
     $tags-border-color: #DDD !default

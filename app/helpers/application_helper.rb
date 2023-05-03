@@ -5,16 +5,6 @@ module ApplicationHelper
     turbo_stream.append "toasts", partial: "layouts/parts/toast"
   end
 
-  # Catブログ参照スライドバー
-  def sidebar_link_to(path, emoji, text)
-    classes = %w[my-1 nav-link text-white]
-    classes << "active" if current_page?(path)
-
-    link_to(path, class: classes) do
-      tag.span(class: "me-2") { emoji } + tag.span { text }
-    end
-  end
-
   #icon表示 
   def icon(icon_name)
     tag.i(class: ["bi", "bi-#{icon_name}"])

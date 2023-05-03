@@ -1,13 +1,13 @@
-.toast-container
-  %div{:style => "position: fixed; top: 2rem; right: 1rem;z-index:999999999"}
+.toast-container{data: {action: 'tagLimitReached->application#set_flash_for_tag_limit'}}
+  %div{style: "position: fixed; top: 2rem; right: 1rem;z-index:999999999"}
     - flash.each do |name, msg|
-      .toast.border.rounded-3{class: "toast-#{name.to_s} bg-white text-dark", "aria-atomic" => "true", "aria-live" => "assertive", :role => "alert", data: {autohide: 'false', controller: 'toast'}}
+      .toast.border.rounded-3{class: "toast-#{name.to_s} bg-white text-dark", "aria-atomic" => "true", "aria-live" => "assertive", role: "alert", data: {autohide: 'false', controller: 'toast'}}
         .toast-body.d-flex
           %i.bi.bi-info-circle-fill.text-muted.me-2
           %strong.text-gray-dark{style: "color: #5b5d5f;"}
             = msg.html_safe
-          %button.btn-close.me-1.m-auto{"aria-label" => "閉じる", "data-bs-dismiss" => "toast", :type => "button"}
-          
+          %button.btn-close.me-1.m-auto{"aria-label" => "閉じる", "data-bs-dismiss" => "toast", type: "button"}
+
                       
 -# %div{:id => 'toasts', :style => "position: fixed; top: 2rem; right: 1rem;z-index:999999999"}
 -#   - if notice
