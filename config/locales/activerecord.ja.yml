@@ -5,6 +5,7 @@ ja:
       community: コミュニティ
     attributes:
       user:
+        user_name: ユーザーネーム
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード確認
@@ -17,3 +18,5 @@ ja:
     messages:
       accepted: 受諾してください
       blank: を入力してください
+      taken: は既に登録済みです
+      too_short: は6文字以上を入力してください
