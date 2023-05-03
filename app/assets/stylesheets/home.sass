@@ -117,11 +117,13 @@
       transform: scale(1.03, 1.03)
 
   // サイドメニュー
-  .col-lg-3
-    display: flex
-    
+  .col-lg-3    
     // ここだけcomunitiesと違う
-    margin-top: 102.5px
+    margin-top: 40px
+    margin-bottom: 60px
+    @media (min-width: 992px)
+      display: flex
+      margin-top: 102.5px
 
     .sticky-card-items
       position: -webkit-sticky
