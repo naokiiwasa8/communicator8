@@ -31,7 +31,7 @@
         - @communities.each do |community|
           = render 'layouts/parts/community', community: community    
 
-        .d-flex.justify-content-end.mt-3  
+        .pagination-container.d-flex.mt-4
           = paginate @communities 
   - else
     %h3

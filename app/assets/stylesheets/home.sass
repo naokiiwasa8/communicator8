@@ -151,4 +151,52 @@
           background-color: #f7f7f7
           transform: scale(1.03, 1.03)
 
-      
+  // ページネーション
+  .pagination-container
+    justify-content: end
+    
+    @media (max-width: 767px)
+      justify-content: center
+    .pagination
+      display: flex
+      justify-content: center
+      align-items: center
+      list-style: none
+      padding: 0
+
+    .page-item
+      margin: 0 6px
+      @media (max-width: 767px)
+        margin: 0 3px
+
+    .page-link
+      display: block
+      padding: 4.5px 10px
+      font-size: 14px
+      font-weight: bold
+      text-decoration: none
+      color: #3f3f3f
+      background-color: #ffffff
+      border: 1px solid #dcdcdc
+      border-radius: 16px
+      transition: background-color 0.3s, border-color 0.3s
+
+    .page-item.active .page-link, .page-link:hover
+      background-color: #dcdcdc
+      color: #3f3f3f
+      border-color: #dcdcdc
+
+    .page-item.disabled .page-link
+      color: #999999
+      background-color: #ffffff
+      border-color: #999999
+      cursor: not-allowed
+
+    .page-link
+      &[data-direction="prev"], &[data-direction="next"]
+        padding: 6px
+        width: 24px
+        height: 24px
+        display: flex
+        align-items: center
+        justify-content: center
