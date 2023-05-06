@@ -1,40 +1,45 @@
-= turbo_frame_tag @communities do
-  .d-flex.justify-content-end.mt-2.mx-2
-    .dropstart
-      %button.btn.custom-search-button.rounded{:type => "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
-        search
-      %ul.search-communities.dropdown-menu.shadow.p-3.mb-5.bg-white.rounded.custom-dropdown-menu
-        %form
-          = search_form_for @search, html: { class: "input-group custom-search-form" } do |f|
-            -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
-            -# `カラム名_eq`  =カラムに対して完全一致検索
-            .d-flex{style: "width: 500px;"}
-              .input-group
-                = f.search_field :community_name_cont, class: 'form-control custom-search-input', placeholder: 'Search community...'
-              .input-group-append.mx-1
-                %button.btn.custom-search-submit{type: 'submit'}
-                  %i.bi.bi-search
+-# = turbo_frame_tag @communities do
+.d-flex.justify-content-end.mt-2.mx-2
+  .dropstart
+    %button.btn.custom-search-button.rounded{:type => "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
+      search
+    %ul.search-communities.dropdown-menu.shadow.p-3.mb-5.bg-white.rounded.custom-dropdown-menu
+      %form
+        = search_form_for @search, html: { class: "input-group custom-search-form" } do |f|
+          -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
+          -# `カラム名_eq`  =カラムに対して完全一致検索
+          .d-flex{style: "width: 500px;"}
+            .input-group
+              = f.search_field :community_name_cont, class: 'form-control custom-search-input', placeholder: 'Search community...'
+            .input-group-append.mx-1
+              %button.btn.custom-search-submit{type: 'submit'}
+                %i.bi.bi-search
 
-  - if @communities.present?  
-    -# 並び替え機能
-    -# = sort_link(@search, :created_at)   
-    %ul.nav.nav-tabs.mx-3.pt-3
-      %li.nav-item
-        %a.nav-link.active{"aria-current" => "page", :href => "#"} Active
-      %li.nav-item
-        %a.nav-link{:href => "#"} Favorites
-      %li.nav-item
-        %a.nav-link{:href => "#"} Follows
+- if @communities.present?  
+  -# 並び替え機能
+  -# = sort_link(@search, :created_at)   
+  %ul.nav.nav-tabs.mx-3.pt-3
+    %li.nav-item
+      %a.nav-link.active{"aria-current" => "page", :href => "#"} Active
+    %li.nav-item
+      %a.nav-link{:href => "#"} Favorites
+    %li.nav-item
+      %a.nav-link{:href => "#"} Follows
 
-    %main.container-fluid
-      .mb-3.p-3.bg-body.rounded.shadow-sm
-        - @communities.each do |community|
-          = render 'layouts/parts/community', community: community    
+  %main.container-fluid
+    .mb-3.p-3.bg-body.rounded.shadow-sm
+      - @communities.each do |community|
+        = render 'layouts/parts/community', community: community    
 
-        .pagination-container.d-flex.mt-4
-          = paginate @communities 
-  - else
-    %h3
-      .text-center.my-4
-        必要なcommunityを作成しましょう          
-      
+      .pagination-container.d-flex.mt-4
+        = paginate @communities 
+- else
+          
+  .bg-body-tertiary.p-lg-y-5.mb-4.rounded{style: "position: relative; overflow: hidden; padding: 110px 20px", data: { controller: "geometric-animation", "geometric-animation-target": "container" }}
+    %h1.display-4.mb-4
+      あなたのコミュニティを
+      %br 作成しましょう          
+    %p.lead 相談したいテーマに沿ったコミュニティを作成してください
+    %p.lead 知見を持ったエンジニアからアドバイスをもらいましょう！
+    %a.btn.zozo-button.mt-4{href: new_community_path}
+      コミュニティを作成する
