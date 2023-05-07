@@ -2,7 +2,10 @@
 %html
   %head
     %title Communicater
-    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    -# %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    -# フォームが開いた瞬間にpost.contentの入力部分にカーソルが当たり、スマホでキーボードが表示されるようになります。ただし、スマホの自動ズーム機能によってフォーカス時に画面が拡大されることがあります。これを防ぐには、<head>タグ内に以下の<meta>タグを追加してください。
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", :name => "viewport"}/
+
     = csrf_meta_tags
     = csp_meta_tag
 

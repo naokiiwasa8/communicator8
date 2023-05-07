@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import FocusController from "./focus_controller"
+application.register("focus", FocusController)
+
 import GeometricAnimationController from "./geometric_animation_controller"
 application.register("geometric-animation", GeometricAnimationController)
 
