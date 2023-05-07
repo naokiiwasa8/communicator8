@@ -1,5 +1,5 @@
 = turbo_frame_tag :new_post do
-  .new_post_form
+  .new_post_form.shadow
     = simple_form_for @post, as: :post, url: community_posts_path(@community) do |f|
       .row
         .col-12.col-md-9
