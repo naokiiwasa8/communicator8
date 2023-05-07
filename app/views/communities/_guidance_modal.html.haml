@@ -1,0 +1,19 @@
+%div{"data-controller" => "modal"}
+  -# %button.btn.btn-primary{"data-action" => "click->modal#open"}
+  -#   Open Modal
+  %button.question-mark-button{"data-action" => "click->modal#open"}
+    %span.question-mark ?
+
+  .modal.fade{"aria-hidden" => "true", "data-modal-target" => "modal", :tabindex => "-1"}
+    .modal-dialog.modal-lg
+      .modal-content
+        .modal-header
+          %h4.modal-title コミュニティとは
+          -# %button.close{"aria-label" => "Close", "data-action" => "click->modal#close", :type => "button"}
+          -#   %span{"aria-hidden" => "true"} ×
+        .modal-body
+          %p エンジニアの皆様に転職に関するや悩みを相談したり、経験談を聞いたりすることができます。普段は聞けない事や転職エージェントには相談しにくい事を、エンジニア同士で意見交換ができるコミュニティにしてください！
+        .modal-footer
+          %button.btn.btn-secondary{"data-action" => "click->modal#close", :type => "button"} Close
+          -# %button.btn.btn-primary{:type => "button"} Save changes
+

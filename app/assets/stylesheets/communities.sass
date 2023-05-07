@@ -311,6 +311,84 @@
       background-color: #2a2a2a
       color: #ffffff
 
+  // ガイダンスモーダル
+  .modal
+    .modal-dialog
+      // max-width: 500px
+      margin-top: 15%
+      z-index: 9999999
+      border: none
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
+
+      .modal-header
+        background-color: #f0f0f0
+        border-bottom: 1px solid #e0e0e0
+        padding: 12px 24px
+        border-bottom: none
+      .modal-content
+        border: none
+        border-radius: 16px
+        z-index: 999999999
+        .modal-title
+          // font-size: 18px
+          font-weight: bold
+          color: #3f3f3f
+
+        .modal-body
+          padding: 30px 24px
+          font-size: 14px
+          color: #3f3f3f
+
+        .modal-footer
+          background-color: #f0f0f0
+          border-top: 1px solid #e0e0e0
+          padding: 12px 24px
+          display: flex
+          justify-content: flex-end
+          border-top: none
+
+          .btn
+            font-size: 14px
+            font-weight: bold
+            color: #3f3f3f
+            background-color: #ffffff
+            border: 1px solid #dcdcdc
+            border-radius: 16px
+            padding: 6px 12px
+            margin-left: 8px
+            &:hover
+              background-color: #dcdcdc
+              color: #3f3f3f
+              border-color: #dcdcdc
+
+  // ガイダンスモーダルのクエスチョンボタン
+  .question-mark-button
+    position: fixed
+    bottom: 30px
+    right: 25px
+    background-color: transparent
+    border: 2px solid #aaa
+    border-radius: 50%
+    width: 40px
+    height: 40px
+    display: flex
+    align-items: center
+    justify-content: center
+    cursor: pointer
+    transition: 0.3s
+    padding: 0
+    outline: none
+    &:hover
+      background-color: #aaa
+
+  .question-mark
+    font-size: 20px
+    color: #aaa
+    font-weight: bold
+  .question-mark-button:hover .question-mark
+    color: #fff
+
+
 
 
 

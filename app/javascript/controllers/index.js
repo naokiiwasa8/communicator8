@@ -10,6 +10,9 @@ application.register("geometric-animation", GeometricAnimationController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import ModalController from "./modal_controller"
+application.register("modal", ModalController)
+
 import TagifyController from "./tagify_controller"
 application.register("tagify", TagifyController)
 
