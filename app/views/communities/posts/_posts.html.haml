@@ -2,8 +2,8 @@
   - @posts.each do |post|
     - if post.user == current_user
       .balloon_r{style: ('padding-bottom:160px' if post == @posts.last)}
-        .faceicon
-          %svg.bd-placeholder-img.flex-shrink-0.me-2.mt-1.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
+        .faceicon.text-end
+          %svg.bd-placeholder-img.flex-shrink-0.mt-1.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
             %title 一般的なプレースホルダ画像
             %rect{:fill => "#007bff", :height => "100%", :width => "100%"}
             %text{:dy => ".3em", :fill => "#007bff", :x => "50%", :y => "50%"} 32x32
@@ -17,7 +17,7 @@
 
     - else    
       .balloon_l{style: ('padding-bottom:160px' if post == @posts.last)}
-        .faceicon
+        .faceicon.text-start
           %svg.bd-placeholder-img.flex-shrink-0.me-2.mt-1.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
             %title 一般的なプレースホルダ画像
             %rect{:fill => "#007bff", :height => "100%", :width => "100%"}
