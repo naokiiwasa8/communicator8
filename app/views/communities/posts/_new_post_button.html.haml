@@ -1,13 +1,19 @@
-= turbo_frame_tag :new_post_button do
+= turbo_frame_tag :new_post do
   .new_post_button
-    .dropstart
-      %button.btn.btn-circle.btn-circle-c.btn-shadow{:type => "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
-        %i.bi.bi-send
-      %ul.dropdown-menu.shadow.p-2.mb-5.w-auto
-        = simple_form_for @post, as: :post, url: community_posts_path(@community) do |f|
-          .d-flex{style: "width: 500px;"}
-            .input-group
-              = f.input :content,label: false, class: 'form-control custom-search-input'
-            .input-group-append.mx-1
-              %button.btn.btn-primary{type: 'submit'}
-                submit
+    %a.post-button{href: new_community_post_path(@community), data: {turbo_stream: true}}
+      %i.bi.bi-send-plus-fill
+      %span.post-text 投稿する
+
+  -# .new_post_button
+  -#   .dropstart
+  -#     %button.btn.btn-circle.btn-circle-c.btn-shadow{:type => "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
+  -#       %i.bi.bi-send
+  -#       投稿する
+  -#     %ul.dropdown-menu.shadow.p-2.mb-5.w-auto
+  -#       = simple_form_for @post, as: :post, url: community_posts_path(@community) do |f|
+  -#         .d-flex{style: "width: 500px;"}
+  -#           .input-group
+  -#             = f.input :content,label: false, class: 'form-control custom-search-input'
+  -#           .input-group-append.mx-1
+  -#             %button.btn.btn-primary{type: 'submit'}
+  -#               submit

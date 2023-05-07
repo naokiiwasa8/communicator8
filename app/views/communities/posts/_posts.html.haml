@@ -1,7 +1,7 @@
 = turbo_frame_tag :posts do
   - @posts.each do |post|
     - if post.user == current_user
-      .balloon_r{class: ('pb-5' if post == @posts.last)}
+      .balloon_r{style: ('padding-bottom:160px' if post == @posts.last)}
         .faceicon
           %svg.bd-placeholder-img.flex-shrink-0.me-2.mt-1.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
             %title 一般的なプレースホルダ画像
@@ -16,7 +16,7 @@
             = l post.created_at, format: "%y/%m/%d %H:%M"
 
     - else    
-      .balloon_l{class: ('pb-5' if post == @posts.last)}
+      .balloon_l{style: ('padding-bottom:160px' if post == @posts.last)}
         .faceicon
           %svg.bd-placeholder-img.flex-shrink-0.me-2.mt-1.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
             %title 一般的なプレースホルダ画像

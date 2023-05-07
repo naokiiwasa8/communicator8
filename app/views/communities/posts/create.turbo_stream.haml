@@ -1,3 +1,5 @@
 = turbo_stream.replace :posts do
   = render partial: "communities/posts/posts" , locals: {posts: @posts}
+= turbo_stream.update :new_post do
+  = render partial: "communities/posts/new_post_button" , locals: {posts: @posts}
 = turbo_stream_flash

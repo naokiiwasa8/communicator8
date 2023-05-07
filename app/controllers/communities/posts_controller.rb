@@ -1,6 +1,6 @@
 class Communities::PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :set_community, only: %i[ new create update ]
+  before_action :set_community, only: %i[ new create update cancel]
 
   # GET /communities/posts or /communities/posts.json
   def index
@@ -24,14 +24,25 @@ class Communities::PostsController < ApplicationController
   def create
     @post = @community.posts.new(post_params)
     @posts = @community.posts
+            
+    if params[:post][:content].blank?
+      flash.now.notice = "投稿内容を入力してください"
+      render :new
+      return
+    end
+
     if user_signed_in? 
       @post.user_id = current_user.id
     else
       @post.user_id = 1
     end
+
     if @post.save
       flash.now.notice = "「#{@community.community_name}」に投稿しました"
     end
+  end
+
+  def cancel
   end
 
   # PATCH/PUT /communities/posts/1 or /communities/posts/1.json
