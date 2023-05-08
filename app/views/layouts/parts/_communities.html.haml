@@ -27,7 +27,7 @@
       %a.nav-link{:href => "#"} Follows
 
   %main.container-fluid
-    .mb-3.p-3.bg-body.rounded.shadow-sm
+    .communities-container.mb-3.p-3.shadow-sm
       - @communities.each do |community|
         = render 'layouts/parts/community', community: community    
 
