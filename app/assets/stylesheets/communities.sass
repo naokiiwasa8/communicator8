@@ -237,11 +237,14 @@
     z-index: 500
     // justify-content: center
     position: fixed
-    bottom: -75px
     right: 50%
     left: 50%
     transform: translate(-50%, -50%)
     width: 95%
+    @media (max-width: 767px)
+      bottom: -75px
+    @media (min-width: 768px)
+      bottom: -60px
 
     background-color: #f8f9fa
     padding: 5px 20px 20px 15px
