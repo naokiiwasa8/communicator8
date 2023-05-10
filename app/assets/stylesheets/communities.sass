@@ -184,16 +184,25 @@
     display: flex
     justify-content: center
     @media (min-width: 992px)
-      justify-content: end
-    position: -webkit-sticky
-    position: sticky
-    top: 91.20%
-    width: 98%
+      position: -webkit-sticky
+      position: sticky
+      top: 91.20%
+      width: 98%
+    @media (max-width: 991px)
+      position: fixed
+      bottom: 6px
+      right: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      width: 60%
+
     .post-button
+      width: 98%
       background-color: transparent
       border: 2px solid #609ECC
       border-radius: 25px
       display: flex
+      justify-content: center
       align-items: center
       cursor: pointer
       transition: 0.3s
@@ -223,44 +232,41 @@
 
   // 新規POSTフォーム
   .new-post
-    @media (max-width: 993px)
-      justify-content: center
-    .new-post-form
-      z-index: 1000
-      
-      position: fixed
-      bottom: 2%
-      width: 78%
-      @media (max-width: 992px)
-        width: 90%
+    display: flex
+  .new-post-form
+    z-index: 500
+    // justify-content: center
+    position: fixed
+    bottom: -75px
+    right: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 95%
 
-      background-color: #f8f9fa
-      padding: 5px 20px 20px 15px
-      border-radius: 20px
-      border: 2px solid #c4c4c4
-      background-color: #ffffff
+    background-color: #f8f9fa
+    padding: 5px 20px 20px 15px
+    border-radius: 20px
+    border: 2px solid #c4c4c4
+    background-color: #ffffff
 
-      .input-group
-        position: relative
-        display: flex
+    .input-group
+      // position: relative
+      // display: flex
 
-
-        .form-control
-          border-radius: 10px
-          padding: 10px 20px
+      .form-control
+        border-radius: 10px
+        padding: 10px 20px
+        height: auto
+        border: 2px solid #c4c4c4
+        height: 95px
+        @media (max-width: 991px)
           height: auto
-          border: 2px solid #c4c4c4
-          height: 95px
-          @media (max-width: 992px)
-            height: auto
-            
-          &:focus
-            border: 2px solid #609ECC
-        .form-group
-          width: 100%
-          margin-top: 16px
-
-
+          
+        &:focus
+          border: 2px solid #609ECC
+      .form-group
+        width: 100%
+        margin-top: 16px
 
     .btn-post
       border-radius: 25px

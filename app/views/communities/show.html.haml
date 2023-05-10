@@ -1,6 +1,7 @@
 %main.container
   .row
-    .col-lg-9     
+    .col-lg-9
+      = render "communities/posts/new_post_button"
       .community-container.mx-2.mt-4
         -# アイデア１
         .community-head.d-flex.pt-4
@@ -32,10 +33,9 @@
                       %button.btn.custom-search-submit{type: 'submit'}
                         %i.bi.bi-search
         - if @posts.present? 
-          = render "communities/posts/new_post_button" 
+          -# = render "communities/posts/new_post_button" 
           = render "communities/posts/posts" 
         - else
-          = render "communities/posts/new_post_button"
           = turbo_frame_tag :posts do
             .bg-body-tertiary.p-lg-y-5.mb-4.rounded{style: "position: relative; overflow: hidden; padding: 110px 20px", data: { controller: "geometric-animation", "geometric-animation-target": "container" }}
               %h1.display-4.mb-4
