@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root to: 'home#index'
+  get :active, to: 'home#active'
+  get :favorites, to: 'home#favorites'
+  get :follows, to: 'home#follows'
+
   resources :posts
   resources :communities do 
     resource :favorite_community, only: [:create, :destroy]

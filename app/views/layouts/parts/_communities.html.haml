@@ -1,47 +1,47 @@
--# stimulus geometric-top-animation
-.bg-body-tertiary.p-3.p-sm-5.mb-4.rounded{style: "position: fixed; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;", data: { controller: "geometry-top-animation", "geometry-top-animation-target": "container" }}
+= turbo_frame_tag :communities do
+  .d-flex.justify-content-end.mt-2.mx-2
+    .dropstart
+      %button.btn.custom-search-button.rounded{:type => "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
+        search
+      %ul.search-communities.dropdown-menu.shadow.p-3.mb-5.bg-white.rounded.custom-dropdown-menu
+        %form
+          = search_form_for @search, html: { class: "input-group custom-search-form" } do |f|
+            -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
+            -# `カラム名_eq`  =カラムに対して完全一致検索
+            .d-flex{style: "width: 500px;"}
+              .input-group
+                = f.search_field :community_name_cont, class: 'form-control custom-search-input', placeholder: 'Search community...'
+              .input-group-append.mx-1
+                %button.btn.custom-search-submit{type: 'submit'}
+                  %i.bi.bi-search
 
--# = turbo_frame_tag @communities do
-.d-flex.justify-content-end.mt-2.mx-2
-  .dropstart
-    %button.btn.custom-search-button.rounded{:type => "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
-      search
-    %ul.search-communities.dropdown-menu.shadow.p-3.mb-5.bg-white.rounded.custom-dropdown-menu
-      %form
-        = search_form_for @search, html: { class: "input-group custom-search-form" } do |f|
-          -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
-          -# `カラム名_eq`  =カラムに対して完全一致検索
-          .d-flex{style: "width: 500px;"}
-            .input-group
-              = f.search_field :community_name_cont, class: 'form-control custom-search-input', placeholder: 'Search community...'
-            .input-group-append.mx-1
-              %button.btn.custom-search-submit{type: 'submit'}
-                %i.bi.bi-search
+  - if @communities.present?  
+    %ul.nav.nav-tabs.mx-3.pt-3{ data: { controller: "active-tab" } }
+      %li.nav-item.active-sort-menu
+        %a.nav-link{href: active_path, class: ("active fw-bolder" if @current_tab == "active"), data: {turbo_stream: true, tabs_target: "navItem", action: "click->tabs#changeActiveClass", remote: true}} 
+          アクティブ
+      %li.nav-item.active-sort-menu
+        %a.nav-link{href: favorites_path, class: ("active fw-bolder" if @current_tab == "favorites"), data: {turbo_stream: true, tabs_target: "navItem", action: "click->tabs#changeActiveClass", remote: true}} 
+          お気に入り
+      %li.nav-item.active-sort-menu
+        %a.nav-link{href: follows_path, class: ("active fw-bolder" if @current_tab == "follows"), data: {turbo_stream: true, tabs_target: "navItem", action: "click->tabs#changeActiveClass", remote: true}} 
+          フォロー中
 
-- if @communities.present?  
-  %ul.nav.nav-tabs.mx-3.pt-3
-    %li.nav-item.active-sort-menu
-      %a.nav-link{href: "#active", class: "active", data: {"bs-toggle" => "tab"}} Active
-    %li.nav-item.active-sort-menu
-      %a.nav-link{href: "#favorites"} Favorites
-    %li.nav-item.active-sort-menu
-      %a.nav-link{href: "#follows"} Follows
+    .container-fluid
+      .communities-container.mb-3.p-3.shadow-sm
+        #active.tab-pane.active
+          - @communities.each do |community|
+            = render 'layouts/parts/community', community: community    
 
-  .container-fluid
-    .communities-container.mb-3.p-3.shadow-sm
-      #active.tab-pane.active
-        - @communities.each do |community|
-          = render 'layouts/parts/community', community: community    
-
-      .pagination-container.d-flex.mt-4
-        = paginate @communities 
-- else
-          
-  .bg-body-tertiary.p-lg-y-5.mb-4.rounded{style: "position: relative; overflow: hidden; padding: 110px 20px", data: { controller: "geometric-animation", "geometric-animation-target": "container" }}
-    %h1.display-4.mb-4
-      あなたのコミュニティを
-      %br 作成しましょう          
-    %p.lead 相談したいテーマに沿ったコミュニティを作成してください
-    %p.lead 知見を持ったエンジニアからアドバイスをもらいましょう！
-    %a.btn.zozo-button.mt-4{href: new_community_path}
-      コミュニティを作成する
+        .pagination-container.d-flex.mt-4
+          = paginate @communities 
+  - else
+            
+    .bg-body-tertiary.p-lg-y-5.mb-4.rounded{style: "position: relative; overflow: hidden; padding: 110px 20px", data: { controller: "geometric-animation", "geometric-animation-target": "container" }}
+      %h1.display-4.mb-4
+        あなたのコミュニティを
+        %br 作成しましょう          
+      %p.lead 相談したいテーマに沿ったコミュニティを作成してください
+      %p.lead 知見を持ったエンジニアからアドバイスをもらいましょう！
+      %a.btn.zozo-button.mt-4{href: new_community_path}
+        コミュニティを作成する

@@ -9,6 +9,7 @@ class CommunitiesController < ApplicationController
     @search = Community.ransack(params[:q])
     @search.sorts = 'created_at desc' if @search.sorts.empty? 
     @communities = @search.result.page(params[:page])
+    @current_tab = "active"
   end
 
   # GET /communities/1 or /communities/1.json
