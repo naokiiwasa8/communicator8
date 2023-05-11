@@ -1,6 +1,6 @@
 - if page.current?
   %li.page-item.active
-    = content_tag :a, page, data: { remote: remote }, rel: page.rel, class: 'page-link', data: {turbo_stream: true}
+    = content_tag :a, page, data: { remote: remote }, rel: page.rel, class: 'page-link', data: { controller: 'scroll-to-top', action: 'click->scroll-to-top#scrollToTop', turbo_stream: true }
 - else
   %li.page-item
-    = link_to page, url, remote: remote, rel: page.rel, class: 'page-link', data: {turbo_stream: true}
+    = link_to page, url, remote: remote, rel: page.rel, class: 'page-link', data: { controller: 'scroll-to-top', action: 'click->scroll-to-top#scrollToTop', turbo_stream: true }

@@ -1,2 +1,2 @@
 %li.page-item
-  = link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, rel: 'next', remote: remote, class: 'page-link', data: {turbo_stream: true}
+  = link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, rel: 'next', remote: remote, class: 'page-link', data: { controller: 'scroll-to-top', action: 'click->scroll-to-top#scrollToTop', turbo_stream: true }

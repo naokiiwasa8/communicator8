@@ -25,6 +25,9 @@ application.register("light-gray-circles-animation", LightGrayCirclesAnimationCo
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
 
+import ScrollToTopController from "./scroll_to_top_controller"
+application.register("scroll-to-top", ScrollToTopController)
+
 import TagifyController from "./tagify_controller"
 application.register("tagify", TagifyController)
 
