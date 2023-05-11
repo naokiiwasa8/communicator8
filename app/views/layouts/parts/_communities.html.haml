@@ -1,3 +1,6 @@
+-# stimulus geometric-top-animation
+.bg-body-tertiary.p-3.p-sm-5.mb-4.rounded{style: "position: fixed; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;", data: { controller: "geometry-top-animation", "geometry-top-animation-target": "container" }}
+
 -# = turbo_frame_tag @communities do
 .d-flex.justify-content-end.mt-2.mx-2
   .dropstart
@@ -16,20 +19,19 @@
                 %i.bi.bi-search
 
 - if @communities.present?  
-  -# 並び替え機能
-  -# = sort_link(@search, :created_at)   
   %ul.nav.nav-tabs.mx-3.pt-3
-    %li.nav-item
-      %a.nav-link.active{"aria-current" => "page", :href => "#"} Active
-    %li.nav-item
-      %a.nav-link{:href => "#"} Favorites
-    %li.nav-item
-      %a.nav-link{:href => "#"} Follows
+    %li.nav-item.active-sort-menu
+      %a.nav-link{href: "#active", class: "active", data: {"bs-toggle" => "tab"}} Active
+    %li.nav-item.active-sort-menu
+      %a.nav-link{href: "#favorites"} Favorites
+    %li.nav-item.active-sort-menu
+      %a.nav-link{href: "#follows"} Follows
 
-  %main.container-fluid
+  .container-fluid
     .communities-container.mb-3.p-3.shadow-sm
-      - @communities.each do |community|
-        = render 'layouts/parts/community', community: community    
+      #active.tab-pane.active
+        - @communities.each do |community|
+          = render 'layouts/parts/community', community: community    
 
       .pagination-container.d-flex.mt-4
         = paginate @communities 

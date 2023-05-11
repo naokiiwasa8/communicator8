@@ -1,4 +1,7 @@
-.frame.mb-3
+-# 円アニメーションを追加
+-# .bg-body-tertiary.p-3.p-sm-5.mb-4.rounded{style: "position: fixed; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;", data: { controller: "circle-animation", "circle-animation-target": "container" }}
+
+.frame.mb-3{style: "z-index: -3;" }
   .center.text-center
     %h1.top-container
       .text-center.pt-5.mt-5
@@ -8,23 +11,7 @@
         .text-center.pb-5.pt-1{"data-typing-action-target" => "element"}
           -# The best career advice for engineers comes from engineers
 
--# stimulusテスト
--# %div{"data-controller" => "hello"}
--#   %input{"data-hello-target" => "name", :type => "text"}/
--#   %button{"data-action" => "click->hello#greet"}
--#     Greet
--#   %span{"data-hello-target" => "output"}
-
--# 過去のトップページたち
--# SVG利用モデル
--# .line
--# %svg.text{:height => "200px", :viewbox => "0 0 300 80", :width => "500px"}
--#   = embedded_svg('communicator.svg',class: "a1")
--#   = embedded_svg('communicator.svg',class: "a2")
--#   = embedded_svg('communicator.svg',class: "a3")
--# .line
-
--# 一番初期の
+-# -# 一番初期のトップ
 -# .alert.alert-primary.row.shadow.p-3.mb-5.bg-white.rounded
 -#   %h1.text-center COMMUNICATOR
 -#   %top.text-center

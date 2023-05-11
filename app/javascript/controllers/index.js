@@ -4,14 +4,23 @@
 
 import { application } from "./application"
 
+import CircleAnimationController from "./circle_animation_controller"
+application.register("circle-animation", CircleAnimationController)
+
 import FocusController from "./focus_controller"
 application.register("focus", FocusController)
 
 import GeometricAnimationController from "./geometric_animation_controller"
 application.register("geometric-animation", GeometricAnimationController)
 
+import GeometryTopAnimationController from "./geometry_top_animation_controller"
+application.register("geometry-top-animation", GeometryTopAnimationController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import LightGrayCirclesAnimationController from "./light_gray_circles_animation_controller"
+application.register("light-gray-circles-animation", LightGrayCirclesAnimationController)
 
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)

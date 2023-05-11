@@ -1,12 +1,26 @@
 .communities
   // layouts/parts/communities
+  .active-sort-menu
+    background: #fefefe
+    position: relative
+    z-index: 100
+    font-weight: bold
+    
+  .communities-container
+    background: #fefefe
+    border-radius: 2px
+    z-index: 100
+    position: relative
+  
   .community
+    border-radius: 5px
     a.community
       inset: 0
       z-index: 0
       position: relative
     &:hover
       background-color: #f7f7f7
+      border-radius: 5px
     .community-name
       font-size: 1.15rem
       padding-right: 1.0rem
