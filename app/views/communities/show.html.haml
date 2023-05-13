@@ -6,7 +6,11 @@
         -# アイデア１
         .community-head.d-flex.pt-4
           .left-items.m-2
-            %img.rounded-circle.flex-shrink-0{:alt => "twbs", :height => "32", :src => "https://github.com/twbs.png", :width => "32"}/
+            -# %img.rounded-circle.flex-shrink-0{:alt => "twbs", :height => "32", :src => "https://github.com/twbs.png", :width => "32"}/
+            - if user_signed_in? && @community.user.avatar.attached?
+              = image_tag @community.user.avatar, class: 'show-user-avatar'
+            - else
+              = image_tag 'default_avatar.png', class: 'show-user-avatar'  
           .right-items.m-2{style: "flex-grow: 1;"}
             %h2.mb-0
               = @community.community_name
