@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
   resources :tags
-  # resources :favorite_communities, only: %i[create destroy]
+
   devise_for :users,
     path: '',
     path_names: {
