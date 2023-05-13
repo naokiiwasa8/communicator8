@@ -14,7 +14,11 @@ Rails.application.routes.draw do
     end
   end
   resources :tags
-  resources :users, only: [:edit, :update, :show]
+  resources :users, only: [:edit, :update, :show] do  
+    resource :setting, module: :users, only: [:update] do
+      get :profile
+    end
+  end
   devise_for :users,
     path: '',
     path_names: {

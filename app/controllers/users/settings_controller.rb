@@ -1,15 +1,15 @@
-# app/controllers/users_controller.rb
-class UsersController < ApplicationController
-  before_action :set_user
+class Users::SettingsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_current_user
 
   def show
   end
 
-  def edit
+  def profile
   end
 
   def update
-    if @user.update(user_params)
+    if @user.update(setting_user_params)
       redirect_to user_path(@user), notice: 'Profile updated!'
     else
       render :edit
@@ -18,11 +18,11 @@ class UsersController < ApplicationController
 
   private
 
-  def set_user
-    @user = User.find(params[:id])
+  def set_current_user
+    @user = current_user
   end 
 
-  def user_params
+  def setting_user_params
     params.require(:user).permit(
       :email, 
       :user_name, 

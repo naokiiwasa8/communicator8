@@ -5,7 +5,7 @@
         .card-body
           %h4.card-title Your Profile
           .card-text
-            - if user_signed_in? && @user.avatar.attached?
+            - if @user.avatar.attached?
               = image_tag @user.avatar, class: 'user-avatar'
             - else
               = image_tag 'default_avatar.png', class: 'user-avatar'
@@ -13,4 +13,4 @@
             %h5= @user.user_name
             %p= @user.email
 
-          = link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary'
+          = link_to 'Edit Profile', profile_user_setting_path(@user), class: 'btn btn-primary'
