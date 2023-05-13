@@ -159,10 +159,6 @@
     justify-content: flex-start
     align-items: flex-start
     justify-content: flex-end
-  .faceicon img
-    width: 80px
-    /*任意のサイズ
-    height: auto
   .balloon_r .faceicon
     margin-left: 18px
   .balloon_l .faceicon
@@ -521,6 +517,21 @@
     transition: all 0.3s ease
     &:hover
       transform: scale(0.91, 0.91)
+
+  a.faceicon
+    text-decoration: none
+    color: #2c2c2d
+    transition: all 0.3s ease
+    &:hover
+      transform: scale(0.95, 0.95)
+  .post-user-avatar 
+    width: 34px
+    height: 34px
+    border-radius: 50%
+    object-fit: cover
+    margin-left: 10px
+    box-shadow: 0px 0px 4px 0px rgba(145, 143, 143, 0.75)
+
 
 
   // tagify用

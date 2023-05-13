@@ -2,11 +2,11 @@
   - @posts.each do |post|
     - if post.user == current_user
       .balloon_r{style: ('padding-bottom:160px' if post == @posts.last)}
-        .faceicon.text-end
-          %svg.bd-placeholder-img.flex-shrink-0.mt-1.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
-            %title 一般的なプレースホルダ画像
-            %rect{:fill => "#007bff", :height => "100%", :width => "100%"}
-            %text{:dy => ".3em", :fill => "#007bff", :x => "50%", :y => "50%"} 32x32
+        %a.faceicon.text-end{href: user_path(post.user)}
+          - if post.user.avatar.attached?
+            = image_tag post.user.avatar, class: 'post-user-avatar'
+          - else
+            = image_tag 'default_avatar.png', class: 'post-user-avatar'   
           .d-flex 
             = post.user.user_name
         .content
@@ -17,11 +17,12 @@
 
     - else    
       .balloon_l{style: ('padding-bottom:160px' if post == @posts.last)}
-        .faceicon.text-start
-          %svg.bd-placeholder-img.flex-shrink-0.me-2.mt-1.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
-            %title 一般的なプレースホルダ画像
-            %rect{:fill => "#007bff", :height => "100%", :width => "100%"}
-            %text{:dy => ".3em", :fill => "#007bff", :x => "50%", :y => "50%"} 32x32
+        %a.faceicon.text-start{href: user_path(post.user)}
+          - if post.user.avatar.attached?
+            = image_tag post.user.avatar, class: 'post-user-avatar'
+          - else
+            = image_tag 'default_avatar.png', class: 'post-user-avatar'   
+          .d-flex  
           .d-flex 
             = post.user.user_name
         .content
