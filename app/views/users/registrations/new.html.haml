@@ -6,8 +6,13 @@
     = f.input :password, autocomplete: "new-password", required: true, input_html: { class: 'form-control stylish-input mb-2' }
     - if @minimum_password_length
       %small
-        = "※#{@minimum_password_length}文字以上"
-    -# = f.input :password_confirmation, autocomplete: "new-password", required: true, input_html: { class: 'form-control stylish-input' }
+        .text-end
+          = "※#{@minimum_password_length}文字以上"
+    = f.input :password_confirmation, autocomplete: "new-password", required: true, input_html: { class: 'form-control stylish-input' }
+    - if @minimum_password_length
+      %small
+        .text-end
+          = "※#{@minimum_password_length}文字以上"
     .actions.d-flex.align-items-end.justify-content-between
       = render "users/shared/links"
       = f.button :submit, '作成する', class: 'btn btn-primary btn-block mt-4 zozo-button'
