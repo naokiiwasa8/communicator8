@@ -3,11 +3,10 @@
     %a.community.t-1{style: "text-decoration: none","aria-current" => "true", href: community_path(community)}
       .text-muted.mt-4.pt-4
         .d-flex.border-bottom
-          %svg.bd-placeholder-img.flex-shrink-0.me-2.mt-1.rounded{:height => "32", :preserveaspectratio => "xMidYMid slice", :width => "32", :xmlns => "http://www.w3.org/2000/svg"}
-            %title 一般的なプレースホルダ画像
-            %rect{:fill => "#007bff", :height => "100%", :width => "100%"}
-            %text{:dy => ".3em", :fill => "#007bff", :x => "50%", :y => "50%"} 32x32
-          
+          - if user_signed_in? && community.user.avatar.attached?
+            = image_tag community.user.avatar, class: 'user-avatar'
+          - else
+            = image_tag 'default_avatar.png', class: 'user-avatar'          
           .pb-3.mb-0.small.w-100
             .d-flex.justify-content-between.align-items-center
               %big.text-gray-dark.pb-2{style: "font-size: 0.9rem"}
