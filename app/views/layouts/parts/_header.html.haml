@@ -25,9 +25,9 @@
                 -#   %title 一般的なプレースホルダ画像
                 -#   %rect{:fill => "#007bff", :height => "100%", :width => "100%"}
                 -#   %text{:dy => ".3em", :fill => "#007bff", :x => "50%", :y => "50%"} 32x32
-              %ul.dropdown-menu.text-small.shadow.dropdown-menu-end
+              %ul.dropdown-menu.shadow.dropdown-menu-end
                 %li
-                  .dropdown-item
+                  %a.dropdown-item{ href: user_path(current_user) } 
                     = current_user.user_name
                 %li
                   %hr.dropdown-divider

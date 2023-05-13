@@ -1,0 +1,14 @@
+.container.my-5
+  .row
+    .col-lg-8.offset-lg-2
+      .card
+        .card-body
+          %h4.card-title Edit Profile
+          = form_for @user, url: user_path, html: { class: 'mt-4' } do |f|
+            .form-group
+              = f.label :user_name, class: 'form-label'
+              = f.text_field :user_name, class: 'form-control'
+            .form-group
+              = f.label :email, class: 'form-label'
+              = f.text_field :email, class: 'form-control'
+            = f.submit 'Update Profile', class: 'btn btn-primary mt-3'
