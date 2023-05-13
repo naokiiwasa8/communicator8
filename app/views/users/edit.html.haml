@@ -4,11 +4,13 @@
       .card
         .card-body
           %h4.card-title Edit Profile
-          = form_for @user, url: user_path, html: { class: 'mt-4' } do |f|
-            .form-group
-              = f.label :user_name, class: 'form-label'
-              = f.text_field :user_name, class: 'form-control'
-            .form-group
-              = f.label :email, class: 'form-label'
-              = f.text_field :email, class: 'form-control'
-            = f.submit 'Update Profile', class: 'btn btn-primary mt-3'
+          = simple_form_for @user, url: user_path, html: { class: 'mt-4', multipart: true } do |f|
+            .avatar-upload{data: {controller: "preview-avatar"}}
+              = f.input :avatar, as: :file, label: false, input_html: { class: 'form-control avatar-input', id: 'avatarInput', data: { preview_avatar_target: "input" } }
+              - if @user.avatar.attached?
+                = image_tag(@user.avatar, class: 'img-thumbnail mb-3 avatar-img', data: { preview_avatar_target: "img" })
+              - else
+                = image_tag 'default_avatar.png', class: 'img-thumbnail mb-3 avatar-img', data: { preview_avatar_target: "img" }
+            = f.input :user_name, required: true, autofocus: true, input_html: { class: 'form-control' }
+            = f.input :email, required: true, input_html: { class: 'form-control' }
+            = f.button :submit, 'Update Profile', class: 'btn btn-primary mt-3'

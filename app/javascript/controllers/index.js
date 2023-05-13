@@ -25,6 +25,9 @@ application.register("light-gray-circles-animation", LightGrayCirclesAnimationCo
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
 
+import PreviewAvatarController from "./preview_avatar_controller"
+application.register("preview-avatar", PreviewAvatarController)
+
 import ScrollToTopController from "./scroll_to_top_controller"
 application.register("scroll-to-top", ScrollToTopController)
 

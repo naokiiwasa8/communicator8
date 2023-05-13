@@ -1,10 +1,16 @@
-.container.my-5
+.profile-container.my-5
   .row
     .col-lg-8.offset-lg-2
-      .card
+      .card.text-center
         .card-body
           %h4.card-title Your Profile
           .card-text
+            - if user_signed_in? && @user.avatar.attached?
+              = image_tag @user.avatar, class: 'user-avatar'
+            - else
+              = image_tag 'default_avatar.png', class: 'user-avatar'
+              
             %h5= @user.user_name
             %p= @user.email
+
           = link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary'

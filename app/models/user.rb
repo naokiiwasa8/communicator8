@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :communities
   has_many :posts
   has_many :favorite_communities, dependent: :destroy
+  has_one_attached :avatar
   # お気に入り登録済みのcommunities
   has_many :favorited_communities, through: :favorite_communities, source: :community
   ## Validations
