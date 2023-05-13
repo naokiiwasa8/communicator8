@@ -12,12 +12,12 @@ class HomeController < ApplicationController
   end
 
   def favorites
-    unless current_user
+    unless user_signed_in?
       flash.now.notice = "ログイン後にお気に入り機能が利用できます"
       render "active_tab"
       return
     end
-    @communities = current_user.favorited_communities.page(params[:page])
+    @communities = current_user.favorited_communities.order(created_at: :desc).page(params[:page])
     @current_tab = "favorites"
     render "active_tab"
   end

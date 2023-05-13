@@ -10,10 +10,10 @@
 -# = render "users/shared/links"
 
 .form-container.mb-4
-  = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, html: { class: 'form-center' } do |f|
+  = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'form-center' }, data: {turbo: false} do |f|
     %h2.form-title.mb-4 パスワードリセット
     = f.input :email, autofocus: true, autocomplete: "email", required: false, input_html: { class: 'form-control stylish-input mb-2' }
     .actions.d-flex.align-items-end.justify-content-between
       = render "users/shared/links"
-      = f.button :submit, '送信する', class: 'btn btn-primary btn-block mt-4 zozo-button'
+      = f.button :submit, 'リセットメール送信', class: 'btn btn-primary btn-block mt-4 zozo-button'
       
