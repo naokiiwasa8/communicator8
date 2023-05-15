@@ -1,9 +1,10 @@
 = turbo_frame_tag :relationship_button do
-  - if current_user != @user && user_signed_in?
-    - if current_user.following?(@user)
-      = button_to "フォロー解除", relationship_path(@user), method: :delete, class: 'btn btn-primary mt-3'
-    - else
-      = button_to "フォローする", relationships_path(followed_id: @user.id), class: 'btn btn-primary mt-3'
+  - if user_signed_in?
+    - unless current_user == @user
+      - if current_user.following?(@user)
+        = button_to "フォロー解除", relationship_path(@user), method: :delete, class: 'btn btn-primary mt-3'
+      - else
+        = button_to "フォローする", relationships_path(followed_id: @user.id), class: 'btn btn-primary mt-3'
     -# 未ログイン事にお気に入りできないことを指すボタン
   - else
     = button_to "フォローする", relationships_path(followed_id: @user.id), class: 'btn btn-primary mt-3'
