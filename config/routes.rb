@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
   end
   resources :tags
+  resources :relationships, only: [:create, :destroy]
   resources :users, only: [:edit, :update, :show] do  
     resource :setting, module: :users, only: [:update] do
       get :profile

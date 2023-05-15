@@ -1,16 +1,18 @@
 .profile-container.my-5
   .row
     .col-lg-8.offset-lg-2
-      .card.text-center
+      .card.shadow
         .card-body
-          %h4.card-title Your Profile
-          .card-text
+          .d-flex.justify-content-center.flex-column.align-items-center
             - if @user.avatar.attached?
               = image_tag @user.avatar, class: 'user-avatar'
             - else
               = image_tag 'default_avatar.png', class: 'user-avatar'
-              
-            %h5= @user.user_name
-            %p= @user.email
+            %h4.card-title.font-weight-bold= @user.user_name
+            - if @user == current_user
+              %p.text-muted= @user.email
 
-          = link_to 'Edit Profile', profile_user_setting_path(@user), class: 'btn btn-primary'
+            = render 'relationship_count'
+            = render 'relationship_button'
+            - if @user == current_user
+              = link_to 'Edit Profile', profile_user_setting_path(@user), class: 'btn btn-primary mt-3'

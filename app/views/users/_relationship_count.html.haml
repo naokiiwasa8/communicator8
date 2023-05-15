@@ -1,0 +1,5 @@
+= turbo_frame_tag :relationship_count do
+  %p フォロー中
+  = @user.following.count
+  %p フォロワー
+  = @user.followers.count
