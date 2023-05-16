@@ -1,15 +1,21 @@
 .biograpy.m-4
   自己紹介
-  %br ここに自己紹介が入ります
+  %br 
+    = @user.profile.try(:biography)
 .birthday.m-4
   生年月日
-  %br ここに生年月日が入ります
+  %br 
+    = @user.profile.try(:birthday)
 .job-title.m-4
   職種
-  %br ここに職種が入ります
+  %br 
+    = @user.profile.try(:job_title)
 .years_of_experience.m-4
   エンジニア歴
-  %br ここにエンジニア歴が入ります
+  %br 
+    = @user.profile.try(:years_of_experience)
 .company.m-4
   在籍企業
-  %br ここに在籍企業が入ります
+  %br 
+    = @user.profile.try(:company)
+    
