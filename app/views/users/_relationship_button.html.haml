@@ -2,9 +2,9 @@
   - if user_signed_in?
     - unless current_user == @user
       - if current_user.following?(@user)
-        = button_to "フォロー解除", relationship_path(@user), method: :delete, class: 'btn btn-primary mt-3'
+        = button_to "フォロー中", relationship_path(@user), method: :delete, class: 'btn btn-primary w-75'
       - else
-        = button_to "フォローする", relationships_path(followed_id: @user.id), class: 'btn btn-primary mt-3'
+        = button_to "フォロー", relationships_path(followed_id: @user.id), class: 'btn btn-primary w-75'
     -# 未ログイン事にお気に入りできないことを指すボタン
   - else
-    = button_to "フォローする", relationships_path(followed_id: @user.id), class: 'btn btn-primary mt-3'
+    = button_to "フォローする", relationships_path(followed_id: @user.id), class: 'btn btn-primary w-75'

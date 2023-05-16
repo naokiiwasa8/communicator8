@@ -1,18 +1,31 @@
-.profile-container.my-5
-  .row
-    .col-lg-8.offset-lg-2
-      .card.shadow
-        .card-body
-          .d-flex.justify-content-center.flex-column.align-items-center
-            - if @user.avatar.attached?
-              = image_tag @user.avatar, class: 'user-avatar'
-            - else
-              = image_tag 'default_avatar.png', class: 'user-avatar'
-            %h4.card-title.font-weight-bold= @user.user_name
+%main.container-fluid
+  .profile-container
+    .row.m-1
+      .col-lg-6
+        .card.profile-card.mt-3
+          .card-body
+            .row
+              .col-sm-6
+                .left-box.text-center
+                  - if @user.avatar.attached?
+                    = image_tag @user.avatar, class: 'user-avatar'
+                  - else
+                    = image_tag 'default_avatar.png', class: 'user-avatar'
+              .col-sm-6
+                .left-box.text-center
+                  %h4.card-title.font-weight-bold.text-center.my-4
+                    = @user.user_name
+                  = render 'relationship_count'
+                  = render 'relationship_button'
+            = render 'profiles'
+            = render 'sns_links'
             - if @user == current_user
-              %p.text-muted= @user.email
+              .text-center
+                = link_to 'Edit Profile', profile_user_setting_path(@user), class: 'btn btn-primary mt-5 w-75'
 
-            = render 'relationship_count'
-            = render 'relationship_button'
-            - if @user == current_user
-              = link_to 'Edit Profile', profile_user_setting_path(@user), class: 'btn btn-primary mt-3'
+
+      .col-lg-6 
+        .card.profile-card.mt-3
+          .card-body
+            %h4.card-title User Profile
+            -# %p= @user.profile  # ここにuser.profileの情報を表示します
