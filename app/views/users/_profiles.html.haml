@@ -1,11 +1,3 @@
-.biograpy.m-4
-  自己紹介
-  %br 
-    = @user.profile.try(:biography)
-.birthday.m-4
-  生年月日
-  %br 
-    = @user.profile.try(:birthday)
 .job-title.m-4
   職種
   %br 
@@ -18,4 +10,11 @@
   在籍企業
   %br 
     = @user.profile.try(:company)
-    
+.birthday.m-4
+  生年月日
+  %br 
+    = @user.profile.try(:birthday)
+.biograpy.m-4
+  自己紹介
+  %br 
+    = @user.profile.try(:biography)
