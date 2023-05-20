@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :set_page
+  before_action :set_communities_page
   before_action :set_ransack_search
   
   def index
@@ -29,7 +29,7 @@ class HomeController < ApplicationController
 
   private
 
-  def set_page
+  def set_communities_page
     @communities = Community.all.order(created_at: :desc)
     @communities = Community.page(params[:page])
   end

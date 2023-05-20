@@ -1,31 +1,45 @@
 %main.container-fluid
   .profile-container
-    .row.m-1
-      .col-lg-6
-        .profile-card.my-2
-          .card-body
+    .profile-card.mt-3.mb-4
+      .card-body
+        .row
+          .col-md-7
             .row
               .col-sm-6
                 .left-box.text-center
-                  - if @user.avatar.attached?
-                    = image_tag @user.avatar, class: 'user-avatar'
-                  - else
-                    = image_tag 'default_avatar.png', class: 'user-avatar'
+                  .align-items-center
+                    - if @user.avatar.attached?
+                      = image_tag @user.avatar, class: 'user-avatar'
+                    - else
+                      = image_tag 'default_avatar.png', class: 'user-avatar'
               .col-sm-6
                 .left-box.text-center
                   %h4.card-title.font-weight-bold.text-center.my-4
                     = @user.user_name
                   = render 'relationship_count'
                   = render 'relationship_button'
-            = render 'profiles'
+          .col-md-5
             = render 'sns_links'
-            - if @user == current_user
-              .text-center
-                = link_to 'Edit Profile', profile_user_setting_path(@user), class: 'btn btn-primary mt-5 w-75'
+        = render 'profiles'
+
+        - if @user == current_user
+          .text-center
+            = link_to 'プロフィールを編集', profile_user_setting_path(@user), class: 'btn zozo-button mt-5 w-75'
 
 
-      .col-lg-6 
-        .card.profile-card.my-2
-          .card-body
-            %h4.card-title User Profile
-            -# %p= @user.profile  # ここにuser.profileの情報を表示します
+      %ul.nav.nav-tabs.nav-fill.mx-3.pt-4{ data: { controller: "active-tab" } }
+        %li.nav-item.active-sort-menu
+          %a.nav-link{href: active_path, class: ("active fw-bolder" if @current_tab == "favorites"), data: {turbo_stream: true, tabs_target: "navItem", action: "click->tabs#changeActiveClass", remote: true}} 
+            お気に入り
+        %li.nav-item.active-sort-menu
+          %a.nav-link{href: favorites_path, class: ("active fw-bolder" if @current_tab == "follows"), data: {turbo_stream: true, tabs_target: "navItem", action: "click->tabs#changeActiveClass", remote: true}} 
+            フォロー中
+        %li.nav-item.active-sort-menu
+          %a.nav-link{href: follows_path, class: ("active fw-bolder" if @current_tab == "posts"), data: {turbo_stream: true, tabs_target: "navItem", action: "click->tabs#changeActiveClass", remote: true}} 
+            投稿済み
+
+      .communities-container.mb-3.p-2.shadow-sm
+        - @communities.each do |community|
+          = render 'users/community', community: community   
+        .pagination-container.d-flex.mt-4
+          = paginate @communities  

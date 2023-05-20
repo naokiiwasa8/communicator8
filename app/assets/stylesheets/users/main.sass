@@ -108,10 +108,99 @@ input[type="password"]
   
   .profile-card
     padding: 20px
+    margin: 20px
+    @media (min-width: 992px)
+      padding: 30px
+      margin: 60px
     background-color: #ffffff
     border-radius: 10px
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1)
+    box-shadow: 0 0 8px rgba(80, 79, 79, 0.1)
     border: none
+  .community
+    border-radius: 4px
+    padding: 9px
+    margin-right: 20px
+    margin-left: 20px
+    @media (min-width: 992px)
+      padding: 1px
+    &:hover
+      background-color: #f7f7f7
+      border-radius: 4px
+    .user-avatar 
+      width: 35px
+      height: 32px
+      border-radius: 50%
+      object-fit: cover
+      border: 4px solid #F8F9FA
+      margin-right: 8px
+
+  .active-sort-menu
+    background: #fefefe
+    position: relative
+    z-index: 100
+    .nav-link
+      color: #5d5d5d
+      font-size: 0.7rem
+    
+
+  // ページネーション
+  .pagination-container
+    justify-content: center
+    .pagination
+      display: flex
+      justify-content: center
+      align-items: center
+      list-style: none
+      padding: 0
+
+    .page-item
+      margin: 0 6px
+      @media (max-width: 767px)
+        margin: 0 3px
+
+    .page-link
+      display: block
+      padding: 4.5px 10px
+      font-size: 14px
+      font-weight: bold
+      text-decoration: none
+      color: #3f3f3f
+      background-color: #ffffff
+      border: 1px solid #dcdcdc
+      border-radius: 16px
+      transition: background-color 0.3s, border-color 0.3s
+
+    .page-item.active .page-link, .page-link:hover
+      background-color: #dcdcdc
+      color: #3f3f3f
+      border-color: #dcdcdc
+
+    .page-item.disabled .page-link
+      color: #999999
+      background-color: #ffffff
+      border-color: #999999
+      cursor: not-allowed
+
+    .page-link
+      &[data-direction="prev"], &[data-direction="next"]
+        padding: 6px
+        width: 24px
+        height: 24px
+        display: flex
+        align-items: center
+        justify-content: center
+
+
+  .zozo-button
+    background-color: #3f3f3f
+    border: none
+    color: #ffffff
+    font-weight: bold
+    transition: all 0.3s ease
+    margin-bottom: 60px
+    &:hover
+      background-color: #2a2a2a
+      color: #ffffff
 
 .sns-links 
   margin-top: 30px

@@ -16,7 +16,7 @@
                   %i.bi.bi-search
 
   - if @communities.present?  
-    %ul.nav.nav-tabs.mx-3.pt-3{ data: { controller: "active-tab" } }
+    %ul.nav.nav-tabs.nav-fill.mx-3.pt-3{ data: { controller: "active-tab" } }
       %li.nav-item.active-sort-menu
         %a.nav-link{href: active_path, class: ("active fw-bolder" if @current_tab == "active"), data: {turbo_stream: true, tabs_target: "navItem", action: "click->tabs#changeActiveClass", remote: true}} 
           アクティブ
@@ -29,9 +29,8 @@
 
     .container-fluid
       .communities-container.mb-3.p-3.shadow-sm
-        #active.tab-pane.active
-          - @communities.each do |community|
-            = render 'layouts/parts/community', community: community    
+        - @communities.each do |community|
+          = render 'layouts/parts/community', community: community    
 
         .pagination-container.d-flex.mt-4
           = paginate @communities 

@@ -1,20 +1,21 @@
-.job-title.m-4
-  職種
-  %br 
-    = @user.profile.try(:job_title)
-.years_of_experience.m-4
-  エンジニア歴
-  %br 
-    = @user.profile.try(:years_of_experience)
-.company.m-4
-  在籍企業
-  %br 
-    = @user.profile.try(:company)
-.birthday.m-4
-  生年月日
-  %br 
-    = @user.profile.try(:birthday)
-.biograpy.m-4
-  自己紹介
-  %br 
-    = @user.profile.try(:biography)
+.prifiles.mt-5
+  .job-title.m-4
+    職種
+    %br 
+      = @user.profile.try(:job_title)
+  .years_of_experience.m-4
+    エンジニア歴
+    %br 
+      = @user.profile.try(:years_of_experience)
+  .company.m-4
+    在籍企業
+    %br 
+      = @user.profile.try(:company)
+  .birthday.m-4
+    生年月日
+    %br 
+      = @user.profile.try(:birthday)
+  .biograpy.m-4
+    自己紹介
+    %br 
+      = @user.profile.try(:biography)
