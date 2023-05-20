@@ -34,7 +34,14 @@ class UsersController < ApplicationController
     params.require(:user).permit(
       :email, 
       :user_name, 
-      :avatar
+      :avatar,
+      profile_attributes: [
+        :job_title, 
+        :years_of_experience,
+        :company,
+        :birthday,
+        :biography
+      ]
     )
   end
 end

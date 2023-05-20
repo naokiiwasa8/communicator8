@@ -1,0 +1,9 @@
+.link_list.list-group
+  %a.list-group-item.list-group-item-action{href: profile_setting_path ,class: ("active fw-bolder" if @current_tab == "profile")}
+    = Profile.model_name.human
+  %a.list-group-item.list-group-item-action{href: sns_links_setting_path,class: ("active fw-bolder" if @current_tab == "sns_links")}
+    SNSリンク
+  %a.list-group-item.list-group-item-action{href: email_setting_path,class: ("active fw-bolder" if @current_tab == "email")}
+    = User.human_attribute_name(:email)
+  %a.list-group-item.list-group-item-action{href: password_setting_path,class: ("active fw-bolder" if @current_tab == "password")}
+    = User.human_attribute_name(:password)

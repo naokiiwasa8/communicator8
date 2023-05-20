@@ -24,7 +24,7 @@
 
         - if @user == current_user
           .text-center
-            = link_to 'プロフィールを編集', profile_user_setting_path(@user), class: 'btn zozo-button mt-5 w-75'
+            = link_to 'プロフィールを編集', profile_setting_path, class: 'btn zozo-button mt-5 w-75'
 
 
       %ul.nav.nav-tabs.nav-fill.mx-3.pt-4{ data: { controller: "active-tab" } }

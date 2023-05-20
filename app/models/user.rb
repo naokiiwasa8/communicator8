@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :favorite_communities, dependent: :destroy
   has_one_attached :avatar
   has_one :profile
+  accepts_nested_attributes_for :profile
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed

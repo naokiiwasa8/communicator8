@@ -15,10 +15,12 @@ Rails.application.routes.draw do
   end
   resources :tags
   resources :relationships, only: [:create, :destroy]
-  resources :users, only: [:edit, :update, :show] do  
-    resource :setting, module: :users, only: [:update] do
-      get :profile
-    end
+  resources :users, only: [:edit, :update, :show] 
+  resource :setting, only: [:update] do
+    get :profile
+    get :sns_links
+    get :email
+    get :password
   end
   devise_for :users,
     path: '',
