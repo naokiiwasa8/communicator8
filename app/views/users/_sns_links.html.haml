@@ -1,10 +1,40 @@
 .sns-links.text-center
-  = image_tag 'github.png', class: "sns-icon"
-  = image_tag 'teratail.png', class: "sns-icon"
-  = image_tag 'qiita.png', class: "sns-icon"
-  = image_tag 'twitter.png', class: "sns-icon"
-  = image_tag 'note.png', class: "sns-icon"
-  = image_tag 'compass.png', class: "sns-icon"
-  = image_tag 'zenn.png', class: "sns-icon"
-  = image_tag 'doorkeeper.png', class: "sns-icon"
-  -# = image_tag 'speaker.png', class: "sns-icon"
+  - if @user.profile.github_url.present?
+    = link_to image_tag('github.png', class: "sns-icon-active"), @user.profile.github_url, target: "_blank"
+  - else
+    = image_tag 'github.png', class: "sns-icon opacity-25"
+
+  - if @user.profile.teratail_url.present?
+    = link_to image_tag('teratail.png', class: "sns-icon-active"), @user.profile.teratail_url, target: "_blank"
+  - else
+    = image_tag 'teratail.png', class: "sns-icon opacity-25"
+
+  - if @user.profile.qiita_url.present?
+    = link_to image_tag('qiita.png', class: "sns-icon-active"), @user.profile.qiita_url, target: "_blank"
+  - else
+    = image_tag 'qiita.png', class: "sns-icon opacity-25"
+
+  - if @user.profile.twitter_url.present?
+    = link_to image_tag('twitter.png', class: "sns-icon-active"), @user.profile.twitter_url, target: "_blank"
+  - else
+    = image_tag 'twitter.png', class: "sns-icon opacity-25"
+
+  - if @user.profile.note_url.present?
+    = link_to image_tag('note.png', class: "sns-icon-active"), @user.profile.note_url, target: "_blank"
+  - else
+    = image_tag 'note.png', class: "sns-icon opacity-25"
+
+  - if @user.profile.connpass_url.present?
+    = link_to image_tag('compass.png', class: "sns-icon-active"), @user.profile.connpass_url, target: "_blank"
+  - else
+    = image_tag 'compass.png', class: "sns-icon opacity-25"
+
+  - if @user.profile.zenn_url.present?
+    = link_to image_tag('zenn.png', class: "sns-icon-active"), @user.profile.zenn_url, target: "_blank"
+  - else
+    = image_tag 'zenn.png', class: "sns-icon opacity-25"
+
+  - if @user.profile.doorkeeper_url.present?
+    = link_to image_tag('doorkeeper.png', class: "sns-icon-active"), @user.profile.doorkeeper_url, target: "_blank"
+  - else
+    = image_tag 'doorkeeper.png', class: "sns-icon opacity-25"

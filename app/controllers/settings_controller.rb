@@ -59,7 +59,15 @@ class SettingsController < ApplicationController
         :years_of_experience,
         :company,
         :birthday,
-        :biography
+        :biography,
+        :github_url,
+        :teratail_url,
+        :qiita_url,
+        :twitter_url,
+        :note_url,
+        :connpass_url,
+        :zenn_url,
+        :doorkeeper_url,
       ]
     )
   end

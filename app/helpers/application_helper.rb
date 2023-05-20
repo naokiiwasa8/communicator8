@@ -6,13 +6,24 @@ module ApplicationHelper
     turbo_stream.append "toasts", partial: "layouts/parts/toast"
   end
 
-  #icon表示 
+  #icon・画像の表示 
   def icon(icon_name)
     tag.i(class: ["bi", "bi-#{icon_name}"])
   end
-  def icon_with_text(icon_name, text)
-    tag.span(icon(icon_name), class: "me-2") + tag.span(text)
+  def icon_with_text(icon_name, text = nil)
+    text ||= icon_name
+    tag.span(icon(icon_name), class: "me-3") + tag.span(text)
   end
+
+  def image_with_text(image_path, text = nil)
+    text ||= File.basename(image_path, '.*')
+    content_tag(:span, class: 'image-text') do
+      concat image_tag(image_path)
+      concat ' '
+      concat text
+    end
+  end
+  
 
   # svgファイル表示
   def embedded_svg(filename, options={})

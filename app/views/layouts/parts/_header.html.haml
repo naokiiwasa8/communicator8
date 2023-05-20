@@ -31,9 +31,11 @@
                 %li
                   %hr.dropdown-divider
                 %li
-                  %a.dropdown-item{ href: "#" } settings
+                  %a.dropdown-item{ href: profile_setting_path } 
+                    ユーザー設定
                 %li
-                  %a.dropdown-item{href: destroy_user_session_path, data: {turbo_method: :delete}} logout
+                  %a.dropdown-item{href: destroy_user_session_path, data: {turbo_method: :delete}} 
+                    ログアウト
           - else
             %ul.navbar-nav.me-auto.mb-2.mb-lg-0
               %li.nav-item

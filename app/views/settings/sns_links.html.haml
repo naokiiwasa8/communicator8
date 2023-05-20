@@ -2,16 +2,16 @@
   .profile-container
     .row.mt-4
       .col-md-8.mb-3
-        = simple_form_for @user, url: setting_path, html: { class: 'form-setting ', multipart: true } do |f|
+        = simple_form_for @user, url: setting_path, html: { class: 'form-setting sns-links', multipart: true } do |f|
           = f.simple_fields_for :profile do |pf|
-            = pf.input :github_url, input_html: { class: 'form-control stylish-input mb-5' }
-            = pf.input :teratail_url, input_html: { class: 'form-control stylish-input mb-5' }
-            = pf.input :qiita_url, input_html: { class: 'form-control stylish-input mb-5' }
-            = pf.input :twitter_url, input_html: { class: 'form-control stylish-input mb-5' }
-            = pf.input :note_url, input_html: { class: 'form-control stylish-input mb-5' }
-            = pf.input :connpass_url, input_html: { class: 'form-control stylish-input mb-5' }
-            = pf.input :zenn_url, input_html: { class: 'form-control stylish-input mb-5' }
-            = pf.input :doorkeeper_url, input_html: { class: 'form-control stylish-input mb-5' }
+            = pf.input :github_url, input_html: { class: 'form-control stylish-input mb-5' }, label: image_with_text("github.png")
+            = pf.input :teratail_url, input_html: { class: 'form-control stylish-input mb-5' }, label: image_with_text("teratail.png")
+            = pf.input :qiita_url, input_html: { class: 'form-control stylish-input mb-5' }, label: image_with_text("qiita.png")
+            = pf.input :twitter_url, input_html: { class: 'form-control stylish-input mb-5' }, label: image_with_text("twitter.png")
+            = pf.input :note_url, input_html: { class: 'form-control stylish-input mb-5' }, label: image_with_text("note.png")
+            = pf.input :connpass_url, input_html: { class: 'form-control stylish-input mb-5' }, label: image_with_text("compass.png")
+            = pf.input :zenn_url, input_html: { class: 'form-control stylish-input mb-5' }, label: image_with_text("zenn.png")
+            = pf.input :doorkeeper_url, input_html: { class: 'form-control stylish-input mb-5' }, label: image_with_text("doorkeeper.png")
           .text-center
             = f.button :submit, 'SNSリンクを更新する', class: 'btn zozo-button'
       .col-md-4.mb-3
