@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include IconWithAttr
 
   # turbo_stream flashメッセージの複数表示
   def turbo_stream_flash

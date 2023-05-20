@@ -1,2 +1,0 @@
-module Communities::PostsHelper
-end

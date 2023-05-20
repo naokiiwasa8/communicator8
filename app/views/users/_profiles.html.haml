@@ -2,35 +2,30 @@
   - if @user.profile.job_title.present?
     .job-title.m-4
       %strong
-        %i.bi.bi-person-workspace
-        = Profile.human_attribute_name(:job_title)
+        = icon_with_attr(:profile, :job_title)
       %br 
         = @user.profile.try(:job_title)
   - if @user.profile.years_of_experience.present?
     .years_of_experience.m-4
       %strong
-        %i.bi.bi-code-slash
-        = Profile.human_attribute_name(:years_of_experience)
+        = icon_with_attr(:profile, :years_of_experience)
       %br 
         = @user.profile.try(:years_of_experience)
   - if @user.profile.company.present?
     .company.m-4
       %strong
-        %i.bi.bi-building
-        = Profile.human_attribute_name(:company)
+        = icon_with_attr(:profile, :company)
       %br 
         = @user.profile.try(:company)
   - if @user.profile.birthday.present?
     .birthday.m-4
       %strong
-        %i.bi.bi-calendar3-event
-        = Profile.human_attribute_name(:birthday)
+        = icon_with_attr(:profile, :birthday)
       %br 
         = @user.profile.try(:birthday)
   - if @user.profile.biography.present?
     .biograpy.m-4
       %strong
-        %i.bi.bi-person-badge
-        = Profile.human_attribute_name(:biography)
+        = icon_with_attr(:profile, :biography)
       %br 
         = @user.profile.try(:biography)

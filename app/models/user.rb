@@ -52,4 +52,13 @@ class User < ApplicationRecord
   def default_biography
     "初めまして。よろしくお願いします！"
   end
+
+  def years_of_experience_collection
+    [
+      "1年未満",
+      "1〜3年",
+      "3〜5年",
+      "5年以上",
+    ]
+  end
 end

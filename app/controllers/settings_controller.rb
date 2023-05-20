@@ -63,4 +63,5 @@ class SettingsController < ApplicationController
       ]
     )
   end
+
 end
