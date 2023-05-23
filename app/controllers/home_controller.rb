@@ -23,6 +23,13 @@ class HomeController < ApplicationController
   end
 
   def follows
+    unless user_signed_in?
+      flash.now.notice = "ログイン後にフォロー機能が利用できます"
+      render "active_tab"
+      return
+    end
+    following_ids = current_user.followings.pluck(:id)
+    @communities = Community.where(user_id: following_ids).page(params[:page])
     @current_tab = "follows"
     render "active_tab"
   end

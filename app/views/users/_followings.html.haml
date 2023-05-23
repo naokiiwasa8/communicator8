@@ -1,5 +1,7 @@
 = turbo_frame_tag :following do
-  %button.text-center{"data-action" => "click->modal#open"}
-    フォロー
+  %button.text-center{"data-action" => "click->modal#open", class: 'relationship-count'}
+    %span.button-text
+      フォロー
     %br 
+    %span.following-count
       = @user.followings.count

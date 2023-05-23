@@ -1,6 +1,8 @@
 = turbo_frame_tag :followers do
-  %button.question-mark-button{"data-action" => "click->modal#open"}
-    フォロワー
+  %button.text-center{"data-action" => "click->modal#open", class: 'relationship-count'}
+    %span.button-text  
+      フォロワー
     %br
+    %span.following-count
       = @user.followers.count
       
