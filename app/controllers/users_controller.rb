@@ -6,18 +6,20 @@ class UsersController < ApplicationController
   def show
     @current_tab = "joins"
     @communities = @user.joins_communities.distinct.order(created_at: :desc).page(params[:page])
+    @blank_message = '参加中のコミュニティは<br>まだありません'
   end
 
   def joins
     @current_tab = "joins"
     @communities = @user.joins_communities.distinct.order(created_at: :desc).page(params[:page])
+    @blank_message = '参加中のコミュニティは<br>まだありません'
     render "active_tab"
   end
-
 
   def favorites
     @current_tab = "favorites"
     @communities = @user.favorited_communities.order(created_at: :desc).page(params[:page])
+    @blank_message = 'お気に入りのコミュニティは<br>まだありません'
     render "active_tab"
   end
 
@@ -25,6 +27,7 @@ class UsersController < ApplicationController
     @current_tab = "followings"
     following_ids = @user.followings.pluck(:id)
     @communities = Community.where(user_id: following_ids).page(params[:page])
+    @blank_message = 'フォローしたユーザーのコミュニティは<br>まだありません'
     render "active_tab"
   end
 

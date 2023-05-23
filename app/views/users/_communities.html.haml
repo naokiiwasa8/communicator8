@@ -9,23 +9,30 @@
     %li.nav-item.active-sort-menu
       %a.nav-link{href: user_followings_path(@user, id: @user), class: ("active fw-bolder" if @current_tab == "followings"), data: {turbo_stream: true, tabs_target: "navItem", action: "click->tabs#changeActiveClass", remote: true}} 
         フォロー
-
-  .communities-container.mb-3.p-2.shadow-sm
-    - @communities.each do |community|
-      %div.community.mt-2
-        .d-flex.border-bottom
-          - if community.user.avatar.attached?
-            = image_tag community.user.avatar, class: 'user-avatar'
-          - else
-            = image_tag 'default_avatar.png', class: 'user-avatar'   
-          %a.community.w-100.text-muted{style: "text-decoration: none","aria-current" => "true", href: community_path(community)}     
-            .small
-              .d-flex.justify-content-between.align-items-center
-                %big.text-gray-dark{style: "font-size: 0.9rem"}
-                  @#{community.user.user_name}
-          
-              %strong.community-name.d-block.text-gray-dark{style: "font-size: 1.1rem"}
-                = community.community_name
-              %small.d-block.text-gray-dark.text-end.px-2
-                = "#{community.posts.size} posts"
-                = "#{community.posting_users.distinct.count} users"
+  - if @communities.present?  
+    .communities-container.mb-3.p-2.shadow-sm
+      - @communities.each do |community|
+        %div.community.mt-2
+          .d-flex.border-bottom
+            - if community.user.avatar.attached?
+              = image_tag community.user.avatar, class: 'user-avatar'
+            - else
+              = image_tag 'default_avatar.png', class: 'user-avatar'   
+            %a.community.w-100.text-muted{style: "text-decoration: none","aria-current" => "true", href: community_path(community)}     
+              .small
+                .d-flex.justify-content-between.align-items-center
+                  %big.text-gray-dark{style: "font-size: 0.9rem"}
+                    @#{community.user.user_name}
+            
+                %strong.community-name.d-block.text-gray-dark{style: "font-size: 1.1rem"}
+                  = community.community_name
+                %small.d-block.text-gray-dark.text-end.px-2
+                  = "#{community.posts.size} posts"
+                  = "#{community.posting_users.distinct.count} users"
+      .pagination-container.d-flex.mt-4
+        = paginate @communities  
+  - else
+    %h6
+      .text-center.my-5.py-5.text-secondary{style: "font-size: 1.1rem"}
+        = @blank_message.html_safe
+    
