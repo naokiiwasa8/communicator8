@@ -1,5 +1,26 @@
-= turbo_frame_tag :following do
-  %button.text-center{"data-action" => "click->modal#open", "data-modal-target" => "modal"}
-    フォロー
-    %br 
-      = @user.following.count
+= turbo_frame_tag following do
+  .relationship-user.mx-2
+    .d-flex.align-items-center.justify-content-between
+      = link_to user_path(following) do
+        .modal-relationship-user.w-100
+          .d-flex.align-items-center
+            .user-icon
+              - if following.avatar.attached?
+                = image_tag following.avatar, class: 'user-avatar'
+              - else
+                = image_tag 'default_avatar.png', class: 'user-avatar'
+            %strong
+              = following.user_name
+      .modal-relationship-button
+        - if user_signed_in?
+          - unless current_user == following
+            - if current_user.following?(following)
+              %nobr
+                = button_to "フォロー中", user_relationships_path(user_id: @user, followed_id: following.id), method: :delete, class: 'btn btn-sm following-button'
+            - else
+              %nobr
+                = button_to "フォロー", user_relationships_path(user_id: @user, followed_id: following.id), class: 'btn btn-sm follow-button'
+          -# 未ログイン事にお気に入りできないことを指すボタン
+        - else
+          %nobr
+            = button_to "フォロー", user_relationships_path(user_id: @user, followed_id: following.id) , class: 'btn btn-sm follow-button'

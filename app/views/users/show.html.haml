@@ -18,8 +18,9 @@
                     = @user.user_name
                   = render 'relationship_button'
                   .d-flex.justify-content-center 
-                    = render 'following'
-                    = render 'users/following_modal'
+                    %div{"data-controller" => "modal"}
+                      = render 'followings'
+                      = render 'users/followings_modal'
                     %div{"data-controller" => "modal"}
                       = render 'followers'
                       = render 'users/followers_modal'
