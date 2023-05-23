@@ -4,8 +4,28 @@ class UsersController < ApplicationController
   before_action :set_communities_page, only: [:show]
 
   def show
+    @current_tab = "joins"
+    @communities = @user.joins_communities.distinct.order(created_at: :desc).page(params[:page])
+  end
+
+  def joins
+    @current_tab = "joins"
+    @communities = @user.joins_communities.distinct.order(created_at: :desc).page(params[:page])
+    render "active_tab"
+  end
+
+
+  def favorites
     @current_tab = "favorites"
     @communities = @user.favorited_communities.order(created_at: :desc).page(params[:page])
+    render "active_tab"
+  end
+
+  def followings
+    @current_tab = "followings"
+    following_ids = @user.followings.pluck(:id)
+    @communities = Community.where(user_id: following_ids).page(params[:page])
+    render "active_tab"
   end
 
   def edit

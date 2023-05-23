@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get :active, to: 'home#active'
   get :favorites, to: 'home#favorites'
-  get :follows, to: 'home#follows'
+  get :followings, to: 'home#followings'
 
   resources :posts
   resources :communities do 
@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   end
   resources :tags
   resources :users, only: [:edit, :update, :show] do
+    get :favorites
+    get :followings
+    get :joins
     resource :relationships, only: [:create, :destroy]
   end
   resource :setting, only: [:update] do

@@ -18,7 +18,8 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   # お気に入り登録済みのcommunities
   has_many :favorited_communities, through: :favorite_communities, source: :community
-  
+  # 投稿済みのcommunities
+  has_many :joins_communities, through: :posts, source: :community
   ## Validations
   with_options presence: true do
     validates :user_name

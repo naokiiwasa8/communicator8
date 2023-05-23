@@ -22,7 +22,7 @@ class HomeController < ApplicationController
     render "active_tab"
   end
 
-  def follows
+  def followings
     unless user_signed_in?
       flash.now.notice = "ログイン後にフォロー機能が利用できます"
       render "active_tab"
@@ -30,7 +30,7 @@ class HomeController < ApplicationController
     end
     following_ids = current_user.followings.pluck(:id)
     @communities = Community.where(user_id: following_ids).page(params[:page])
-    @current_tab = "follows"
+    @current_tab = "followings"
     render "active_tab"
   end
 
