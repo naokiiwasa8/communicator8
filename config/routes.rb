@@ -14,8 +14,9 @@ Rails.application.routes.draw do
     end
   end
   resources :tags
-  resources :relationships, only: [:create, :destroy]
-  resources :users, only: [:edit, :update, :show] 
+  resources :users, only: [:edit, :update, :show] do
+    resource :relationships, only: [:create, :destroy]
+  end
   resource :setting, only: [:update] do
     get :profile
     get :sns_links

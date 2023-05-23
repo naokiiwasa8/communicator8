@@ -1,10 +1,4 @@
-= turbo_frame_tag :relationship_count do
-  .d-flex.justify-content-center
-    %p.text-center
-      フォロー中
-      %br 
-        = @user.following.count
-    %p.text-center.ms-3
-      フォロワー
-      %br
-        = @user.followers.count
+
+= render 'users/following'
+= render 'users/followers'
+

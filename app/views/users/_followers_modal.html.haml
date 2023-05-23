@@ -1,0 +1,12 @@
+.modal.fade{"aria-hidden" => "true", "data-modal-target" => "modal", :tabindex => "-1"}
+  .modal-dialog.modal-dialog-scrollable.modal-dialog-centered.modal-md
+    .modal-content.h-75
+      .modal-header
+        %strong.modal-title フォロワー
+
+      .modal-body
+        - @user.followers.each do |follower|
+          = render 'follower', follower: follower
+
+      .modal-footer
+        %button.btn.btn-secondary{"data-action" => "click->modal#close", :type => "button"} Close

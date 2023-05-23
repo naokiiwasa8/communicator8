@@ -1,5 +1,11 @@
 = turbo_stream.replace :relationship_button do
   = render partial: 'users/relationship_button' 
-= turbo_stream.replace :relationship_count do
-  = render partial: 'users/relationship_count'
+= turbo_stream.update :followers do
+  = render partial: 'users/followers'
+= turbo_stream.replace @relationship_user do
+  = render partial: 'users/follower', locals: {follower: @relationship_user}
+-# = turbo_stream.update :following do
+-#   = render partial: 'users/following'
+-# = turbo_stream.update :followers do
+-#   = render partial: 'users/followers'
 = turbo_stream_flash

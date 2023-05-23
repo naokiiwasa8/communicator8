@@ -16,8 +16,14 @@
                 .left-box.text-center
                   %h4.card-title.font-weight-bold.text-center.my-4
                     = @user.user_name
-                  = render 'relationship_count'
                   = render 'relationship_button'
+                  .d-flex.justify-content-center 
+                    = render 'following'
+                    = render 'users/following_modal'
+                    %div{"data-controller" => "modal"}
+                      = render 'followers'
+                      = render 'users/followers_modal'
+
           .col-md-5
             = render 'sns_links'
         = render 'profiles'
@@ -33,7 +39,7 @@
             お気に入り
         %li.nav-item.active-sort-menu
           %a.nav-link{href: favorites_path, class: ("active fw-bolder" if @current_tab == "follows"), data: {turbo_stream: true, tabs_target: "navItem", action: "click->tabs#changeActiveClass", remote: true}} 
-            フォロー中
+            フォロー
         %li.nav-item.active-sort-menu
           %a.nav-link{href: follows_path, class: ("active fw-bolder" if @current_tab == "posts"), data: {turbo_stream: true, tabs_target: "navItem", action: "click->tabs#changeActiveClass", remote: true}} 
             投稿済み
