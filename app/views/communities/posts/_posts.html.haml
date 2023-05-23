@@ -2,32 +2,36 @@
   - @posts.each do |post|
     - if post.user == current_user
       .balloon_r{style: ('padding-bottom:160px' if post == @posts.last)}
-        %a.faceicon.text-end{href: user_path(post.user)}
-          - if post.user.avatar.attached?
-            = image_tag post.user.avatar, class: 'post-user-avatar'
-          - else
-            = image_tag 'default_avatar.png', class: 'post-user-avatar'   
-          .d-flex 
-            = post.user.user_name
-        .content
-          %pre.says.justify-content-end.text-break
-            = post.content
-          .small.text-end
-            = l post.created_at, format: "%y/%m/%d %H:%M"
+        .post
+          %a.faceicon.text-end{href: user_path(post.user)}
+            .user.text-end
+              %small
+                = post.user.user_name
+              - if post.user.avatar.attached?
+                = image_tag post.user.avatar, class: 'post-user-avatar'
+              - else
+                = image_tag 'default_avatar.png', class: 'post-user-avatar' 
+        
+          .content
+            %pre.says.justify-content-end.text-break
+              = post.content
+            %small.text-end
+              = l post.created_at, format: "%y/%m/%d %H:%M"
 
     - else    
       .balloon_l{style: ('padding-bottom:160px' if post == @posts.last)}
-        %a.faceicon.text-start{href: user_path(post.user)}
-          - if post.user.avatar.attached?
-            = image_tag post.user.avatar, class: 'post-user-avatar'
-          - else
-            = image_tag 'default_avatar.png', class: 'post-user-avatar'   
-          .d-flex  
-          .d-flex 
-            = post.user.user_name
-        .content
-          %pre.says.text-break
-            = post.content
-          -# %br
-          .text-start.small
-            = l post.created_at, format: "%y/%m/%d %H:%M"
+        .post
+          %a.faceicon.text-start{href: user_path(post.user)}
+            .user.text-start
+              - if post.user.avatar.attached?
+                = image_tag post.user.avatar, class: 'post-user-avatar'
+              - else
+                = image_tag 'default_avatar.png', class: 'post-user-avatar'   
+              %small
+                = post.user.user_name
+          .content
+            %pre.says.text-break
+              = post.content
+            -# %br
+            %small.text-start
+              = l post.created_at, format: "%y/%m/%d %H:%M"
