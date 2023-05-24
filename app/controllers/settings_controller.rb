@@ -24,8 +24,8 @@ class SettingsController < ApplicationController
   def update_password
     if @user.update_with_password(password_params)
       bypass_sign_in(@user)
-      redirect_to setting_path, notice: 'Password was successfully updated.'
       @successful_update = true
+      redirect_to user_path(@user), notice: 'パスワードを更新しました.'
       return
     else
       render :password
@@ -33,11 +33,20 @@ class SettingsController < ApplicationController
   end
 
   def update
+    url = Rails.application.routes.recognize_path(request.referrer)
+    previous_action = url[:action]
     if @user.update(setting_user_params)
-      redirect_to user_path(@user), notice: 'Profile updated!'
+      case previous_action
+      when "profile"
+        flash.notice = 'プロフィールを更新しました'
+      when "sns_links"
+        flash.notice = 'SNSリンクを更新しました'
+      when "email"
+        flash.notice = 'メールアドレスを変更しました'
+      end
+      redirect_to user_path(@user)
+      return
     else
-      url = Rails.application.routes.recognize_path(request.referrer)
-      previous_action = url[:action]
       case previous_action
       when "profile"
         render :profile
