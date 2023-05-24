@@ -2,7 +2,7 @@
   .profile-container
     .row.mt-4
       .col-md-8.mb-3.profile-editor
-        = simple_form_for @user, url: setting_path, html: { class: 'form-setting ', multipart: true }, data: {turbo: false} do |f|
+        = simple_form_for @user, url: update_profile_setting_path, html: { class: 'form-setting ', multipart: true }, data: {turbo: false} do |f|
           .avatar-upload{data: {controller: "preview-avatar"}}
             .mb-5
               = f.input :avatar, as: :file, label: false, input_html: { class: 'form-control avatar-input', id: 'avatarInput', data: { preview_avatar_target: "input" } }

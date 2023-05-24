@@ -25,6 +25,9 @@ Rails.application.routes.draw do
     get :sns_links
     get :email
     get :password
+    patch :update_profile
+    patch :update_sns_links
+    patch :update_email
     patch :update_password
   end
   devise_for :users,

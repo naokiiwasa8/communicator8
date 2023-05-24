@@ -21,6 +21,37 @@ class SettingsController < ApplicationController
     @current_tab = "password"
   end
 
+  def update
+  end
+
+  def update_profile
+    if @user.update(setting_user_params)
+      flash.notice = 'プロフィールを更新しました'
+      redirect_to user_path(@user)
+    else
+      @current_tab = "profile"
+      render :profile
+    end
+  end
+  
+  def update_sns_links
+    if @user.update(setting_user_params)
+      flash.notice = 'SNSリンクを更新しました'
+      redirect_to user_path(@user)
+    else
+      render :sns_links
+    end
+  end
+  
+  def update_email
+    if @user.update(setting_user_params)
+      flash.notice = 'メールアドレスを変更しました'
+      redirect_to user_path(@user)
+    else
+      render :email
+    end
+  end
+
   def update_password
     if @user.update_with_password(password_params)
       bypass_sign_in(@user)
@@ -28,40 +59,11 @@ class SettingsController < ApplicationController
       redirect_to user_path(@user), notice: 'パスワードを更新しました.'
       return
     else
-      render :password
+      @current_tab = "password"
+      render action: :password
     end
   end
-
-  def update
-    url = Rails.application.routes.recognize_path(request.referrer)
-    previous_action = url[:action]
-    if @user.update(setting_user_params)
-      case previous_action
-      when "profile"
-        flash.notice = 'プロフィールを更新しました'
-      when "sns_links"
-        flash.notice = 'SNSリンクを更新しました'
-      when "email"
-        flash.notice = 'メールアドレスを変更しました'
-      end
-      redirect_to user_path(@user)
-      return
-    else
-      case previous_action
-      when "profile"
-        render :profile
-      when "sns_links"
-        render :sns_links
-      when "email"
-        render :email
-      when "password"
-        render :password
-      else
-        render :profile
-      end
-    end
-  end
-
+  
   private
 
   def set_current_user
