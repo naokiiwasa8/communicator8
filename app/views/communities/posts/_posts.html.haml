@@ -2,7 +2,7 @@
   - @posts.each do |post|
     - if post.user == current_user
       .balloon_r{style: ('padding-bottom:160px' if post == @posts.last)}
-        .post
+        .post.align-items-center
           %a.faceicon.text-end{href: user_path(post.user)}
             .user.text-end
               %small
@@ -15,13 +15,14 @@
           .content
             %pre.says.justify-content-end.text-break
               = post.content
-            %small.text-end
-              = l post.created_at, format: "%y/%m/%d %H:%M"
+            %small
+              .text-end
+                = l post.created_at, format: "%y/%m/%d %H:%M"
 
     - else    
       .balloon_l{style: ('padding-bottom:160px' if post == @posts.last)}
         .post
-          %a.faceicon.text-start{href: user_path(post.user)}
+          %a.faceicon.text-start.w-100{href: user_path(post.user)}
             .user.text-start
               - if post.user.avatar.attached?
                 = image_tag post.user.avatar, class: 'post-user-avatar'
@@ -33,5 +34,6 @@
             %pre.says.text-break
               = post.content
             -# %br
-            %small.text-start
-              = l post.created_at, format: "%y/%m/%d %H:%M"
+            %small
+              .text-start
+                = l post.created_at, format: "%y/%m/%d %H:%M"
