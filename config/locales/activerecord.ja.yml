@@ -28,6 +28,7 @@ ja:
       taken: は既に登録済みです
       too_short: は6文字以上を入力してください
       confirmation: が一致しません
+      invalid: は不正な値です
 
   date:
     formats:
