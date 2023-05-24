@@ -2,7 +2,7 @@
   .profile-container
     .row.mt-4
       .col-md-8.mb-3.profile-editor
-        = simple_form_for @user, url: setting_path, html: { class: 'form-setting ', multipart: true } do |f|
+        = simple_form_for @user, url: setting_path, html: { class: 'form-setting ', multipart: true }, data: {turbo: false} do |f|
           = f.input :email, required: true, autofocus: true, input_html: { class: 'form-control stylish-input mb-5' }
 
           .text-center

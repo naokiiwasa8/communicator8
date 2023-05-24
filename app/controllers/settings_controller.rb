@@ -21,6 +21,17 @@ class SettingsController < ApplicationController
     @current_tab = "password"
   end
 
+  def update_password
+    if @user.update_with_password(password_params)
+      bypass_sign_in(@user)
+      redirect_to setting_path, notice: 'Password was successfully updated.'
+      @successful_update = true
+      return
+    else
+      render :password
+    end
+  end
+
   def update
     if @user.update(setting_user_params)
       redirect_to user_path(@user), notice: 'Profile updated!'
@@ -69,6 +80,14 @@ class SettingsController < ApplicationController
         :zenn_url,
         :doorkeeper_url,
       ]
+    )
+  end
+
+  def password_params
+    params.require(:user).permit(
+      :current_password, 
+      :password, 
+      :password_confirmation
     )
   end
 

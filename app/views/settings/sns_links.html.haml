@@ -2,7 +2,7 @@
   .profile-container
     .row.mt-4
       .col-md-8.mb-3
-        = simple_form_for @user, url: setting_path, html: { class: 'form-setting sns-links', multipart: true } do |f|
+        = simple_form_for @user, url: setting_path, html: { class: 'form-setting sns-links', multipart: true }, data: {turbo: false} do |f|
           = f.simple_fields_for :profile do |pf|
             = pf.input :github_url, input_html: { class: 'form-control stylish-input mb-5' }, label: image_with_text("github.png")
             = pf.input :teratail_url, input_html: { class: 'form-control stylish-input mb-5' }, label: image_with_text("teratail.png")
