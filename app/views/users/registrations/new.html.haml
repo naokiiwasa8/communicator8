@@ -1,7 +1,7 @@
 .form-container.mb-4
   = simple_form_for resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}, html: { class: 'form-center' } do |f|
     %h2.form-title.mb-4 アカウント作成
-    = f.input :user_name, autofocus: true, input_html: { class: 'form-control stylish-input mb-2' }
+    -# = f.input :user_name, autofocus: true, input_html: { class: 'form-control stylish-input mb-2' }
     = f.input :email, autofocus: true, autocomplete: "email", input_html: { class: 'form-control stylish-input mb-2' }
     = f.input :password, autocomplete: "new-password", required: true, input_html: { class: 'form-control stylish-input mb-2' }
     - if @minimum_password_length
