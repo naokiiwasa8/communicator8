@@ -5,8 +5,12 @@
         %strong.modal-title フォロー
 
       .modal-body
-        - @user.followings.each do |following|
-          = render 'following', following: following
-
+        - if @user.followings.present?
+          - @user.followings.each do |following|
+            = render 'following', following: following
+        - else
+          %h6
+            .text-center.my-5.py-5.text-secondary{style: "font-size: 1.1rem"}
+              まだフォローしていません
       .modal-footer
         %button.btn.btn-secondary{"data-action" => "click->modal#close", :type => "button"} Close

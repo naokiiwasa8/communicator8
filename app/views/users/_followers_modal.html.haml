@@ -5,8 +5,15 @@
         %strong.modal-title フォロワー
 
       .modal-body
-        - @user.followers.each do |follower|
-          = render 'follower', follower: follower
+        - if @user.followers.present?
+          - @user.followers.each do |follower|
+            = render 'follower', follower: follower
+        - else
+          %h6
+            .text-center.my-5.py-5.text-secondary{style: "font-size: 1.1rem"}
+              フォロワーはまだいません
+          
+
 
       .modal-footer
         %button.btn.btn-secondary{"data-action" => "click->modal#close", :type => "button"} Close
