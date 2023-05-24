@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @current_tab = "followings"
     following_ids = @user.followings.pluck(:id)
     @communities = Community.where(user_id: following_ids).page(params[:page])
-    @blank_message = 'フォローしたユーザーのコミュニティは<br>まだありません'
+    @blank_message = 'フォローしたユーザーの<br>コミュニティはまだありません'
     render "active_tab"
   end
 
