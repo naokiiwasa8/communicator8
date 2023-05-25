@@ -10,6 +10,12 @@ export default class extends Controller {
       this.text = "The best career advice for engineers       comes from engineers";
     }
 
+    // if (window.innerWidth <= 768) {
+    //   this.text = "エンジニアのキャリア相談は \<br> エンジニアへ";
+    // } else {
+    //   this.text = "エンジニアのキャリア相談は       エンジニアへ";
+    // }
+
     this.index = 0;
     this.typingInterval = setInterval(this.type.bind(this), 100);
     this.blinkInterval = setInterval(this.blink.bind(this), 500);
