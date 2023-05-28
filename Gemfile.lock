@@ -145,6 +145,9 @@ GEM
       dry-schema (>= 1.12, < 2)
       zeitwerk (~> 2.6)
     erubi (1.12.0)
+    exception_notification (4.5.0)
+      actionmailer (>= 5.2, < 8)
+      activesupport (>= 5.2, < 8)
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -273,6 +276,7 @@ GEM
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
+    slack-notifier (2.4.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -326,6 +330,7 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
+  exception_notification
   haml-rails
   image_processing (>= 1.2)
   jbuilder
@@ -338,6 +343,7 @@ DEPENDENCIES
   sassc-rails
   selenium-webdriver
   simple_form
+  slack-notifier
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
