@@ -23,5 +23,4 @@ class Community < ApplicationRecord
   def favorited_by?(user)
     favoriting_users.include?(user)
   end
-  
 end

@@ -1,4 +1,4 @@
-.input-tags.field.t-3{"data-controller" => "tagify", "data-whitelist" => "#{ActsAsTaggableOn::Tag.all.pluck(:name).join(", ")}"}
+.input-tags.field.t-3{"data-controller" => "tagify", "data-whitelist" => "#{Community.tag_counts_on(:community_tags).pluck(:name).join(", ")}"}
   %label{:for => "community_tag_list"} タグ
   %small ※10個まで
   %input#tagify.stylish-input{"data-tagify-target" => "tagify", :type => "text", :value => ""}/

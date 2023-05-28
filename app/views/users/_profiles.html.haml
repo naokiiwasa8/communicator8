@@ -1,21 +1,32 @@
 .prifiles.mt-5
-  - if @user.profile.job_title.present?
+  - if @user.skill_tags.present?
+    .skill.m-4
+      %strong
+        = icon_with_attr(:user, :skill)
+      %br 
+        - @user.skill_tags.each do |tag|
+          .badge.bg-light.text-dark
+            = tag.name
+  - if @user.profile.job_title_tags.present?
     .job-title.m-4
       %strong
         = icon_with_attr(:profile, :job_title)
       %br 
-        = @user.profile.try(:job_title)
+        - @user.profile.job_title_tags.each do |tag|
+          .badge.bg-light.text-dark
+            = tag.name
   - if @user.profile.years_of_experience.present?
     .years_of_experience.m-4
       %strong
         = icon_with_attr(:profile, :years_of_experience)
       %br 
         = @user.profile.try(:years_of_experience)
+
   - if @user.profile.company.present?
     .company.m-4
       %strong
         = icon_with_attr(:profile, :company)
-      %br 
+      %br
         = @user.profile.try(:company)
   - if @user.profile.birthday.present?
     .birthday.m-4

@@ -2,9 +2,10 @@ module IconWithAttr
   ICONS = {
     # user
     user_name: 'bi bi-person-circle',
+    skill: 'bi bi-code-slash',
     # profile
     job_title: 'bi bi-person-workspace',
-    years_of_experience: 'bi bi-code-slash',
+    years_of_experience: 'bi bi-reception-3',
     company: 'bi bi-building',
     birthday: 'bi bi-calendar3-event',
     biography: 'bi bi-person-badge'

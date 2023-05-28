@@ -1,0 +1,22 @@
+.d-flex.justify-content-end.mt-2.mx-2
+  - if controller_name != 'communities'
+    .dropstart
+      %a.btn.custom-search-button.m-1{href: communities_path}
+        %i.bi.bi-sort-down
+  .dropstart  
+    %a.btn.custom-search-button.m-1{href: new_community_path}
+      %i.bi.bi-plus-lg
+  .dropstart
+    %button.btn.custom-search-button.m-1{:type => "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
+      %i.bi.bi-search
+    %ul.search-communities.dropdown-menu.shadow.p-3.mb-5.bg-white.rounded.custom-dropdown-menu
+      %form
+        = search_form_for @search, html: { class: "input-group custom-search-form" } do |f|
+          -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
+          -# `カラム名_eq`  =カラムに対して完全一致検索
+          .d-flex{style: "width: 500px;"}
+            .input-group
+              = f.search_field :community_name_cont, class: 'form-control custom-search-input', placeholder: 'Search community...'
+            .input-group-append.mx-1
+              %button.btn.custom-search-submit{type: 'submit'}
+                %i.bi.bi-search

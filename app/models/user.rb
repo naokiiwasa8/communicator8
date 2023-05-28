@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, 
          :trackable
-  
+  acts_as_taggable_on :skill_tags
   ## Relationship
   has_many :communities
   has_many :posts

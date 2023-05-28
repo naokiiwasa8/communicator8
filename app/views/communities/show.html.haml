@@ -26,7 +26,7 @@
         .d-flex.justify-content-end.mt-2.mx-2
           .dropstart
             %button.btn.custom-search-button.rounded{:type => "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
-              search
+              %i.bi.bi-search
             %ul.search-communities.dropdown-menu.shadow.p-3.mb-5.bg-white.rounded.custom-dropdown-menu
               %form
                 = search_form_for @search, html: { class: "input-group custom-search-form" } do |f|
@@ -38,6 +38,7 @@
                     .input-group-append.mx-1
                       %button.btn.custom-search-submit{type: 'submit'}
                         %i.bi.bi-search
+
         - if @posts.present? 
           = render "communities/posts/posts" 
         - else

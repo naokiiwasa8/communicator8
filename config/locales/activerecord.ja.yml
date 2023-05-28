@@ -12,6 +12,7 @@ ja:
         password_confirmation: パスワード(確認)
         current_password: 現在のパスワード
         avatar: アイコン画像
+        skill: 経験スキル
       profile:
         job_title: 職種
         years_of_experience: エンジニア歴

@@ -25,7 +25,17 @@ class SettingsController < ApplicationController
   end
 
   def update_profile
-    if @user.update(setting_user_params)
+    setting_params = setting_user_params
+  
+    if setting_params[:skill_tag_list].blank?
+      setting_params.delete(:skill_tag_list)
+    end
+    
+    if setting_params[:profile_attributes][:job_title_tag_list].blank?
+      setting_params[:profile_attributes].delete(:job_title_tag_list)
+    end
+    
+    if @user.update(setting_params)
       flash.notice = 'プロフィールを更新しました'
       redirect_to user_path(@user)
     else
@@ -75,6 +85,7 @@ class SettingsController < ApplicationController
       :email, 
       :user_name, 
       :avatar,
+      :skill_tag_list,
       profile_attributes: [
         :id,
         :job_title, 
@@ -90,6 +101,7 @@ class SettingsController < ApplicationController
         :connpass_url,
         :zenn_url,
         :doorkeeper_url,
+        :job_title_tag_list,
       ]
     )
   end

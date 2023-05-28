@@ -12,9 +12,21 @@
                 = image_tag 'default_avatar.png', class: 'img-thumbnail mb-3 avatar-img', data: { preview_avatar_target: "img" }
           .mb-5
             = f.input :user_name, required: true, autofocus: true, input_html: { class: 'form-control stylish-input' }, label: icon_with_attr(:user, :user_name)
+          .mb-5
+            .input-tags.field.t-3{"data-controller" => "tagify", "data-whitelist" => "#{Profile.tag_counts_on(:skills_tags).pluck(:name).join(", ")}"}
+              %label{:for => "skills_tag_list"} 
+                = icon_with_attr(:user, :skill)
+              %input#tagify_skill.stylish-input{"data-tagify-target" => "tagify", :type => "text", :value => "#{f.object.skill_tag_list.join(', ')}"}/
+              %input#skills_tag_names{"data-tagify-target" => "tagNames", :name => "user[skill_tag_list]", :type => "hidden"}/
+
           = f.simple_fields_for :profile do |pf|
             .mb-5
-              = pf.input :job_title, input_html: { class: 'form-control stylish-input' }, label: icon_with_attr(:profile, :job_title)
+              .input-tags.field.t-3{"data-controller" => "tagify", "data-whitelist" => "#{Profile.tag_counts_on(:job_title_tags).pluck(:name).join(", ")}"}
+                %label{:for => "job_title_tag_list"} 
+                  = icon_with_attr(:profile, :job_title)
+                %input#tagify.stylish-input{"data-tagify-target" => "tagify", :type => "text", :value => "#{pf.object.job_title_tag_list.join(', ')}"}/
+                %input#community_tag_names{"data-tagify-target" => "tagNames", :name => "user[profile_attributes][job_title_tag_list]", :type => "hidden"}/
+
             .mb-5
               = pf.input :years_of_experience,collection: @user.years_of_experience_collection, input_html: { class: 'form-control stylish-input' }, label: icon_with_attr(:profile, :years_of_experience)
             .mb-5
