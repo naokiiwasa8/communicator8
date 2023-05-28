@@ -13,7 +13,7 @@
           .mb-5
             = f.input :user_name, required: true, autofocus: true, input_html: { class: 'form-control stylish-input' }, label: icon_with_attr(:user, :user_name)
           .mb-5
-            .input-tags.field.t-3{"data-controller" => "tagify", "data-whitelist" => "#{Profile.tag_counts_on(:skills_tags).pluck(:name).join(", ")}"}
+            .input-tags.field.t-3{"data-controller" => "tagify", "data-whitelist" => "#{User.tag_counts_on(:skills_tags).pluck(:name).join(", ")}"}
               %label{:for => "skills_tag_list"} 
                 = icon_with_attr(:user, :skill)
               %input#tagify_skill.stylish-input{"data-tagify-target" => "tagify", :type => "text", :value => "#{f.object.skill_tag_list.join(', ')}"}/
