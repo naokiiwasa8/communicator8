@@ -1,14 +1,11 @@
 = turbo_frame_tag :communities do
   %ul.nav.nav-tabs.nav-fill.mx-3.pt-3{ data: { controller: "active-tab" } }
     %li.nav-item.active-sort-menu
-      %a.nav-link{href: active_path, class: ("active fw-bolder" if @current_tab == "active"), data: {turbo_stream: true, tabs_target: "navItem", action: "click->tabs#changeActiveClass", remote: true}} 
-        アクティブ
+      = link_to "アクティブ", active_path, class: "nav-link #{'active fw-bolder' if @current_tab == 'active'}", data: {turbo_stream: true, tabs_target: "navItem", action: "click->tabs#changeActiveClass", remote: true}
     %li.nav-item.active-sort-menu
-      %a.nav-link{href: favorites_path, class: ("active fw-bolder" if @current_tab == "favorites"), data: {turbo_stream: true, tabs_target: "navItem", action: "click->tabs#changeActiveClass", remote: true}} 
-        お気に入り
+      = link_to "お気に入り", favorites_path, class: "nav-link #{'active fw-bolder' if @current_tab == 'favorites'}", data: {turbo_stream: true, tabs_target: "navItem", action: "click->tabs#changeActiveClass", remote: true}
     %li.nav-item.active-sort-menu
-      %a.nav-link{href: followings_path, class: ("active fw-bolder" if @current_tab == "followings"), data: {turbo_stream: true, tabs_target: "navItem", action: "click->tabs#changeActiveClass", remote: true}} 
-        フォロー中
+      = link_to "フォロー中", followings_path, class: "nav-link #{'active fw-bolder' if @current_tab == 'followings'}", data: {turbo_stream: true, tabs_target: "navItem", action: "click->tabs#changeActiveClass", remote: true}
 
   - if @communities.present?  
     .container-fluid

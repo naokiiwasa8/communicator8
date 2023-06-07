@@ -47,7 +47,7 @@ export default class extends Controller {
 
   handleInvalidTag(detail) {
     if (detail.message === 'number of tags exceeded') {
-      this.showToast('タグは最大10個までです');
+      this.showToast('最大10個までです');
     }
   }
 

@@ -1,3 +1,5 @@
+@import 'tagify'
+
 header
   align-items: center
   background-color: rgb(253, 253, 253)
@@ -37,3 +39,127 @@ header
     .dropdown-item
       font-weight: 
       color: #5d5d60
+
+
+// tagify入力リスト
+.tagify
+  width: 100%
+  max-width: 700px
+
+.tags-look
+  .tagify__dropdown__item
+    display: inline-block
+    border-radius: 3px
+    padding: .3em .5em
+    
+    border: 1px solid #CCC
+    background: #F3F3F3
+    margin: .2em
+    font-size: .85em
+    color: black
+    transition: 0s
+
+  .tagify__dropdown__item--active
+    color: black
+
+  .tagify__dropdown__item:hover
+    background: lightyellow
+    border-color: gold
+  .tags-look .tagify__dropdown__item--hidden 
+      max-width: 0
+      max-height: initial
+      padding: .3em 0
+      margin: .2em 0
+      white-space: nowrap
+      text-indent: -20px
+      border: 0
+
+// モーダル
+.modal
+  .modal-dialog
+    // max-width: 500px
+    margin-top: 15%
+    z-index: 9999999
+    border: none
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
+
+    .modal-header
+      background-color: #f0f0f0
+      border-bottom: 1px solid #e0e0e0
+      padding: 12px 24px
+      border-bottom: none
+    .modal-content
+      border: none
+      border-radius: 16px
+      z-index: 999999999
+      .modal-title
+        // font-size: 18px
+        font-weight: bold
+        color: #3f3f3f
+
+      .modal-body
+        padding: 30px 24px
+        font-size: 14px
+        color: #3f3f3f
+
+      .modal-footer
+        background-color: #f0f0f0
+        border-top: 1px solid #e0e0e0
+        padding: 12px 24px
+        display: flex
+        justify-content: flex-end
+        border-top: none
+
+        .btn
+          font-size: 14px
+          font-weight: bold
+          color: #3f3f3f
+          background-color: #ffffff
+          border: 1px solid #dcdcdc
+          border-radius: 16px
+          padding: 6px 12px
+          margin-left: 8px
+          &:hover
+            background-color: #dcdcdc
+            color: #3f3f3f
+            border-color: #dcdcdc
+
+// ガイダンスモーダルのクエスチョンボタン
+.question-mark-button
+  position: fixed
+  bottom: 30px
+  right: 15px
+  background-color: transparent
+  border: 2px solid #aaa
+  border-radius: 50%
+  width: 40px
+  height: 40px
+  display: flex
+  align-items: center
+  justify-content: center
+  cursor: pointer
+  transition: 0.3s
+  padding: 0
+  outline: none
+  &:hover
+    background-color: #aaa
+
+// トップボタン
+.custom-top-button
+  border-radius: 50%
+  width: 50px
+  height: 50px
+  display: flex
+  align-items: center
+  justify-content: center
+  position: relative
+  &:hover
+    color: #2e90df
+    background-color: #f7f7f7
+    border-color: #68b5f4
+    transform: scale(1.03, 1.03)
+.active-button
+  color: #2e90df
+  background-color: #f7f7f7
+  border-color: #68b5f4
+  

@@ -1,22 +1,33 @@
 .d-flex.justify-content-end.mt-2.mx-2
   - if controller_name != 'communities'
-    .dropstart
-      %a.btn.custom-search-button.m-1{href: communities_path}
-        %i.bi.bi-sort-down
-  .dropstart  
-    %a.btn.custom-search-button.m-1{href: new_community_path}
-      %i.bi.bi-plus-lg
-  .dropstart
-    %button.btn.custom-search-button.m-1{:type => "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
+    %a.btn.custom-top-button.m-1{href: communities_path}
+      %i.bi.bi-sort-down
+  %a.btn.custom-top-button.m-1{href: new_community_path}
+    %i.bi.bi-plus-lg
+  %div{"data-controller" => "modal"}
+    %button.btn.custom-top-button.m-1{ class: session[:q].present? ? 'active-button' : '', "data-action" => "click->modal#open"}
       %i.bi.bi-search
-    %ul.search-communities.dropdown-menu.shadow.p-3.mb-5.bg-white.rounded.custom-dropdown-menu
-      %form
-        = search_form_for @search, html: { class: "input-group custom-search-form" } do |f|
-          -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
-          -# `カラム名_eq`  =カラムに対して完全一致検索
-          .d-flex{style: "width: 500px;"}
-            .input-group
-              = f.search_field :community_name_cont, class: 'form-control custom-search-input', placeholder: 'Search community...'
-            .input-group-append.mx-1
+    = search_form_for @search, html: { class: "input-group custom-search-form" } do |f|
+      .modal.fade{"aria-hidden" => "true", "data-modal-target" => "modal", :tabindex => "-1"}
+        .modal-dialog
+          .modal-content.h-50
+            .modal-header
+              %h4.modal-title 
+                コミュニティの検索
+            .modal-body
+              %form
+                -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
+                -# `カラム名_eq`  =カラムに対して完全一致検索
+              
+                .input-group
+                  = f.search_field :community_name_cont, class: 'form-control custom-search-input', placeholder: 'コミュニティ入力...'
+                .input-tags.field.mt-3{"data-controller" => "tagify", "data-whitelist" => "#{Community.tag_counts_on(:community_tags).pluck(:name).join(", ")}"}
+                  = f.search_field :with_tag, class: 'form-control custom-search-input', placeholder: '既存のタグを入力...' ,data:{"tagify-target" => "tagify"}
+                  %input#community_tag_names{"data-tagify-target" => "tagNames", :name => "community[community_tag_list]", :type => "hidden"}/
+
+            .modal-footer
+              %button.btn.btn-secondary{"data-action" => "click->modal#close", :type => "button"} Close
               %button.btn.custom-search-submit{type: 'submit'}
                 %i.bi.bi-search
+                検索
+

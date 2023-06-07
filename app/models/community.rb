@@ -14,10 +14,16 @@ class Community < ApplicationRecord
   with_options presence: true do
     validates :community_name
   end
+  
+  ## scopes
+  scope :with_tag, -> (tag) { tagged_with(tag, any: true) if tag.present? }
 
   # ransack
   def self.ransackable_attributes(auth_object = nil)
     ["community_name", "created_at", "id", "updated_at", "user_id"]
+  end
+  def self.ransackable_scopes(auth_object = nil)
+    %i[with_tag]
   end
 
   def favorited_by?(user)

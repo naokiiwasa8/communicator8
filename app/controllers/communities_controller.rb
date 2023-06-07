@@ -3,11 +3,15 @@ class CommunitiesController < ApplicationController
 
   # GET /communities or /communities.json
   def index
-    @communities = Community.all.order(created_at: :desc)
-    @communities = Community.page(params[:page])
-    # ransack search communities
+    if params[:q] && params[:q][:with_tag].present?
+      # 連続検索によるブラウザ負担を解消
+      session[:q].clear
+      tag_list = JSON.parse(params[:q][:with_tag]).map { |tag| tag["value"] }
+      params[:q][:with_tag] = tag_list.join(",")
+    end
+    session[:q] = params[:q] if params[:q].present?
     @search = Community.ransack(params[:q])
-    @search.sorts = 'created_at desc' if @search.sorts.empty? 
+    @search.sorts = 'created_at desc' if @search.sorts.empty?
     @communities = @search.result.page(params[:page])
     @current_tab = "active"
   end
