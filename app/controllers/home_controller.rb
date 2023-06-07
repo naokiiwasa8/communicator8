@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   before_action :set_ransack_search
   
   def index
-    session[:q].clear
+    session[:q].clear if session[:q].present?
     @current_tab = "active"
   end
 
