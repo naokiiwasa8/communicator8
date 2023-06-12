@@ -1,0 +1,21 @@
+-# stimulus geometric-top-animation
+.bg-body-tertiary.p-3.p-sm-5.mb-4.rounded{style: "position: fixed; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;", data: { controller: "geometry-top-animation", "geometry-top-animation-target": "container" }}
+
+%h1.text-center.mb-4 エンジニアが選ぶ転職サイトランキング
+
+.container
+  .row
+    - @job_sites.each do |job_site|
+      .col-md-3.col-sm-6.mb-4
+        .card.h-100.shadow-sm.rounded
+          .card-body.d-flex.flex-column.justify-content-between
+            %h5.card-title.text-center= job_site.name
+            %p.card-text.text-center.text-muted= job_site.description
+            %div.text-center
+              = link_to job_site.url, job_site.url, target: '_blank', rel: 'noopener', class: 'btn btn-outline-primary btn-sm'
+              .mt-2
+                .row
+                  .col-6
+                    = button_to "Recommend (#{job_site.recommended_count})", recommend_job_site_path(job_site), method: :post, class: 'btn btn-success btn-sm', data: {turbo: false}
+                  .col-6  
+                    = button_to "Not Recommend (#{job_site.not_recommended_count})", not_recommend_job_site_path(job_site), method: :post, class: 'btn btn-danger btn-sm', data: {turbo: false}

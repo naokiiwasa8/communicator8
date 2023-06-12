@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_17_122012) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_12_153931) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -54,6 +54,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_122012) do
     t.datetime "updated_at", null: false
     t.index ["community_id"], name: "index_favorite_communities_on_community_id"
     t.index ["user_id"], name: "index_favorite_communities_on_user_id"
+  end
+
+  create_table "job_site_recommends", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "job_site_id", null: false
+    t.boolean "recommended"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_site_id"], name: "index_job_site_recommends_on_job_site_id"
+    t.index ["user_id"], name: "index_job_site_recommends_on_user_id"
+  end
+
+  create_table "job_sites", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.text "description"
+    t.string "company"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -158,6 +177,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_122012) do
   add_foreign_key "communities", "users"
   add_foreign_key "favorite_communities", "communities"
   add_foreign_key "favorite_communities", "users"
+  add_foreign_key "job_site_recommends", "job_sites"
+  add_foreign_key "job_site_recommends", "users"
   add_foreign_key "posts", "communities"
   add_foreign_key "posts", "users"
   add_foreign_key "profiles", "users"

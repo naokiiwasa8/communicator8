@@ -30,6 +30,12 @@ Rails.application.routes.draw do
     patch :update_email
     patch :update_password
   end
+  resources :job_sites do
+    member do
+      post :recommend, to: 'job_site_recommends#recommend'
+      post :not_recommend, to: 'job_site_recommends#not_recommend'
+    end
+  end
   devise_for :users,
     path: '',
     path_names: {

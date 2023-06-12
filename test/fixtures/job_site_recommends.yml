@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  job_site: one
+  recommended: false
+
+two:
+  user: two
+  job_site: two
+  recommended: false
