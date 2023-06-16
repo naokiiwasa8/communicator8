@@ -6,18 +6,15 @@
     = csrf_meta_tags
     = csp_meta_tag
 
-    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = stylesheet_link_tag "main", "data-turbo-track": "reload", media: 'all'
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
-    = stylesheet_link_tag params[:controller] if Rails.application.assets.find_asset("#{params[:controller]}.css")
 
-    
   %body
     = render 'layouts/parts/header'   
     #toasts
     = render 'layouts/parts/toast'
 
-
-    %body{:class => "#{controller.controller_name}"}
+    %body
     = yield 
 
     -# 邪魔してる(ヘッダーのアコーディオン)

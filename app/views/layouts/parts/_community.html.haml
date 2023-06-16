@@ -3,10 +3,10 @@
     .d-flex.border-bottom
       - if community.user.avatar.attached?
         = link_to user_path(community.user) do
-          = image_tag community.user.avatar, class: 'user-avatar'
+          = image_tag community.user.avatar, class: 'community-user-avatar'
       - else
         = link_to user_path(community.user) do
-          = image_tag 'default_avatar.png', class: 'user-avatar'   
+          = image_tag 'default_avatar.png', class: 'community-user-avatar'   
       %a.community.w-100.text-muted{style: "text-decoration: none","aria-current" => "true", href: community_path(community)}     
         .pb-3.mb-0.small
           .d-flex.justify-content-between.align-items-center
