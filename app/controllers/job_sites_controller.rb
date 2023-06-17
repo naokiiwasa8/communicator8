@@ -1,14 +1,9 @@
 class JobSitesController < ApplicationController
   before_action :set_job_site, only: %i[ show edit update destroy ]
+  before_action :set_job_sites_page, only: %i[ index ]
 
   # GET /job_sites or /job_sites.json
   def index
-    @job_sites = JobSite.all.sort_by do |job_site|
-      [
-        -job_site.recommended_count,
-        job_site.not_recommended_count
-      ]
-    end
   end
 
   # GET /job_sites/1 or /job_sites/1.json
@@ -66,6 +61,15 @@ class JobSitesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_job_site
       @job_site = JobSite.find(params[:id])
+    end
+
+    def set_job_sites_page
+      @job_sites = JobSite.all.sort_by do |job_site|
+        [
+          -job_site.recommended_count,
+          job_site.not_recommended_count
+        ]
+      end
     end
 
     # Only allow a list of trusted parameters through.

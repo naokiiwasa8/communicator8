@@ -1,0 +1,25 @@
+= turbo_frame_tag :job_sites do
+  .jobsites.container
+    .row
+      - @job_sites.each do |job_site|
+        .col-md-4.col-sm-12.mb-4
+          .card.h-100.shadow-sm.rounded
+            .card-body.d-flex.flex-column.justify-content-between
+              %h5.card-title.text-center
+                = link_to job_site.name, job_site.url, target: '_blank', rel: 'noopener'
+              %p.card-text.text-center.text-muted
+                = job_site.description
+              %div.text-center
+                = link_to '使い方を相談', job_site_path(job_site), class: 'btn btn-outline-primary btn-sm'
+                .mt-2
+                  .row
+                    .col-6
+                      %nobr
+                        = button_to recommend_job_site_path(job_site), method: :post, class: 'btn btn-success btn-sm' do
+                          %i.bi.bi-hand-thumbs-up
+                          = job_site.recommended_count
+                    .col-6  
+                      %nobr
+                        = button_to not_recommend_job_site_path(job_site), method: :post, class: 'btn btn-danger btn-sm' do
+                          %i.bi.bi-hand-thumbs-down
+                          = job_site.not_recommended_count 

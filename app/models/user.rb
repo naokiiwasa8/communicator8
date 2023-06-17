@@ -52,6 +52,14 @@ class User < ApplicationRecord
     )
   end
 
+  def max_recommends_reached?
+    job_site_recommends.where(recommended: true).where("created_at >= ?", Time.zone.now.beginning_of_day).count >= 5
+  end
+  
+  def max_not_recommends_reached?
+    job_site_recommends.where(recommended: false).where("created_at >= ?", Time.zone.now.beginning_of_day).count >= 5
+  end
+
   def default_biography
     "初めまして。よろしくお願いします！"
   end
