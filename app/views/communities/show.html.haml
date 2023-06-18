@@ -3,10 +3,8 @@
     .col-lg-9
       = render "communities/posts/new_post_button"
       .community-container.mx-2.mt-4
-        -# アイデア１
-        .community-head.d-flex.pt-4
+        .community-head.d-flex.pt-4.mb-4
           .left-items.m-2
-            -# %img.rounded-circle.flex-shrink-0{:alt => "twbs", :height => "32", :src => "https://github.com/twbs.png", :width => "32"}/
             - if @community.user.avatar.attached?
               = link_to user_path(@community.user) do
                 = image_tag @community.user.avatar, class: 'show-user-avatar'
@@ -23,21 +21,21 @@
               %p.mb-0.opacity-75= "@#{@community.user.user_name}"
               %small.opacity-75.text-nowrap= @community.created_at
 
-        .d-flex.justify-content-end.mt-2.mx-2
-          .dropstart
-            %button.btn.custom-search-button.rounded{:type => "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
-              %i.bi.bi-search
-            %ul.search-communities.dropdown-menu.shadow.p-3.mb-5.bg-white.rounded.custom-dropdown-menu
-              %form
-                = search_form_for @search, html: { class: "input-group custom-search-form" } do |f|
-                  -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
-                  -# `カラム名_eq`  =カラムに対して完全一致検索
-                  .d-flex{style: "width: 500px;"}
-                    .input-group
-                      = f.search_field :content_cont, class: 'form-control custom-search-input', placeholder: 'Search post...'
-                    .input-group-append.mx-1
-                      %button.btn.custom-search-submit{type: 'submit'}
-                        %i.bi.bi-search
+        -# .d-flex.justify-content-end.mt-2.mx-2
+        -#   .dropstart
+        -#     %button.btn.custom-search-button.rounded{:type => "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
+        -#       %i.bi.bi-search
+        -#     %ul.search-communities.dropdown-menu.shadow.p-3.mb-5.bg-white.rounded.custom-dropdown-menu
+        -#       %form
+        -#         = search_form_for @search, html: { class: "input-group custom-search-form" } do |f|
+        -#           -# `カラム名_cont`=カラムに対してLIKEを使った曖昧一致検索
+        -#           -# `カラム名_eq`  =カラムに対して完全一致検索
+        -#           .d-flex{style: "width: 500px;"}
+        -#             .input-group
+        -#               = f.search_field :content_cont, class: 'form-control custom-search-input', placeholder: 'Search post...'
+        -#             .input-group-append.mx-1
+        -#               %button.btn.custom-search-submit{type: 'submit'}
+        -#                 %i.bi.bi-search
 
         - if @posts.present? 
           = render "communities/posts/posts" 

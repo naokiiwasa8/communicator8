@@ -1,15 +1,15 @@
-%p#notice= notice
+%main.container
+  .row
+    .col-lg-9
+      .community-container.mx-2.mt-4
+        .community-head.d-flex.pt-4.mb-4
+          .right-items.m-2{style: "flex-grow: 1;"}
+            %h2.mb-0
+              = @job_site.name
 
-%p
-  %b Name:
-  = @job_site.name
-%p
-  %b Url:
-  = @job_site.url
-%p
-  %b Description:
-  = @job_site.description
+        - if @posts.present? 
+          = render "communities/posts/posts" 
+        - else
 
-= link_to 'Edit', edit_job_site_path(@job_site)
-\|
-= link_to 'Back', job_sites_path
+    .col-lg-3
+      = render 'layouts/parts/side_menu'

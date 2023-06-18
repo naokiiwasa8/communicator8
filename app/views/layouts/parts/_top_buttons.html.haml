@@ -1,4 +1,7 @@
 .d-flex.justify-content-end.mt-2.mx-2
+  %a.btn.custom-top-button-about.m-1{href: about_path}
+    %nobr
+      About
   - if controller_name != 'communities'
     %a.btn.custom-top-button.m-1{href: communities_path}
       %i.bi.bi-sort-down

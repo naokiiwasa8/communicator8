@@ -1,10 +1,23 @@
 = turbo_frame_tag :job_sites do
   .jobsites.container
     .row
-      - @job_sites.each do |job_site|
+      - @job_sites.each.with_index(1) do |job_site, index|
         .col-md-4.col-sm-12.mb-4
           .card.h-100.shadow-sm.rounded
-            .card-body.d-flex.flex-column.justify-content-between
+            .card-body.flex-column.justify-content-between
+              .rank
+                - if index == 1
+                  .badge.bg-gold
+                    %i.bi.bi-award
+                    1位
+                - elsif index == 2
+                  .badge.bg-silver
+                    %i.bi.bi-award
+                    2位
+                - elsif index == 3
+                  .badge.bg-bronze
+                    %i.bi.bi-award
+                    3位
               %h5.card-title.text-center
                 = link_to job_site.name, job_site.url, target: '_blank', rel: 'noopener'
               %p.card-text.text-center.text-muted

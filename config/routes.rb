@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get :active, to: 'home#active'
   get :favorites, to: 'home#favorites'
   get :followings, to: 'home#followings'
+  get :about, to: 'home#about'
 
   resources :posts
   resources :communities do 
