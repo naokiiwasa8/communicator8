@@ -16,8 +16,8 @@ class ApplicationController < ActionController::Base
     ExceptionNotifier.notify_exception(e, :env => request.env, :data => {:message => "error"})
     # respond_to do |format|
     #   # エラー画面へレンダー
-    #   # format.html { render template: 'front/errors/500', layout: 'front/layouts/error', status: 500 }
-    #   # format.all { render nothing: true, status: 500 }
+    #   format.html { render template: 'front/errors/500', layout: 'front/layouts/error', status: 500 }
+    #   format.all { render nothing: true, status: 500 }
     # end
   end
 
