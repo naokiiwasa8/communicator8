@@ -149,6 +149,7 @@ GEM
       actionmailer (>= 5.2, < 8)
       activesupport (>= 5.2, < 8)
     ffi (1.15.5)
+    forwardable (1.3.3)
     globalid (1.1.0)
       activesupport (>= 5.0)
     haml (6.1.1)
@@ -200,6 +201,9 @@ GEM
     mini_mime (1.1.2)
     minitest (5.17.0)
     msgpack (1.6.0)
+    net-ftp (0.2.0)
+      net-protocol
+      time
     net-imap (0.3.4)
       date
       net-protocol
@@ -216,6 +220,9 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.5.3)
+    prime (0.1.2)
+      forwardable
+      singleton
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -279,6 +286,7 @@ GEM
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
+    singleton (0.1.1)
     slack-notifier (2.4.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
@@ -294,6 +302,8 @@ GEM
     temple (0.10.0)
     thor (1.2.1)
     tilt (2.0.11)
+    time (0.2.2)
+      date
     timeout (0.3.1)
     turbo-rails (1.3.2)
       actionpack (>= 6.0.0)
@@ -341,11 +351,14 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   kaminari
+  matrix
   mini_magick
+  net-ftp
   net-imap
   net-pop
   net-smtp
   pg (>= 0.18, < 2.0)
+  prime
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)
   ransack
