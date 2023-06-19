@@ -63,7 +63,7 @@ class SettingsController < ApplicationController
   end
 
   def update_password
-    if @user.update_with_password(password_params)
+    if password_params[:password].present? && @user.update_with_password(password_params)
       bypass_sign_in(@user)
       @successful_update = true
       redirect_to user_path(@user), notice: 'パスワードを更新しました.'

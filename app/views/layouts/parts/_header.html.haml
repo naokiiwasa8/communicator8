@@ -17,9 +17,6 @@
             %li
               %hr.dropdown-divider
             %li
-              %a.dropdown-item{:href => "https://ovdss.com/iapps/html_to_haml"} 
-                About
-            %li
               %a.dropdown-item{href: new_community_path}
                 コミュニティ作成
             %li
@@ -29,7 +26,10 @@
               %a.dropdown-item{ href: profile_setting_path } 
                 ユーザー設定
             %li
-              %a.dropdown-item{href: destroy_user_session_path, data: {turbo_method: :delete}} 
+              %a.dropdown-item{href: about_path} 
+                About
+            %li
+              %a.dropdown-item.text-gray{href: destroy_user_session_path, data: {turbo_method: :delete}} 
                 ログアウト
 
       - else
