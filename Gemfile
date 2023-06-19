@@ -98,9 +98,6 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-
-  # heroku setup
-  gem "sqlite3", "~> 1.4"
 end
 
 group :test do
@@ -108,11 +105,12 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-  # heroku setup
-  gem "sqlite3", "~> 1.4"
+end
+
+group :development, :test do
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :production do
-  # heroku setup
-  gem 'pg'
+  gem 'pg', '>= 0.18', '< 2.0'
 end
