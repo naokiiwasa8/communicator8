@@ -81,14 +81,6 @@ gem 'acts-as-taggable-on'
 gem 'exception_notification'
 gem 'slack-notifier'
 
-gem 'net-ftp'
-gem 'net-imap'
-gem 'net-pop'
-gem 'net-smtp'
-gem 'matrix'
-gem 'prime'
-gem 'debug'
-
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
