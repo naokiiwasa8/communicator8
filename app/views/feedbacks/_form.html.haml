@@ -1,13 +1,34 @@
 .container-field
   = simple_form_for @feedback, html: { class: 'feedback-form-center', multipart: true }, data: {turbo: false} do |f|
     %h2.form-title.mb-4 
-      サイトの要望・意見を送信
+      サイトへの要望・意見を送信
     .form-inputs
       = f.input :subject, input_html: { class: 'form-control stylish-input my-2' }
       = f.input :content, input_html: { class: 'form-control stylish-input my-2', style: 'height:200px;' }
 
     .form-actions
       = f.button :submit, '送信する', class: 'btn btn-primary btn-block mt-4 community-zozo-button'
+
+
+%div{"data-controller" => "modal"}
+  %button.question-mark-button{"data-action" => "click->modal#open"}
+    %span.question-mark ?
+
+  .modal.fade{"aria-hidden" => "true", "data-modal-target" => "modal", :tabindex => "-1"}
+    .modal-dialog.modal-lg
+      .modal-content
+        .modal-header
+          %h4.modal-title 
+            サイトへの要望・意見について
+          -# %button.close{"aria-label" => "Close", "data-action" => "click->modal#close", :type => "button"}
+          -#   %span{"aria-hidden" => "true"} ×
+        .modal-body
+          %p いつもCOMMUNICATORを利用いただきありがとうございます。
+          %p エンジニアの皆様ならではの観点で、「もっとこうした方が良い」「こんな機能が欲しい」などの意見を頂けないでしょうか。
+          %p 要望・意見が多い順に開発を進めていきますので、是非、皆様の貴重なご意見を開発者に届けていただきたいです！
+        .modal-footer
+          %button.btn.btn-secondary{"data-action" => "click->modal#close", :type => "button"} Close
+          -# %button.btn.btn-primary{:type => "button"} Save changes
 
 
 

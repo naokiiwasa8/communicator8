@@ -2,22 +2,25 @@
   .sticky-card-items
     .card-items-top.d-flex.align-items-center.justify-content-center.border-top.border-bottom
       %strong.text-gray-dark.top-text
-        for engineers
+        For engineers
     %a.text-decoration-none.text-dark{href: new_feedback_path}
       .side-menu-card.d-flex.align-items-center.justify-content-center.my-4.border-bottom
+        .svg-container
+          = embedded_svg('feedback.svg')
         .text-center
           エンジニアの皆様
           %br
-          このサイトを良くする
-          %br
-          意見を下さい
-    %a.text-decoration-none.text-dark{href: job_sites_path}
+            このサイトを良くする意見を下さい！
+    .text-decoration-none.text-dark{href: ""}
       .side-menu-card.d-flex.align-items-center.justify-content-center.my-4.border-bottom
-        【転職サイトランキング実装予定】
-    %a.text-decoration-none.text-dark{href: "#"}
+        -# 【転職サイトランキング実装予定】
+        coming soon
+    .text-decoration-none.text-dark{href: "#"}
       .side-menu-card.d-flex.align-items-center.justify-content-center.my-4.border-bottom
-        『⭐︎エンジニアの皆様、おすすめ転職サイトの意見をください⭐︎』
-    %a.text-decoration-none.text-dark{href: "#"}
+        -# 『⭐︎エンジニアの皆様、おすすめ転職サイトの意見をください⭐︎』
+        coming soon
+    .text-decoration-none.text-dark{href: "#"}
       .side-menu-card.d-flex.align-items-center.justify-content-center.my-4.border-bottom
-        『エンジニアの皆様、一緒にこのサイトを作りませんか？』
+        -# 『エンジニアの皆様、一緒にこのサイトを作りませんか？』
+        coming soon
 
