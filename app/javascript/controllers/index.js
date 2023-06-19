@@ -25,6 +25,9 @@ application.register("light-gray-circles-animation", LightGrayCirclesAnimationCo
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
 
+import PasswordController from "./password_controller"
+application.register("password", PasswordController)
+
 import PreviewAvatarController from "./preview_avatar_controller"
 application.register("preview-avatar", PreviewAvatarController)
 
