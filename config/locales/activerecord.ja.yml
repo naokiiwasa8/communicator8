@@ -21,6 +21,9 @@ ja:
         biography: 自己紹介
       community:
         community_name: コミュニティ名
+      feedback: 
+        subject: 件名
+        content: 本文
   errors:
     format: "%{attribute}%{message}"
     messages:

@@ -208,3 +208,41 @@
     font-size: 1.2em
     color: #666
     margin-bottom: 40px
+
+.feedback-form-center
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 100%
+  max-width: 650px
+  @media (max-width: 767px)
+    padding-left: 15px
+    padding-right: 15px
+
+  .stylish-input
+    border-radius: 0
+    box-shadow: none
+    transition: all 0.1s ease
+    font-size: 16px
+    padding: 15px 10px
+    box-shadow: 0 0 0px 1000px #ffffff inset
+    &:focus
+      border: 1.5px solid #3f3f3f
+
+  .form-title
+    font-weight: bold
+    font-size: 24px
+    color: #3f3f3f
+    text-align: center
+
+  .community-zozo-button
+    background-color: #3f3f3f
+    border: none
+    color: #ffffff
+    font-weight: bold
+    transition: all 0.3s ease
+    float: right
+    &:hover
+      background-color: #2a2a2a
+      color: #ffffff

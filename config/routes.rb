@@ -37,6 +37,8 @@ Rails.application.routes.draw do
       post :not_recommend, to: 'job_site_recommends#not_recommend'
     end
   end
+  resources :feedbacks, only: [:new, :create]
+  
   devise_for :users,
     path: '',
     path_names: {

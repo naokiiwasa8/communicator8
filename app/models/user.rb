@@ -9,15 +9,17 @@ class User < ApplicationRecord
   has_many :communities
   has_many :posts
   has_many :favorite_communities, dependent: :destroy
-  has_one_attached :avatar
   has_many :job_site_recommends
   has_many :recommended_job_sites, through: :job_site_recommends
-  has_one :profile
-  accepts_nested_attributes_for :profile
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followings, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :feedbacks
+  has_one :profile
+  has_one_attached :avatar
+  accepts_nested_attributes_for :profile
+
   # お気に入り登録済みのcommunities
   has_many :favorited_communities, through: :favorite_communities, source: :community
   # 投稿済みのcommunities

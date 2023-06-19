@@ -1,0 +1,13 @@
+.container-field
+  = simple_form_for @feedback, html: { class: 'feedback-form-center', multipart: true }, data: {turbo: false} do |f|
+    %h2.form-title.mb-4 
+      サイトの要望・意見を送信
+    .form-inputs
+      = f.input :subject, input_html: { class: 'form-control stylish-input my-2' }
+      = f.input :content, input_html: { class: 'form-control stylish-input my-2', style: 'height:200px;' }
+
+    .form-actions
+      = f.button :submit, '送信する', class: 'btn btn-primary btn-block mt-4 community-zozo-button'
+
+
+
