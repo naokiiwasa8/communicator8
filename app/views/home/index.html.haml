@@ -1,14 +1,11 @@
--# 円アニメーションを追加
--# .bg-body-tertiary.p-3.p-sm-5.mb-4.rounded{style: "position: fixed; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;", data: { controller: "circle-animation", "circle-animation-target": "container" }}
-
 -# stimulus geometric-top-animation
-.bg-body-tertiary.p-3.p-sm-5.mb-4.rounded{style: "position: fixed; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;", data: { controller: "geometry-top-animation", "geometry-top-animation-target": "container" }}
+.p-3.p-sm-5.mb-4.rounded{style: "position: fixed; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;", data: { controller: "geometry-top-animation", "geometry-top-animation-target": "container" }}
 
-.frame{style: "z-index: -3;" }
+.frame{style: "z-index: 100;" }
   .center.text-center
     %h1.top-container
       .text-center.pt-5.mt-5
-        COMMUNICATOR!
+        COMMUNICATOR
     %h6
       #typing-animation.typing-animation.pt-3.mb-1{ data: { controller: "typing-action"}}
         .text-center.pb-5.pt-1{"data-typing-action-target" => "element"}
