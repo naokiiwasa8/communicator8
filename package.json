@@ -1,4 +1,5 @@
 {
+  "setup": "yarn",
   "name": "app",
   "private": "true",
   "dependencies": {
