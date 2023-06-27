@@ -24,7 +24,7 @@ production:
   <<: *default
   database: d8sonjq0n6aree
   username: ploqwaejxwumlk
-  password: <%= ENV["heroku_DATABASE_PASSWORD"] %>
+  password: <%= ENV["HEROKU_DATABASE_PASSWORD"] %>
   adapter: postgresql
   encoding: unicode
   pool: 5
